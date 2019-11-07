@@ -1,0 +1,20 @@
+image: node:10.15.3
+
+pipelines:
+  default:
+    - step:
+        name: Build and test
+        caches:
+          - node
+        script:
+          - ls -al
+    - step:
+        name: Deploy artifacts using SCP to PROD
+        deployment: production
+        script:
+          - pipe: atlassian/scp-deploy:0.3.3
+            variables:
+              USER: $user
+              SERVER: $ip
+              REMOTE_PATH: '/var/www/club/front'
+              LOCAL_PATH: '*'
