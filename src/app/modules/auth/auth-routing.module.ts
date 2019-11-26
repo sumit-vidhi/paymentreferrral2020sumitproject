@@ -17,6 +17,7 @@ import { AuthService } from '@modules/auth/services/auth.service';
 import { HasTokenResolver } from '@shared/resolvers/resolver.service';
 import { SignUpComponent } from '@app/modules/auth/components/sign-up/sign-up.component';
 import { ResetPasswordComponent } from '@app/modules/auth/components/reset-password/reset-password.component';
+import { RegisterFinishComponent } from '@app/modules/auth/components/register-finish/register-finish.component';
 
 // defining routes
 const routes: Routes = [
@@ -31,6 +32,11 @@ const routes: Routes = [
         path: 'signup',
         component: SignUpComponent,
         data: { title: 'Sign Up' }
+      },
+	   {
+        path: 'thankyou',
+        component: RegisterFinishComponent,
+        data: { title: 'Thank You' }
       },
       {
         path: 'reset-password',
@@ -50,7 +56,8 @@ export class AuthRoutingModule {
     LoginComponent,
     SignUpComponent,
     ResetPasswordComponent,
-    MasterComponent
+    MasterComponent,
+	RegisterFinishComponent
   ];
 
   static providers = [

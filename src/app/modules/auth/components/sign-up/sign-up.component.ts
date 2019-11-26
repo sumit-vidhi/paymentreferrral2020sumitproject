@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { AuthService } from '@modules/auth/services/auth.service';
+import { Router } from '@angular/router';
 // custom validator to check that two fields match
  function MustMatch(controlName: string, matchingControlName: string) {
     return (formGroup: FormGroup) => {
@@ -31,7 +32,8 @@ export class SignUpComponent implements OnInit {
   registerForm: FormGroup;
     submitted = false;
 
-    constructor(private formBuilder: FormBuilder) { }
+    constructor(private formBuilder: FormBuilder, private authService:AuthService,
+	private router : Router) { }
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
@@ -60,13 +62,19 @@ export class SignUpComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-
-console.log(this.registerForm.value);
-        // stop here if form is invalid
         if (this.registerForm.invalid) {
             return;
         }
-        alert('SUCCESS!! :-)')
+		const formData=this.registerForm.value;
+        this.authService.register(formData).subscribe((result)=>{
+	       if(result.status=='success'){
+	         this.router.navigate(['auth/thankyou']);
+		   
+		   }else{
+		    alert(result.message);
+			
+		   }
+	   })
     }
 
 }

@@ -46,6 +46,6 @@ export class AuthService {
    * @returns {Observable<ApiResponseModel>}
    */
   register(formData): Observable<ApiResponseModel> {
-    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.register, param);
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.register, formData);
   }
 }

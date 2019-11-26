@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   env: 'local',
-  host: 'http://localhost/BACKUPPROJECT/letsconnect/' // Add the api url here with slash at the end
+  host: 'http://localhost/makeMoney/downlineclub-api/' // Add the api url here with slash at the end
 };
 
 /*

@@ -8,8 +8,8 @@
 import { CommonBase } from '@core/interfaces/common-base';
 
 export class ApiResponseModel {
-    public success: Boolean;
+    public status: string;
     public message: string;
-    public data: any;
+    public record: any;
     public errors: CommonBase;
 }

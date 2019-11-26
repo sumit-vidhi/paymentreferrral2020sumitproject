@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
       password: 'testkumar'
     };
     this.authService.login(payload).subscribe(paramName => {
-      const userData: User = paramName.data;
+     // const userData: User = paramName.data;
     });
   }
 }

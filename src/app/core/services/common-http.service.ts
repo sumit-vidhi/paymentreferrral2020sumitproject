@@ -55,14 +55,9 @@ export class CommonHttpService {
    * @param  {CommonBase} [n]
    * @return {ApiResponseModel} Promise of type ApiResponseModel
    */
-  post<T>(url: string, args: CommonBase = {}): Observable<T> {
-    const params = new HttpParams(args);
-    return this.http.post(url, params)
-      .pipe(
-        map(data => {
-          return new MapModel(ApiResponseModel).map(data);
-        })
-      );
+  post<T>(url: string, params): Observable<any> {
+   
+    return this.http.post(url, params);
   }
 
   /**
