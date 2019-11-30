@@ -43,4 +43,7 @@ export class AuthService {
   forgotPassword(token): Observable<ApiResponseModel> {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.forgotPassword, token);
   }
+  checkEmailToken(email) {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.emailCheck, email);
+  }
 }

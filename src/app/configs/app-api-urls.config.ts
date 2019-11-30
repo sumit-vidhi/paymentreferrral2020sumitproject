@@ -14,6 +14,7 @@ export const appApiUrl: CommonBase = {
         login: 'user/login',
 		    register:'user/register',
 		    emailVerification:'user/emailVerification',
-		    forgotPassword:'user/forgotPassword'
+            forgotPassword:'user/forgotPassword',
+            emailCheck:'user/emailValidation'
     }
 };
