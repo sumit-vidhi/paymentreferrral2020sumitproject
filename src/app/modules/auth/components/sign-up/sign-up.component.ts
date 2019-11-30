@@ -51,6 +51,7 @@ export class SignUpComponent implements OnInit {
 			postalCode: ['dsfsdfsdfdsf', Validators.required],
 			phone: ['22112121212', Validators.required],
 			country: ['AF', Validators.required],
+            accept:['',Validators.requiredTrue]
 			  
         }, {
             validator: [MustMatch('password', 'confirmPassword'), MustMatch('email', 'confirmEmail')]
@@ -59,6 +60,10 @@ export class SignUpComponent implements OnInit {
 
     // convenience getter for easy access to form fields
     get f() { return this.registerForm.controls; }
+
+    get accept() {
+      return this.registerForm.get('accept');
+    } 
 
     onSubmit() {
         this.submitted = true;
@@ -69,11 +74,9 @@ export class SignUpComponent implements OnInit {
         this.authService.register(formData).subscribe((result)=>{
 	       if(result.status=='success'){
 	         this.router.navigate(['auth/thankyou']);
-		   
-		   }else{
-		    alert(result.message);
-			
-		   }
+		    }else{
+		     alert(result.message);
+			}
 	   })
     }
 

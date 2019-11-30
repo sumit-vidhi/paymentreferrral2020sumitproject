@@ -35,10 +35,10 @@ export class EmailVarificationComponent implements OnInit {
         id : params.id, 
         token : params.code 
       })
-      .then(response => {
-        if(response.code == 200){
+      .subscribe(response => {
+        if(response.status == 'success'){
 
-          if(response.message=='Success'){
+          if(response.message=='active'){
             this.isEmailConfirmed = true; 
           }
           if(response.message=='alreadyactivate'){

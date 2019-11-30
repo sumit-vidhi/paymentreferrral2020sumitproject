@@ -27,25 +27,20 @@ export class AuthService {
     private commonHttp: CommonHttpService
   ) { }
 
-  /**
-   * @function login
-   * @description
-   * Making a user login request
-   * @param param {UserLogin}
-   * @returns {Observable<ApiResponseModel>}
-   */
+  
   login(param: UserLogin): Observable<ApiResponseModel> {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.login, param);
   }
   
-  /**
-   * @function login
-   * @description
-   * Making a user login request
-   * @param param {UserLogin}
-   * @returns {Observable<ApiResponseModel>}
-   */
   register(formData): Observable<ApiResponseModel> {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.register, formData);
+  }
+
+  confirm(token): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.emailVerification, token);
+  }
+
+  forgotPassword(token): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.forgotPassword, token);
   }
 }

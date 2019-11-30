@@ -446,8 +446,11 @@
   </div>
 
   <div class="form-check mt-4">
-    <input class="form-check-input" type="checkbox" value="" id="remember_me">
+    <input class="form-check-input" type="checkbox" value="" formControlName="accept" id="remember_me">
     <label class="form-check-label" for="remember_me">I agree to the <a href="javascript:void(0)">Terms of Use</a></label>
+    <div *ngIf="accept.invalid && submitted"> 
+     Accept T & C.
+    </div>
   </div>
 
   <div class="mt-4">
