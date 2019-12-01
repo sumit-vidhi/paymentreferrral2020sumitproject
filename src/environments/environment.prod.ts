@@ -12,5 +12,5 @@
 export const environment = {
   production: true,
   env: 'prod',
-  host: 'http://localhost:8080/api/v1/' // Add the api url here with slash at the end
+  host: 'http://api.guaranteedownlineclub.com/' // Add the api url here with slash at the end
 };
