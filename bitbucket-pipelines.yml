@@ -16,5 +16,5 @@ pipelines:
             variables:
               USER: $user
               SERVER: $ip
-              REMOTE_PATH: '/var/www/club/front'
+              REMOTE_PATH: '/var/club/front'
               LOCAL_PATH: '*'
