@@ -74,7 +74,7 @@ export class JWTAuthService {
     // window.localStorage[USER_WRITE_PERMISSION] = obj.permissionId == 1 ? true : false;
     // window.localStorage[DM_PREFIX + TOKEN_NAME] = obj.token;
     // window.localStorage[USER_STORAGE_KEY] = obj.userName;
-    // this.router.navigate(["/dashboard"]);
+    this.router.navigate(["/dashboard"]);
   }
 
   /**

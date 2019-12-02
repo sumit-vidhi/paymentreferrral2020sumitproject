@@ -1,44 +1,65 @@
-  <div class="row justify-content-center">
-    <div class="col-md-6">
+<div class="row justify-content-center">
+  <div class="col-md-6">
 
-        <div class="shadow rounded mt-5">
-            <div class="card-body p-5">
-              <h3 class="card-title">Login to your account</h3>
-              <div class="card-text">
-                  <form action novalidate class="my-4">
+    <div class="shadow rounded mt-5">
+      <div class="card-body p-5">
+        <h3 class="card-title">Login to your account</h3>
+        <div class="card-text">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-                      <div class="form-group">
-                        <label for="email_address">Email address</label>
-                        <input type="email" class="form-control" id="email_address" placeholder="Enter email">
-                      </div>
+            <div class="form-group">
+              <label for="email_address">Username or Email address</label>
+              <input type="text" class="form-control" formControlName="username" autofocus>
+              <div *ngIf="
+					loginForm.get('username').invalid && 
+					loginForm.get('username').touched">
 
-                      <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Enter your password">
-                      </div>
-
-                      <div class="form-group d-flex justify-content-between">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="remember_me">
-                            <label class="form-check-label" for="remember_me">Remember Me</label>
-                          </div>
-                          <a href="javascript:void(0)" routerLink="/auth/reset-password">Forgot Password?</a>
-                      </div>
-                      
-                  </form>
-
+                <span *ngIf="
+						loginForm.get('username').errors.required || 
+						loginForm.get('username').errors.email	
+						" class="help-block">
+                  Email is required
+                </span>
               </div>
-
-              <div class="text-center">
-                <button class="btn btn-lg btn-primary btn-submit btn-radius">Submit</button>
-              </div>
-
-              <div class="text-center mt-4">
-                  <p class="signup-text mb-0">Dont have an account? <a href="javascript:void(0)" routerLink="/auth/signup">Sign Up</a></p>
-              </div>
-
             </div>
-          </div>
 
+            <div class="form-group">
+              <label for="password">Password</label>
+             <input type="password" class="form-control" formControlName="password">
+				<div *ngIf="
+					loginForm.get('password').invalid && 
+					loginForm.get('password').touched">
+					<span *ngIf="
+						loginForm.get('password').errors.required" class="help-block">
+							password is required
+					</span>		
+				</div>
+            </div>
+
+            <div class="form-group d-flex justify-content-between">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="remember_me">
+                <label class="form-check-label" for="remember_me">Remember Me</label>
+              </div>
+              <a href="javascript:void(0)" routerLink="/auth/reset-password">Forgot Password?</a>
+            </div>
+
+            <div class="text-center">
+              <button class="btn btn-lg btn-primary btn-submit btn-radius">Submit</button>
+            </div>
+          </form>
+
+
+        </div>
+
+
+        <div class="text-center mt-4">
+          <p class="signup-text mb-0">Dont have an account? <a href="javascript:void(0)" routerLink="/auth/signup">Sign
+              Up</a></p>
+        </div>
+
+      </div>
     </div>
+
   </div>
+</div>
