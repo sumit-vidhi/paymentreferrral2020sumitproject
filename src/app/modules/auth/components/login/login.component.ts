@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     let formModal = this.loginForm.value;
     this.loader.startLoading();
     this.authService.login(formModal).subscribe(result => {
-      this.loader.startLoading();
+      this.loader.stopLoading();
       if (result.status === 'success') {
         result.record.authToken = result.record.accessToken;
         this.loginService.setLoginUserDetail(result.record);
