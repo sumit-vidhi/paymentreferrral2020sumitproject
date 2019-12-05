@@ -103,11 +103,11 @@ export class SignUpComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-        this.loader.startLoading();
         if (this.registerForm.invalid) {
             return;
         }
         const formData = this.registerForm.value;
+        this.loader.startLoading();
         this.authService.register(formData).subscribe((result) => {
             this.loader.stopLoading();
             if (result.status == 'success') {
