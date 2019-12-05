@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl } from
 import { AuthService } from '@modules/auth/services/auth.service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { LoaderService } from '@core/services/loader-service';
 // custom validator to check that two fields match
 function MustMatch(controlName: string, matchingControlName: string) {
     return (formGroup: FormGroup) => {
@@ -36,11 +37,11 @@ export class SignUpComponent implements OnInit {
     submitted = false;
 
     constructor(private formBuilder: FormBuilder, private authService: AuthService,
-        private router: Router) { }
+        private router: Router, private loader: LoaderService) { }
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
-            userName: ['11', [Validators.required, Validators.minLength(6)]],
+            userName: ['11', [Validators.required, Validators.minLength(6)],this.isUernameUnique.bind(this)],
             firstName: ['11', Validators.required],
             lastName: ['11', Validators.required],
             email: ['a@a.com', [Validators.required, Validators.email], this.isEmailUnique.bind(this)],
@@ -59,6 +60,22 @@ export class SignUpComponent implements OnInit {
         }, {
             validator: [MustMatch('password', 'confirmPassword'), MustMatch('email', 'confirmEmail')]
         });
+    }
+
+    isUernameUnique(control: FormControl) {
+        const q = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                this.authService.checkEmailToken({ email: control.value }).subscribe((res) => {
+                    if (res.status == 'error') {
+                        resolve({ 'isUernameUnique': true });
+                    } else {
+                        resolve(null);
+                    }
+                })
+            }, 1000);
+        });
+        console.log(this.registerForm);
+        return q;
     }
 
     isEmailUnique(control: FormControl) {
@@ -86,11 +103,13 @@ export class SignUpComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
+        this.loader.startLoading();
         if (this.registerForm.invalid) {
             return;
         }
         const formData = this.registerForm.value;
         this.authService.register(formData).subscribe((result) => {
+            this.loader.stopLoading();
             if (result.status == 'success') {
                 this.router.navigate(['auth/thankyou']);
             } else {

@@ -20,6 +20,9 @@ import { HttpTokenInterceptor } from '@interceptors/http.token.interceptor';
 import { TitleService } from '@core/services/title.service';
 import { JWTAuthService } from '@core/services/jwt-auth.service';
 import { CommonHttpService } from '@core/services/common-http.service';
+import { AuthGuard } from '@core/gaurds/auth-guard.service';
+import { LoaderComponent } from './components/loader/loader.component';
+import { LoaderService } from '@core/services/loader-service';
 
 // Adding the http interceptors providers and services
 const providers = [
@@ -40,12 +43,14 @@ const providers = [
   },
   TitleService,
   JWTAuthService,
-  CommonHttpService
+  CommonHttpService,
+  AuthGuard,
+  LoaderService
 ];
 
 /** @module core */
 @NgModule({
-  declarations: [],
+  declarations: [LoaderComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -58,7 +63,8 @@ const providers = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    LoaderComponent
   ],
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {

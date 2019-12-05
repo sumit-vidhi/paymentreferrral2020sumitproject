@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '@modules/auth/services/auth.service';
 import { JWTAuthService } from '@core/services/jwt-auth.service';
+import { LoaderService } from '@core/services/loader-service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,22 +19,25 @@ import { JWTAuthService } from '@core/services/jwt-auth.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   constructor(private fb: FormBuilder, private authService: AuthService,
-    private loginService: JWTAuthService) { }
+    private loginService: JWTAuthService, private loader: LoaderService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      username: ['', [
+      username: ['a@a.com', [
         Validators.required,
         Validators.email
       ]],
-      password: ['', Validators.required],
+      password: ['111111', Validators.required],
       rememberMe: ['']
     });
   }
   onSubmit() {
     let formModal = this.loginForm.value;
+    this.loader.startLoading();
     this.authService.login(formModal).subscribe(result => {
+      this.loader.startLoading();
       if (result.status === 'success') {
+        result.record.authToken = result.record.accessToken;
         this.loginService.setLoginUserDetail(result.record);
       } else if (result.status === 'notActive') {
         alert("Your email address is inactive please check your inbox and activate account.");

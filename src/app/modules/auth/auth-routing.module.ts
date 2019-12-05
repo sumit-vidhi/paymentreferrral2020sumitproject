@@ -19,6 +19,7 @@ import { SignUpComponent } from '@app/modules/auth/components/sign-up/sign-up.co
 import { ResetPasswordComponent } from '@app/modules/auth/components/reset-password/reset-password.component';
 import { RegisterFinishComponent } from '@app/modules/auth/components/register-finish/register-finish.component';
 import { EmailVarificationComponent } from '@app/modules/auth/components/email-varification/email-varification.component';
+import { UpdatePasswordComponent } from '@app/modules/auth/components/update-password/update-password.component';
 
 // defining routes
 const routes: Routes = [
@@ -50,6 +51,12 @@ const routes: Routes = [
         component: EmailVarificationComponent,
         data: { title: 'Reset Password' }
       },
+
+      {
+        path: 'forgot_password/:id/:code',
+        component: UpdatePasswordComponent,
+        data: { title: 'Forgot Password' }
+      },
     ], resolve: { access: HasTokenResolver }
   }
 ];
@@ -65,7 +72,8 @@ export class AuthRoutingModule {
     ResetPasswordComponent,
     MasterComponent,
     RegisterFinishComponent,
-    EmailVarificationComponent
+    EmailVarificationComponent,
+    UpdatePasswordComponent
   ];
 
   static providers = [

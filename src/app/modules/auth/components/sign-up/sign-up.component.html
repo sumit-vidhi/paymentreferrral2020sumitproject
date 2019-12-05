@@ -18,6 +18,9 @@
                             <div *ngIf="f.userName.errors.required">UserName is required</div>
                             <div *ngIf="f.userName.errors.minlength">UserName must be at least 6 characters</div>
                         </div>
+                        <div *ngIf="f.userName.errors && f.userName.errors.isUernameUnique" class="invalid-feedback">
+                          *Username is  already exists in database.
+                      </div>
           </div>
 
         </div>

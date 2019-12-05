@@ -46,4 +46,14 @@ export class AuthService {
   checkEmailToken(email) {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.emailCheck, email);
   }
+  
+  confirmToken(token): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.confirmToken, token);
+  }
+
+  reset(token): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.resetPassword, token);
+  }
+
+  
 }

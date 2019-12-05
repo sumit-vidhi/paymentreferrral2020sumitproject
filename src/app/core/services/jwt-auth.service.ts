@@ -68,12 +68,7 @@ export class JWTAuthService {
   */
   setLoginUserDetail(obj: CommonBase): void {
     window.localStorage[APP_USER] = JSON.stringify(obj);
-
-    // this.router.navigate(["/dashboard"]);
-    // window.localStorage[USER_ROLE_STORAGE_KEY] = obj.roleId == 1 ? 'admin' : obj.roleId == 2 ? 'company_admin' : 'company_user';
-    // window.localStorage[USER_WRITE_PERMISSION] = obj.permissionId == 1 ? true : false;
-    // window.localStorage[DM_PREFIX + TOKEN_NAME] = obj.token;
-    // window.localStorage[USER_STORAGE_KEY] = obj.userName;
+    console.log(1212121);
     this.router.navigate(["/dashboard"]);
   }
 

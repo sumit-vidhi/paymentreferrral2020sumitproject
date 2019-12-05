@@ -8,7 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 // Define the routes
 const appRoutes: Routes = [
   { path: 'auth', loadChildren: './modules/auth/auth.module#AuthModule' },
-  // { path: 'pages', loadChildren: './modules/page/page.module#PageModule' },
+  { path: 'dashboard', loadChildren: './modules/home-dashboard/home-dashboard.module#HomeDashboardModule'},
   // { path: 'auth', loadChildren: './modules/auth/auth.module#AuthModule' },
   { path: '', pathMatch: 'full', redirectTo: '/auth/login' },
   // { path: '**', redirectTo: '/pages/404' }, //No route found
