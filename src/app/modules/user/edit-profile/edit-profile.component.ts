@@ -45,6 +45,9 @@ export class EditProfileComponent implements OnInit {
     }
   }
 
+  get f() { return this.editForm.controls; }
+
+
   getUrl() {
 
     const _isDev = window.location.port.indexOf('4200') > -1;
