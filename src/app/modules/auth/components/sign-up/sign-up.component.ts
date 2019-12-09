@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { AuthService } from '@modules/auth/services/auth.service';
-import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { LoaderService } from '@core/services/loader-service';
+import { Router, ActivatedRoute } from '@angular/router';
 // custom validator to check that two fields match
 function MustMatch(controlName: string, matchingControlName: string) {
     return (formGroup: FormGroup) => {
@@ -35,31 +35,44 @@ function MustMatch(controlName: string, matchingControlName: string) {
 export class SignUpComponent implements OnInit {
     registerForm: FormGroup;
     submitted = false;
-
+    referralName: any = 'NA';
+    referralId: any;
     constructor(private formBuilder: FormBuilder, private authService: AuthService,
-        private router: Router, private loader: LoaderService) { }
+        private router: Router, private loader: LoaderService,
+        private route: ActivatedRoute, ) { }
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
-            userName: ['11', [Validators.required, Validators.minLength(6)],this.isUernameUnique.bind(this)],
-            firstName: ['11', Validators.required],
-            lastName: ['11', Validators.required],
+            userName: ['demouser', [Validators.required, Validators.minLength(6)], this.isUernameUnique.bind(this)],
             email: ['a@a.com', [Validators.required, Validators.email], this.isEmailUnique.bind(this)],
             confirmEmail: ['a@a.com', [Validators.required, Validators.email]],
             password: ['111111', [Validators.required, Validators.minLength(6)]],
             confirmPassword: ['111111', Validators.required],
-            address: ['dsfsdfdsf', Validators.required],
-            address2: ['dsfsdfdsf', Validators.required],
-            state: ['sdfdsfsdf', Validators.required],
-            city: ['sdfdsfdsf', Validators.required],
-            postalCode: ['dsfsdfsdfdsf', Validators.required],
-            phone: ['22112121212', Validators.required],
-            country: ['AF', Validators.required],
             accept: ['', Validators.requiredTrue]
-
         }, {
             validator: [MustMatch('password', 'confirmPassword'), MustMatch('email', 'confirmEmail')]
         });
+
+        this.checkReferralCode();
+    }
+
+    checkReferralCode() {
+        this.route.queryParams
+            .subscribe(params => {
+                console.log(params);
+                var size = Object.keys(params).length;
+                console.log(size)
+                if (size === 1) {
+                    this.loader.startLoading();
+                    this.authService.getReferral(params).subscribe((result) => {
+                        this.loader.stopLoading();
+                        if (result.status === 'success') {
+                            this.referralName = result.record.firstName + ' ' + result.record.lastName;
+                            this.referralId = result.record.userId;
+                        }
+                    })
+                }
+            })
     }
 
     isUernameUnique(control: FormControl) {
@@ -74,7 +87,6 @@ export class SignUpComponent implements OnInit {
                 })
             }, 1000);
         });
-        console.log(this.registerForm);
         return q;
     }
 
@@ -90,7 +102,6 @@ export class SignUpComponent implements OnInit {
                 })
             }, 1000);
         });
-        console.log(this.registerForm);
         return q;
     }
 
@@ -107,6 +118,10 @@ export class SignUpComponent implements OnInit {
             return;
         }
         const formData = this.registerForm.value;
+        formData.referralId = '';
+        if (this.referralId) {
+            formData.referralId = this.referralId
+        }
         this.loader.startLoading();
         this.authService.register(formData).subscribe((result) => {
             this.loader.stopLoading();

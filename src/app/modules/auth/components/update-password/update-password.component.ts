@@ -38,12 +38,12 @@ export class UpdatePasswordComponent implements OnInit {
   isValidReset: boolean;
   resetForm: FormGroup;
   dismissible = true;
-  message:any;
+  message: any;
+  token: any;
 
   createForm() {
     this.resetForm = this.fb.group({
-      user_id: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', [Validators.required,Validators.minLength(6)]],
       confirm_password: ['', Validators.required]
     }, {
       validator: passwordMatchValidator
@@ -51,13 +51,16 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   onSubmit() {
-    let self = this;
+    if (this.resetForm.invalid) {
+      return;
+    }
     let formModel = this.resetForm.value;
+    formModel.token = this.token;
     this.loader.startLoading();
     this.authService.reset(formModel)
       .subscribe((res) => {
-        if (res.status === 'sucess') {
-          this.loader.startLoading();
+        if (res.status === 'success') {
+          this.loader.stopLoading();
           this.message = 'Your password has reset successfully';
         } else {
           this.message = 'Internal Server Error. Please try again';
@@ -69,19 +72,16 @@ export class UpdatePasswordComponent implements OnInit {
 
     this.isValidReset = false;
     this.createForm();
-
+    this.loader.startLoading();
     this.route.params.subscribe(params => {
+      this.token = params.code;
       this.authService.confirmToken({
         id: params.id,
         token: params.code
       })
-        .subscribe((response:any) => {
+        .subscribe((response: any) => {
+          this.loader.stopLoading();
           if (response.status == 'success') {
-            this.resetForm.setValue({
-              user_id: response.user_id,
-              password: '',
-              confirm_password: ''
-            });
             this.isValidReset = true
           }
         })

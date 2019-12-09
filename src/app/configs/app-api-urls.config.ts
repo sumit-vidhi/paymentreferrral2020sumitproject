@@ -17,6 +17,7 @@ export const appApiUrl: CommonBase = {
         forgotPassword: 'user/forgotPassword',
         emailCheck: 'user/emailValidation',
         confirmToken: 'user/confirmToken',
-        resetPassword: 'user/resetPassword'
+        resetPassword: 'user/resetPassword',
+        getRefferal:'user/getRefferal'
     }
 };

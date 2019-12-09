@@ -17,8 +17,7 @@ export class ResetPasswordComponent implements OnInit {
   ngOnInit() {
     this.forgotForm = this.fb.group({	 
       email 	: ['', [
-        Validators.required,
-        Validators.email
+        Validators.required
       ]]
     }); 
   }
@@ -27,11 +26,13 @@ export class ResetPasswordComponent implements OnInit {
     let formModel = this.forgotForm.value;
     this.loader.startLoading();
     this.authService.forgotPassword(formModel)
-    .subscribe((res)=>{
+    .subscribe((result)=>{
       this.loader.stopLoading();
-      if(res.status === 'success'){
+      if(result.status === 'success'){
         this.message='Reset password instructions has been sent to your email address. Please check your email'; 
-      }    
+      } else if (result.status === 'notActive') {
+        alert("Your email address is inactive please check your inbox and activate account.");
+      }   
       else{
         this.message='We have no account for this email, Please try again with other email.';
       } 

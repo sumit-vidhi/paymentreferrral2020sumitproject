@@ -3,7 +3,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-
+import { JWTAuthService } from '@core/services/jwt-auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public loginService: JWTAuthService) { }
 
   ngOnInit() {
   }

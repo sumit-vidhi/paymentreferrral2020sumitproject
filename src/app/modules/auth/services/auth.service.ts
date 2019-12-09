@@ -55,5 +55,9 @@ export class AuthService {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.resetPassword, token);
   }
 
+  getReferral(code): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.getRefferal, code);
+  }
+
   
 }

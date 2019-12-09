@@ -11,6 +11,7 @@ const appRoutes: Routes = [
   { path: 'dashboard', loadChildren: './modules/home-dashboard/home-dashboard.module#HomeDashboardModule'},
   // { path: 'auth', loadChildren: './modules/auth/auth.module#AuthModule' },
   { path: '', pathMatch: 'full', redirectTo: '/auth/login' },
+  { path: 'user', loadChildren: './modules/user/user.module#UserModule'},
   // { path: '**', redirectTo: '/pages/404' }, //No route found
 ];
 @NgModule({

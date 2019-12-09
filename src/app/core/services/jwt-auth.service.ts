@@ -68,8 +68,12 @@ export class JWTAuthService {
   */
   setLoginUserDetail(obj: CommonBase): void {
     window.localStorage[APP_USER] = JSON.stringify(obj);
-    console.log(1212121);
-    this.router.navigate(["/dashboard"]);
+    if (window.localStorage[APP_USER].updateStatus == 1) {
+      this.router.navigate(["/dashboard"]);
+    } else {
+      this.router.navigate(["/user"]);
+    }
+
   }
 
   /**
@@ -109,8 +113,9 @@ export class JWTAuthService {
   */
   deleteUserAccessToken(redirect: boolean = true): void {
     window.localStorage.clear();
+    console.log(redirect);
     if (redirect === true) {
-      this.router.navigate(["/login"]);
+      this.router.navigate(["auth/login"]);
     }
   }
 
@@ -122,7 +127,7 @@ export class JWTAuthService {
   */
   getLoginUserId(): CommonBase {
     if (window.localStorage[APP_USER]) {
-      return JSON.parse(window.localStorage[APP_USER]).User_Id;
+      return JSON.parse(window.localStorage[APP_USER]).userId;
     }
   }
 
@@ -134,7 +139,35 @@ export class JWTAuthService {
   */
   getLoginUserEmail(): CommonBase {
     if (window.localStorage[APP_USER]) {
-      return JSON.parse(window.localStorage[APP_USER]).Email;
+      return JSON.parse(window.localStorage[APP_USER]).email;
+    }
+  }
+  getRefferalCode(): CommonBase {
+    if (window.localStorage[APP_USER]) {
+      return JSON.parse(window.localStorage[APP_USER]).referralCode;
+    }
+  }
+
+  /**
+  * @function getLoginUserEmail
+  * @description
+  * Get login user email
+  * @returns {CommonBase}
+  */
+ getLoginUserName(): CommonBase {
+  if (window.localStorage[APP_USER]) {
+    return JSON.parse(window.localStorage[APP_USER]).userName;
+  }
+}
+  /**
+ * @function getLoginUserEmail
+ * @description
+ * Get login user email
+ * @returns {CommonBase}
+ */
+  getUserStatus() {
+    if (window.localStorage[APP_USER]) {
+      return JSON.parse(window.localStorage[APP_USER]).updateStatus;
     }
   }
 
