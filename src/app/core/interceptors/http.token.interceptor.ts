@@ -34,9 +34,11 @@ export class HttpTokenInterceptor implements HttpInterceptor {
 
     const token: null | CommonBase = this.authService.getUserAccessToken();
     if (token) {
-      headersConfig[TOKEN_HEADER_KEY] = `${AUTH_PREFIX} ${token}`;
+      headersConfig[TOKEN_HEADER_KEY] = `${token}`;
     }
+    console.log(token);
     const request = req.clone({ setHeaders: headersConfig });
+    console.log(request);
     return next.handle(request);
   }
 }

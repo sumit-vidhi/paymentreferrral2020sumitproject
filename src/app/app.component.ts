@@ -34,13 +34,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Fake api call
-    const payload: LoginPayload = {
-      email: 'asasa@gmail.com',
-      password: 'testkumar'
-    };
-    this.authService.login(payload).subscribe(paramName => {
-     // const userData: User = paramName.data;
-    });
+
   }
 }

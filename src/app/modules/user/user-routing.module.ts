@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, CanActivate  } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { AuthGuard } from '@core/gaurds/auth-guard.service';
+import { UserService } from '@modules/user/services/user.service';
+
 const routes: Routes = [
   {
     path: '', component: EditProfileComponent,
@@ -14,4 +16,8 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class UserRoutingModule { }
+export class UserRoutingModule {
+  static providers = [
+    UserService
+  ];
+}

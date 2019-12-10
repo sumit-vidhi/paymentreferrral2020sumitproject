@@ -15,7 +15,7 @@
 
           <div class="form-group">
             <label for="first_name">Email</label>
-            <input type="text" formControlName="email" class="form-control" disabled />
+            <div  class="form-control">  {{email}}</div>
 
           </div>
 
@@ -24,7 +24,7 @@
 
           <div class="form-group">
             <label for="first_name">User Name</label>
-            <input type="text" formControlName="userName" class="form-control" disabled />
+            <div  class="form-control">  {{userName}}</div>
 
           </div>
 
@@ -125,7 +125,7 @@
 
           <div class="form-group">
             <label for="country">Country</label>
-            <select name="country" id="country" class="form-control">
+            <select formControlName="country" id="country" class="form-control">
               <option value="AF">Afghanistan</option>
               <option value="AX">Aland Islands</option>
               <option value="AL">Albania</option>

@@ -10,6 +10,7 @@ import { UserRoutingModule } from './user-routing.module';
     UserRoutingModule,
     FormsModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers: [UserRoutingModule.providers]
 })
 export class UserModule { }

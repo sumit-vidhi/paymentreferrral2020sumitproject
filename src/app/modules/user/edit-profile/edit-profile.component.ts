@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { AuthService } from '@modules/auth/services/auth.service';
+import { UserService } from '@modules/user/services/user.service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { LoaderService } from '@core/services/loader-service';
@@ -14,32 +14,40 @@ export class EditProfileComponent implements OnInit {
   editForm: FormGroup;
   submitted = false;
   message: any;
-  referral:any;
-  constructor(private formBuilder: FormBuilder, private authService: AuthService,
+  referral: any;
+  email: any;
+  userName: any;
+  constructor(private formBuilder: FormBuilder, private userService: UserService,
     private router: Router, private loader: LoaderService, private loginService: JWTAuthService) { }
 
   ngOnInit() {
     this.editForm = this.formBuilder.group({
-      userName: [''],
-      email: [''],
-      firstName: ['11', Validators.required],
-      lastName: ['11', Validators.required],
-      address: ['dsfsdfdsf', Validators.required],
-      address2: ['dsfsdfdsf', Validators.required],
-      state: ['sdfdsfsdf', Validators.required],
-      city: ['sdfdsfdsf', Validators.required],
-      postalCode: ['dsfsdfsdfdsf', Validators.required],
-      phone: ['22112121212', Validators.required],
-      country: ['AF', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      address: ['', Validators.required],
+      address2: ['', Validators.required],
+      state: ['', Validators.required],
+      city: ['', Validators.required],
+      postalCode: ['', Validators.required],
+      phone: ['', Validators.required],
+      country: ['', Validators.required],
 
     });
-    this.editForm.controls['email'].setValue(this.getEmail());
-    this.editForm.controls['userName'].setValue(this.getUserName());
+    this.email=this.getEmail();
+    this.userName=this.getUserName();
     const status = this.loginService.getUserStatus();
-    console.log(status)
     if (status === '1') {
       this.message = "";
+      let formdata = {};
+      this.userService.getProfile(formdata).subscribe((result) => {
+        if (result.status === 'success') {
+          delete result.record.id;
+          delete result.record.user_id;
+          this.editForm.setValue(result.record);
+        }
+      })
       this.referral = this.getUrl();
+
     } else {
       this.message = "Your account is pending please update your profile";
     }
@@ -56,7 +64,7 @@ export class EditProfileComponent implements OnInit {
 
     const host = window.location.host;
 
-    return _isDev ? 'http://localhost:4200/auth/signup?referralCode='+this.getReferralCode() : '/auth/signup';
+    return _isDev ? 'http://localhost:4200/auth/signup?referralCode=' + this.getReferralCode() : '/auth/signup?referralCode=' + this.getReferralCode();
   }
 
   getEmail() {
@@ -75,10 +83,34 @@ export class EditProfileComponent implements OnInit {
     if (this.editForm.invalid) {
       return;
     }
-    if (this.loginService.getUserStatus()) {
-      console.log(this.editForm.value);
+    
+    if (this.loginService.getUserStatus() === '1') {
+      const formdata = this.editForm.value;
+      formdata.updateStatus = this.loginService.getUserStatus();
+      formdata.userId = this.loginService.getLoginUserId();
+      this.loader.startLoading();
+      this.userService.editProfile(formdata).subscribe((result) => {
+        this.loader.stopLoading();
+        if (result.status === 'success') {
+          result.record.authToken = result.record.accessToken;
+          this.loginService.setLoginUserDetail(result.record);
+        }
+      })
+    } else {
+      const formdata = this.editForm.value;
+      formdata.updateStatus = this.loginService.getUserStatus();
+      formdata.userId = this.loginService.getLoginUserId();
+      this.loader.startLoading();
+      this.userService.editProfile(formdata).subscribe((result) => {
+        this.loader.stopLoading();
+        if (result.status === 'success') {
+          result.record.authToken = result.record.accessToken;
+          this.loginService.setLoginUserDetail(result.record);
+        }
+      })
     }
 
   }
+
 
 }

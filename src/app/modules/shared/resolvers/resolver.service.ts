@@ -20,7 +20,7 @@ export class HasTokenResolver {
   ) { }
   resolve(): any {
     if (this.authService.IsAuthUser()) {
-      this.router.navigate(["/users/dashboard"]);
+      this.router.navigate(["/user"]);
     }
   }
 }
@@ -33,7 +33,7 @@ export class AppRoutingAccess {
   ) { }
   resolve(): any {
     if (!this.authService.IsAuthUser()) {
-      this.router.navigate(["/login"]);
+      this.router.navigate(["auth/login"]);
     }
   }
 }
