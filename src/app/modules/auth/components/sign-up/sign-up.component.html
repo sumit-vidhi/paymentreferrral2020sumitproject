@@ -12,14 +12,14 @@
         <div class="col-md-6">
 
           <div class="form-group">
-            <label for="username">User Name</label>
+            <label for="username">Username</label>
             <input type="text" formControlName="userName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userName.errors }" />
                         <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
-                            <div *ngIf="f.userName.errors.required">UserName is required</div>
-                            <div *ngIf="f.userName.errors.minlength">UserName must be at least 6 characters</div>
+                            <div *ngIf="f.userName.errors.required">Username is required</div>
+                            <div *ngIf="f.userName.errors.minlength">Username must be at least 6 characters</div>
                         </div>
                         <div *ngIf="f.userName.errors && f.userName.errors.isUernameUnique" class="invalid-feedback">
-                          *Username is  already exists in database.
+                          *Username already exists.
                       </div>
           </div>
 
@@ -62,7 +62,7 @@
                             <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
                         </div>
                         <div *ngIf="f.email.errors && f.email.errors.isEmailUnique" class="invalid-feedback">
-                            *Email is  already exists in database.
+                            *Email already exists.
                         </div>
           </div>
 
@@ -85,8 +85,8 @@
         <div class="col-md-6">
 
             <div class="form-group">
-              <label for="confirm_email_address">Referral Name</label>
-              <div  class="form-control">  {{referralName}}</div>
+              <label for="confirm_email_address">Sponsored By</label>
+              <div  class="form-control"> {{referralName}} </div>
             </div>
   
           </div>
@@ -466,12 +466,12 @@
     <input class="form-check-input" type="checkbox" value="" formControlName="accept" id="remember_me">
     <label class="form-check-label" for="remember_me">I agree to the <a href="javascript:void(0)">Terms of Use</a></label>
     <div *ngIf="accept.invalid && submitted"> 
-     Accept T & C.
+     Accept terms of use.
     </div>
   </div>
 
   <div class="mt-4">
-      <button class="btn btn-lg btn-primary btn-submit btn-radius">Submit &amp; Proceed</button>
+      <button class="btn btn-lg btn-primary btn-submit btn-radius">Register Now</button>
     </div>
 
 </form>  
