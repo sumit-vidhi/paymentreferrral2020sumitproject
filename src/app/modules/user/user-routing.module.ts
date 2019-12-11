@@ -3,13 +3,19 @@ import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { AuthGuard } from '@core/gaurds/auth-guard.service';
 import { UserService } from '@modules/user/services/user.service';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 const routes: Routes = [
   {
     path: '', component: EditProfileComponent,
     data: { title: 'My account' },
     canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: 'user-dashboard', component: UserDashboardComponent,
+    data: { title: 'My Dashboard' }
+  },
+  
 ];
 
 @NgModule({
