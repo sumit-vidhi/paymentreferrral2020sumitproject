@@ -33,8 +33,12 @@ export class EditProfileComponent implements OnInit {
       country: ['', Validators.required],
 
     });
-    this.email=this.getEmail();
-    this.userName=this.getUserName();
+    this.email = this.getEmail();
+    this.userName = this.getUserName();
+    this.setStatus();
+  }
+
+  setStatus() {
     const status = this.loginService.getUserStatus();
     if (status === '1') {
       this.message = "";
@@ -53,6 +57,7 @@ export class EditProfileComponent implements OnInit {
     }
   }
 
+
   get f() { return this.editForm.controls; }
 
 
@@ -64,7 +69,7 @@ export class EditProfileComponent implements OnInit {
 
     const host = window.location.host;
 
-    return _isDev ? 'http://localhost:4200/auth/signup?referralCode=' + this.getReferralCode() : protocol + "//" + host +'/auth/signup?referralCode=' + this.getReferralCode();
+    return _isDev ? 'http://localhost:4200/auth/signup?referralCode=' + this.getReferralCode() : protocol + "//" + host + '/auth/signup?referralCode=' + this.getReferralCode();
   }
 
   getEmail() {
@@ -80,10 +85,11 @@ export class EditProfileComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
     if (this.editForm.invalid) {
       return;
     }
-    
+
     if (this.loginService.getUserStatus() === '1') {
       const formdata = this.editForm.value;
       formdata.updateStatus = this.loginService.getUserStatus();
@@ -93,7 +99,8 @@ export class EditProfileComponent implements OnInit {
         this.loader.stopLoading();
         if (result.status === 'success') {
           result.record.authToken = result.record.accessToken;
-          this.loginService.setLoginUserDetail(result.record);
+          this.loginService.updateLoginUserDetail(result.record);
+          this.setStatus();
         }
       })
     } else {
