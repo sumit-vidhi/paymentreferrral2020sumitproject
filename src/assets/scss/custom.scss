@@ -11,10 +11,19 @@ body{
     }
 }
 
+img{
+    max-width:100%;
+}
+
+.bg-orange{background:$orange;}
+.bg-cyan{background:$cyan;}
+
 .site-header{
     padding:1.2rem 0;
     background:$white;
-    box-shadow:0 0 15px #eee;
+    box-shadow:0 0 15px rgba($dark, 0.2);
+    position: relative;
+    z-index: 10;
     a.nav-link, a.navbar-brand{
         color:$dark;
     }
@@ -26,7 +35,6 @@ body{
 }
 
 .container-wrapper{
-    padding:3rem 0;
     min-height:calc(100vh - 151px);
 }
 
@@ -37,6 +45,13 @@ body{
 .page-title{
     small{
         font-size:15px;
+    }
+}
+
+.form-control{
+    &.ng-invalid.ng-touched{
+        border-color:$red;
+        box-shadow: 0 0 0 0.2rem rgba($red, 0.25);
     }
 }
 
@@ -54,4 +69,122 @@ body{
             }
         }
     }
+}
+
+
+.help-block{
+    font-size:14px;
+}
+
+.user-header{
+    background: url(/assets/images/user-header-bg.jpg) no-repeat;
+    background-size: cover;
+    padding:40px 0;
+    margin-bottom:30px;
+    .user-info{
+        .user-img{
+            max-width:150px;
+            max-height:150px;
+            border-radius:100%;
+            overflow: hidden;
+            border:5px solid $white;
+        }
+    }
+
+    .badges{
+        .custom-badge{
+            padding:12px 15px 10px 15px;
+            border-radius:5px;
+            background:$white;
+            color:$dark;
+            margin-left:15px;
+            &:first-child{
+                margin-left:0;
+            }
+            .badge-icon{
+                margin-right:10px;
+            }
+            .badge-title{
+                line-height:0.8;
+                strong{
+                    font-weight:normal;
+                    display: block;
+                    margin-bottom:3px;
+                }
+                h4{
+                    margin:0;
+                }
+            }
+        }
+    }
+}
+
+.navbar-dark{
+    .navbar-nav{
+        li.nav-item{
+            a.nav-link{
+                font-size:14px;
+                padding:15px 20px;
+                &:hover{
+                    background:$black;
+                    color:$white;
+                }
+                &.active{
+                    background:$black;
+                }
+            }
+            ul{
+                margin:0;
+                padding:0;
+                position: absolute;
+                background:$black;
+                padding:10px 15px;
+                width:200px;
+                display:none;
+                z-index: 100;
+                li{
+                    list-style:none;
+                    a{
+                        color:rgba($white, 0.5);
+                        font-size:14px;
+                        padding:6px;
+                        display:block;
+                        &:hover{
+                            text-decoration:none;
+                            color:$white;
+                        }
+                    }
+                }
+            }
+            &:hover{
+                a.nav-link{
+                    background:$black;
+                    color:$white;
+                }
+                ul{
+                    display:block;
+                }
+            }
+        }
+    }
+}
+
+
+.referral-link{
+    text-decoration: none;
+    color:$dark;
+    &:hover{
+        text-decoration: none;
+        color:$dark;
+    }
+}
+
+.dashboard-cards{
+    .card-body{
+        padding-bottom:0;
+    }
+}
+
+.modal-header, .modal-body{
+    padding:1.4rem;
 }
