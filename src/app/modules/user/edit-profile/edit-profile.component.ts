@@ -18,7 +18,7 @@ export class EditProfileComponent implements OnInit {
   email: any;
   userName: any;
   constructor(private formBuilder: FormBuilder, private userService: UserService,
-    private router: Router, private loader: LoaderService, private loginService: JWTAuthService) { }
+    private router: Router, private loader: LoaderService, public loginService: JWTAuthService) { }
 
   ngOnInit() {
     this.editForm = this.formBuilder.group({

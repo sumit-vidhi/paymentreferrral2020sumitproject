@@ -118,7 +118,7 @@ export class SignUpComponent implements OnInit {
             return;
         }
         const formData = this.registerForm.value;
-        formData.referralId = '';
+        formData.referralId = 28;
         if (this.referralId) {
             formData.referralId = this.referralId
         }

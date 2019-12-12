@@ -414,7 +414,8 @@
     </div>
 
     <div class="mt-4">
-      <button class="btn btn-lg btn-primary btn-submit btn-radius">Complete Account Verification</button>
+      <button class="btn btn-lg btn-primary btn-submit btn-radius" *ngIf='loginService.getUserStatus()=="0"'>Complete Account Verification</button>
+      <button class="btn btn-lg btn-primary btn-submit btn-radius" *ngIf='loginService.getUserStatus()=="1"'>Update Profile</button>
     </div>
 
   </form>

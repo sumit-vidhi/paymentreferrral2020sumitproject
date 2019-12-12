@@ -14,7 +14,8 @@ import { WalletCreditComponent } from './wallet-credit/wallet-credit.component';
 const routes: Routes = [
   {
     path: 'edit-profile', component: EditProfileComponent,
-    data: { title: 'My account' }    
+    data: { title: 'My account' },
+    canActivate: [AuthGuard]  
   },
   {
     path: '', component: UserDashboardComponent,
@@ -23,27 +24,33 @@ const routes: Routes = [
   },
   {
     path: 'change-password', component: ChangePasswordComponent,
-    data: { title: 'Change Password' }
+    data: { title: 'Change Password' },
+    canActivate: [AuthGuard]
   },
   {
     path: 'payment-settings', component: PaymentSettingsComponent,
-    data: { title: 'Payment Settings' }
+    data: { title: 'Payment Settings' },
+    canActivate: [AuthGuard]
   },
   {
     path: 'referrals', component: ReferralsComponent,
-    data: { title: 'Referrals' }
+    data: { title: 'Referrals' },
+    canActivate: [AuthGuard]
   },
   {
     path: 'payments', component: PaymentsComponent,
-    data: { title: 'Payments' }
+    data: { title: 'Payments' },
+    canActivate: [AuthGuard]
   },
   {
     path: 'wallet', component: WalletComponent,
-    data: { title: 'Wallet' }
+    data: { title: 'Wallet' },
+    canActivate: [AuthGuard]
   },
   {
     path: 'wallet-credit', component: WalletCreditComponent,
-    data: { title: 'Add Wallet Credit' }
+    data: { title: 'Add Wallet Credit' },
+    canActivate: [AuthGuard]
   },  
   
 ];

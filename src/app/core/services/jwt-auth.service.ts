@@ -68,10 +68,10 @@ export class JWTAuthService {
   */
   setLoginUserDetail(obj: CommonBase): void {
     window.localStorage[APP_USER] = JSON.stringify(obj);
-    if (window.localStorage[APP_USER].updateStatus == 1) {
-      this.router.navigate(["/dashboard"]);
-    } else {
+    if (JSON.parse(window.localStorage[APP_USER]).updateStatus == "1") {
       this.router.navigate(["/user"]);
+    } else {
+      this.router.navigate(["/user/edit-profile"]);
     }
 
   }
@@ -154,11 +154,11 @@ export class JWTAuthService {
   * Get login user email
   * @returns {CommonBase}
   */
- getLoginUserName(): CommonBase {
-  if (window.localStorage[APP_USER]) {
-    return JSON.parse(window.localStorage[APP_USER]).userName;
+  getLoginUserName(): CommonBase {
+    if (window.localStorage[APP_USER]) {
+      return JSON.parse(window.localStorage[APP_USER]).userName;
+    }
   }
-}
   /**
  * @function getLoginUserEmail
  * @description
