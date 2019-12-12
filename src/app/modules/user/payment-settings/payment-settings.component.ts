@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentSettingsComponent implements OnInit {
 
+  paymentTypeSelect = 'stripe';
+
   constructor() { }
 
   ngOnInit() {

@@ -8,9 +8,12 @@ import { Router } from '@angular/router';
 })
 export class UserDashboardComponent implements OnInit {
 
+  public sendMessage: boolean;
+
   constructor() { }
 
   ngOnInit() {
+    this.sendMessage = false;
   }
 
 }

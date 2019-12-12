@@ -15,6 +15,9 @@ img{
     max-width:100%;
 }
 
+.bg-orange{background:$orange;}
+.bg-cyan{background:$cyan;}
+
 .site-header{
     padding:1.2rem 0;
     background:$white;
@@ -126,12 +129,15 @@ img{
                     background:$black;
                     color:$white;
                 }
+                &.active{
+                    background:$black;
+                }
             }
             ul{
                 margin:0;
                 padding:0;
                 position: absolute;
-                background:$dark;
+                background:$black;
                 padding:10px 15px;
                 width:200px;
                 display:none;
@@ -171,4 +177,14 @@ img{
         text-decoration: none;
         color:$dark;
     }
+}
+
+.dashboard-cards{
+    .card-body{
+        padding-bottom:0;
+    }
+}
+
+.modal-header, .modal-body{
+    padding:1.4rem;
 }

@@ -9,6 +9,7 @@ import { PaymentSettingsComponent } from './payment-settings/payment-settings.co
 import { ReferralsComponent } from './referrals/referrals.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { WalletComponent } from './wallet/wallet.component';
+import { WalletCreditComponent } from './wallet-credit/wallet-credit.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
     path: 'wallet', component: WalletComponent,
     data: { title: 'Wallet' }
   },
+  {
+    path: 'wallet-credit', component: WalletCreditComponent,
+    data: { title: 'Add Wallet Credit' }
+  },  
   
 ];
 

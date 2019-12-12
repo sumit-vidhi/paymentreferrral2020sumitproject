@@ -11,8 +11,9 @@ import { PaymentSettingsComponent } from './payment-settings/payment-settings.co
 import { ReferralsComponent } from './referrals/referrals.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { WalletComponent } from './wallet/wallet.component';
+import { WalletCreditComponent } from './wallet-credit/wallet-credit.component';
 @NgModule({
-  declarations: [EditProfileComponent, UserHeaderComponent, UserNavComponent, UserDashboardComponent, ChangePasswordComponent, PaymentSettingsComponent, ReferralsComponent, PaymentsComponent, WalletComponent],
+  declarations: [EditProfileComponent, UserHeaderComponent, UserNavComponent, UserDashboardComponent, ChangePasswordComponent, PaymentSettingsComponent, ReferralsComponent, PaymentsComponent, WalletComponent, WalletCreditComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
