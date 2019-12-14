@@ -22,6 +22,7 @@ export const appApiUrl: CommonBase = {
         editProfile:'user/updateProfile',
         getdata:'user/getProfile',
         getdashboradData:'user/getdashboradData',
+        getSponserReferralData:'user/getSponserReferralData',
         getReferralData:'user/getReferralData'
     }
 };

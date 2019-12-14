@@ -23,7 +23,7 @@ export class UserHeaderComponent implements OnInit {
     } else {
       this.referalUrl = "Please update your profile and refer to firend."
     }
-    this.userService.getReferralData().subscribe((result) => {
+    this.userService.getSponserReferralData().subscribe((result) => {
       if (result.status === 'success') {
         this.referalData = result.record;
       }

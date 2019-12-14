@@ -38,8 +38,15 @@ export class UserService {
   getdashboardData() : Observable<ApiResponseModel>{
     return this.commonHttp.get<ApiResponseModel>(appApiUrl.auth.getdashboradData);
   }
+
+  getSponserReferralData() : Observable<ApiResponseModel>{
+    return this.commonHttp.get<ApiResponseModel>(appApiUrl.auth.getSponserReferralData);
+  }
+
   getReferralData() : Observable<ApiResponseModel>{
     return this.commonHttp.get<ApiResponseModel>(appApiUrl.auth.getReferralData);
   }
+
+  
 
 }

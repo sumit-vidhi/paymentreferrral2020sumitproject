@@ -4,7 +4,7 @@
 
   <app-user-nav></app-user-nav>  
 
-  <h5>{{(dashboardData.totalUser)?dashboardData.totalUser:'0'}} Users are registered after your registration.</h5>
+  <h5 *ngIf='dashboardData'>{{(dashboardData.totalUser)?dashboardData.totalUser:'0'}} Users are registered after your registration.</h5>
 
   <div class="row dashboard-cards mt-4 mb-5">
     <div class="col-md-3">
