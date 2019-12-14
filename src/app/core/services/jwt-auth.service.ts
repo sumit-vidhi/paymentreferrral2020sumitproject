@@ -69,9 +69,9 @@ export class JWTAuthService {
   setLoginUserDetail(obj: CommonBase): void {
     window.localStorage[APP_USER] = JSON.stringify(obj);
     if (JSON.parse(window.localStorage[APP_USER]).updateStatus == "1") {
-      this.router.navigate(["/user"]);
+      this.router.navigate(["user"]);
     } else {
-      this.router.navigate(["/user/edit-profile"]);
+      this.router.navigate(['user/edit-profile']);
     }
 
   }

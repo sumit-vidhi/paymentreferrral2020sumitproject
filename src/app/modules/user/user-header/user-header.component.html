@@ -28,7 +28,7 @@
             </div>
             <div class="badge-title">
               <strong>Referrals</strong>
-              <h4 class="mt-0">0</h4>
+              <h4 class="mt-0">{{(referalData.referral.totalReferral)?referalData.referral.totalReferral:'0'}}</h4>
             </div>
           </div>
 
@@ -48,7 +48,7 @@
             </div>
             <div class="badge-title">
               <strong>Pass Referrals</strong>
-              <h4 class="mt-0">0</h4>
+              <h4 class="mt-0">{{(referalData.referral.passUp)?referalData.referral.passUp:'0'}}</h4>
             </div>
           </div>
 
@@ -61,7 +61,7 @@
             </div>
             <div class="badge-title">
               <strong>Referrals Pass by Sponsored Members</strong>
-              <h4 class="mt-0">0</h4>
+              <h4 class="mt-0">{{(referalData.sponserReferral.passUp)?referalData.sponserReferral.passUp:'0'}}</h4>
             </div>
           </div>
         </div>

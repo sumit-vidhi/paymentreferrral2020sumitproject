@@ -20,6 +20,8 @@ export const appApiUrl: CommonBase = {
         resetPassword: 'user/resetPassword',
         getRefferal:'user/getRefferal',
         editProfile:'user/updateProfile',
-        getdata:'user/getProfile'
+        getdata:'user/getProfile',
+        getdashboradData:'user/getdashboradData',
+        getReferralData:'user/getReferralData'
     }
 };

@@ -4,13 +4,13 @@
 
   <app-user-nav></app-user-nav>  
 
-  <h5>50 Users are registered after your registration.</h5>
+  <h5>{{(dashboardData.totalUser)?dashboardData.totalUser:'0'}} Users are registered after your registration.</h5>
 
   <div class="row dashboard-cards mt-4 mb-5">
     <div class="col-md-3">
       <div class="card text-white bg-primary mb-3 h-100">
         <div class="card-body">
-          <h2 class="card-title mb-0">0</h2>
+          <h2 class="card-title mb-0">{{(dashboardData.referral.totalReferral)?dashboardData.referral.totalReferral:'0'}}</h2>
           <p class="card-text mb-0">Total Referrals</p>
         </div>
       </div>
@@ -19,7 +19,7 @@
     <div class="col-md-3">
       <div class="card text-white bg-success mb-3 h-100">
         <div class="card-body">
-          <h2 class="card-title mb-0">0</h2>
+          <h2 class="card-title mb-0">{{(dashboardData.referral.passUp)?dashboardData.referral.passUp:'0'}}</h2>
           <p class="card-text mb-0">Pass Referrals</p>
         </div>
       </div>
@@ -77,13 +77,13 @@
         <h5 class="mb-0">My Account</h5>
     </div>
     <div class="card-body">
-      <h5>Ian M. Aoki</h5>
+      <h5>{{dashboardData.userData.firstName}} {{dashboardData.userData.lastName}}</h5>
       <div class="row mt-3">
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
             <p class="mb-0"><strong>Username:</strong> ianmsoki</p>      
-        </div>
+        </div> -->
         <div class="col-md-6">
-            <p class="mb-0"><strong>Email:</strong> IanMAoki@dayrep.com</p>            
+            <p class="mb-0"><strong>Email:</strong> {{dashboardData.userData.email}}</p>            
         </div>
       </div>      
     </div>
@@ -94,18 +94,18 @@
           <h5 class="mb-0">My Sponsor</h5>
       </div>
       <div class="card-body">
-        <h5>Ian M. Aoki</h5>
+        <h5>{{dashboardData.sponserData.firstName}} {{dashboardData.sponserData.lastName}}</h5>
         <div class="row my-3">
           <div class="col-md-6">
-              <p class="mb-1"><strong>Username:</strong> andrewdacosta</p>
-              <p class="mb-0"><strong>First Name:</strong> Andrew D</p>
+              <!-- <p class="mb-1"><strong>Username:</strong> andrewdacosta</p> -->
+              <p class="mb-0"><strong>First Name:</strong>{{dashboardData.sponserData.firstName}}</p>
           </div>
           <div class="col-md-6">
-              <p class="mb-1"><strong>Email:</strong> andrewdacosta@rhyta.com</p>
-              <p class="mb-0"><strong>Last Name:</strong> Acosta</p>
+              <p class="mb-1"><strong>Email:</strong> {{dashboardData.sponserData.email}}</p>
+              <p class="mb-0"><strong>Last Name:</strong>{{dashboardData.sponserData.lastName}}</p>
           </div>
         </div>  
-        <a href="javascript:void(0)" class="btn btn-success btn-radius" (click)="sendMessage = true">Send Message to Sponser</a>
+        <!-- <a href="javascript:void(0)" class="btn btn-success btn-radius" (click)="sendMessage = true">Send Message to Sponser</a> -->
       </div>
     </div>
 

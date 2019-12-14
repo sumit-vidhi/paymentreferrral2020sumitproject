@@ -46,7 +46,7 @@ export class AppCheckUserAlreadyLogin {
   ) { }
   resolve(): any {
     if (this.authService.IsAuthUser()) {
-      this.router.navigate(["/dashboard"]);
+      this.router.navigate(["user"]);
     }
   }
 }

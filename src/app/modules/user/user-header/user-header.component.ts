@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { UserService } from '@modules/user/services/user.service';
+import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { LoaderService } from '@core/services/loader-service';
 import { JWTAuthService } from '@core/services/jwt-auth.service';
-
 @Component({
   selector: 'app-user-header',
   templateUrl: './user-header.component.html',
@@ -9,7 +13,9 @@ import { JWTAuthService } from '@core/services/jwt-auth.service';
 export class UserHeaderComponent implements OnInit {
 
   referalUrl: any = '';
-  constructor(public loginService: JWTAuthService) { }
+  referalData: any;
+  constructor(private formBuilder: FormBuilder, private userService: UserService,
+    private router: Router, private loader: LoaderService, public loginService: JWTAuthService) { }
 
   ngOnInit() {
     if (this.loginService.getUserStatus() === "1") {
@@ -17,7 +23,12 @@ export class UserHeaderComponent implements OnInit {
     } else {
       this.referalUrl = "Please update your profile and refer to firend."
     }
-   
+    this.userService.getReferralData().subscribe((result) => {
+      if (result.status === 'success') {
+        this.referalData = result.record;
+      }
+    })
+
   }
 
   getUrl() {

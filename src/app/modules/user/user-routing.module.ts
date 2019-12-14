@@ -14,8 +14,8 @@ import { WalletCreditComponent } from './wallet-credit/wallet-credit.component';
 const routes: Routes = [
   {
     path: 'edit-profile', component: EditProfileComponent,
-    data: { title: 'My account' },
-    canActivate: [AuthGuard]  
+    data: { title: 'My account' }
+    // canActivate: [AuthGuard]  
   },
   {
     path: '', component: UserDashboardComponent,

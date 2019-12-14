@@ -43,7 +43,7 @@ export class EditProfileComponent implements OnInit {
     if (status === '1') {
       this.message = "";
       let formdata = {};
-      this.userService.getProfile(formdata).subscribe((result) => {
+      this.userService.getProfile().subscribe((result) => {
         if (result.status === 'success') {
           delete result.record.id;
           delete result.record.user_id;

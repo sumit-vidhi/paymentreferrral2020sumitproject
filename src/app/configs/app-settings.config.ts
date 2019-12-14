@@ -16,7 +16,7 @@ export const appSettings: CommonBase = {
 };
 
 export const TOKEN_NAME = 'api_token'; // Local storage Key where user JWT token stored
-export const TOKEN_HEADER_KEY = 'Authorization'; // JWT token header name
+export const TOKEN_HEADER_KEY = 'authorization'; // JWT token header name
 // JWT token header name. It depends on your application, which header need to used. Modify it per needed.
 export const AUTH_PREFIX = 'Bearer';
 export const USER_STORAGE_KEY = 'user'; // Local storage Key name where login user detail stored
