@@ -43,6 +43,8 @@ export class SignUpComponent implements OnInit {
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
+            firstName: ['', Validators.required],
+            lastName: ['', Validators.required],
             userName: ['demouser', [Validators.required, Validators.minLength(6)], this.isUernameUnique.bind(this)],
             email: ['a@a.com', [Validators.required, Validators.email], this.isEmailUnique.bind(this)],
             confirmEmail: ['a@a.com', [Validators.required, Validators.email]],
@@ -118,7 +120,7 @@ export class SignUpComponent implements OnInit {
             return;
         }
         const formData = this.registerForm.value;
-        formData.referralId = 28;
+        formData.referralId = 1;
         if (this.referralId) {
             formData.referralId = this.referralId
         }

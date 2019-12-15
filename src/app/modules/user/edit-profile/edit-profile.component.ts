@@ -17,6 +17,8 @@ export class EditProfileComponent implements OnInit {
   referral: any;
   email: any;
   userName: any;
+  firstName: any;
+  lastName: any;
   constructor(private formBuilder: FormBuilder, private userService: UserService,
     private router: Router, private loader: LoaderService, public loginService: JWTAuthService) { }
 
@@ -35,6 +37,10 @@ export class EditProfileComponent implements OnInit {
     });
     this.email = this.getEmail();
     this.userName = this.getUserName();
+    this.firstName = this.getFirstName();
+    this.lastName = this.getLastName();
+    this.editForm.controls.firstName.setValue(this.firstName);
+    this.editForm.controls.lastName.setValue(this.lastName);
     this.setStatus();
   }
 
@@ -83,6 +89,14 @@ export class EditProfileComponent implements OnInit {
   getUserName() {
     return this.loginService.getLoginUserName();
   }
+  getFirstName() {
+    return this.loginService.getFirstUserName();
+  }
+
+  getLastName() {
+    return this.loginService.getLastUserName();
+  }
+
 
   onSubmit() {
     this.submitted = true;

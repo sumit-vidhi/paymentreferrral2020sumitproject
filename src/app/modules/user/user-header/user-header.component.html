@@ -38,7 +38,7 @@
             </div>
             <div class="badge-title">
               <strong>Earnings</strong>
-              <h4 class="mt-0">$10</h4>
+              <h4 class="mt-0">${{(referalData.commisssion)?referalData.commisssion:'0'}}</h4>
             </div>
           </div>
 
@@ -61,7 +61,7 @@
             </div>
             <div class="badge-title">
               <strong>Referrals Pass by Sponsored Members</strong>
-              <h4 class="mt-0">{{(referalData.sponserReferral.passUp)?referalData.sponserReferral.passUp:'0'}}</h4>
+              <h4 class="mt-0">{{(referalData.referralBySponser)?referalData.referralBySponser:'0'}}</h4>
             </div>
           </div>
         </div>

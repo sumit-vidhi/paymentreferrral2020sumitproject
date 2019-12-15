@@ -159,6 +159,29 @@ export class JWTAuthService {
       return JSON.parse(window.localStorage[APP_USER]).userName;
     }
   }
+
+  /**
+  * @function getLoginUserEmail
+  * @description
+  * Get login user email
+  * @returns {CommonBase}
+  */
+ getFirstUserName(): CommonBase {
+  if (window.localStorage[APP_USER]) {
+    return JSON.parse(window.localStorage[APP_USER]).firstName;
+  }
+}
+/**
+  * @function getLoginUserEmail
+  * @description
+  * Get login user email
+  * @returns {CommonBase}
+  */
+ getLastUserName(): CommonBase {
+  if (window.localStorage[APP_USER]) {
+    return JSON.parse(window.localStorage[APP_USER]).lastName;
+  }
+}
   /**
  * @function getLoginUserEmail
  * @description
