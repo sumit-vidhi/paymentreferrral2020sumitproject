@@ -12,10 +12,12 @@ import { AppComponent } from '@app/app.component';
 import { CoreModule } from '@core/core.module';
 import { BasicThemeModule } from '@modules/theme/basic-theme.module';
 import { AppRoutingModule } from '@app/app-routing.module';
+import { HomeComponent } from './modules/home-dashboard/home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

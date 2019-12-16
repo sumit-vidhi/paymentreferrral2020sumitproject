@@ -11,7 +11,7 @@
 import { CommonBase } from '@core/interfaces/common-base';
 
 export const appSettings: CommonBase = {
-  appTitle: 'Angular 7 Boilerplate',
+  appTitle: 'Easy Start. More Earning. Better Business.',
   appLogo: ''
 };
 

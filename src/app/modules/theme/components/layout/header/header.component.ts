@@ -4,6 +4,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { JWTAuthService } from '@core/services/jwt-auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +12,10 @@ import { JWTAuthService } from '@core/services/jwt-auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  router: string;
 
-  constructor(public loginService: JWTAuthService) { }
+  constructor(public loginService: JWTAuthService, private _router: Router) {
+  }
 
   ngOnInit() {
   }
