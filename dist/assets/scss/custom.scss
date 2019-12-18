@@ -9,6 +9,10 @@ body{
     &.btn-radius{
         border-radius:30px;
     }
+    &.btn-orange{
+        background:$orange;
+        color:$white;
+    }
 }
 
 img{
@@ -19,17 +23,67 @@ img{
 .bg-cyan{background:$cyan;}
 
 .site-header{
-    padding:1.2rem 0;
+    padding:0.7rem 0;
     background:$white;
-    box-shadow:0 0 15px rgba($dark, 0.2);
     position: relative;
     z-index: 10;
+    border-bottom:1px solid rgba($dark, 0.1);
     a.nav-link, a.navbar-brand{
         color:$dark;
+        font-weight:400;
     }
     .navbar{
         .nav-item{
-            margin-left:1.1rem;
+            margin-left:1rem;
+        }
+    }
+}
+
+.homepage-top-banner{
+    background: url(/assets/images/top_banner_bg.jpg) no-repeat;
+    background-size: cover;
+    .site-header{
+        background:transparent;
+        border-bottom:1px solid rgba($white, 0.2);
+        .navbar-brand{
+            path{
+                fill: $white;
+            }
+        }
+        a.nav-link, a.navbar-brand{
+            color:$white;
+        }
+        a.btn{
+            background:rgba($white, 0.3) !important;
+            border:0;
+            box-shadow:none;
+            &:focus, &:active{
+                box-shadow:none !important;
+            }
+            &:hover{
+                background:rgba($white, 0.4) !important;
+            }
+        }
+    }
+    .homepage-banner-content{
+        padding:5rem 0;
+        h1{
+            font-size:70px;
+            color:$white;
+            font-weight:700;
+            line-height:1;
+            margin:0 0 2rem 0;
+        }
+        h3{
+            font-size:28px;
+            color:$white;
+            line-height:1.4;
+            font-weight:500;
+        }
+        .btn{
+            min-width:200px;
+            text-align: center;
+            padding:0.5rem 0 0.8rem 0 !important;
         }
     }
 }
@@ -58,14 +112,63 @@ img{
 // Footer style
 
 .site-footer{
-    background:$dark;
-    color:$white;
-    padding:1.5rem 0;
-    ul{
-        margin-bottom:0;
+    padding:2rem 0;
+    border-top:1px solid #ddd;
+    font-size:15px;
+    h4{
+        font-size:18px;
+        margin:1.5rem 0;
+        line-height: 1.5;
+    }
+    h3{
+        font-size:24px;
+        font-weight:700;
+        margin:0 0 25px 0;
+    }
+    .social-icons{
+        a{
+            display: inline-block;
+            margin:0 8px 0 0;
+        }
+    }
+
+    ul.links{
+        margin:0;
+        padding:0;
         li{
+            list-style:none;
+            margin-bottom:12px;
             a{
-                color:$white;
+                text-decoration: none;
+                color:#636363;
+            }            
+        }
+        &.get-in-touch{
+            li{
+                position: relative;
+                padding-left:40px;
+                svg{
+                    position: absolute;
+                    left:0;
+                    margin-top:4px;
+                }
+            }
+        }
+    }
+
+    .copyright-text{
+        padding:1.5rem 0 0 0;
+        border-top:1px solid #ddd;
+        margin-top:2rem;
+        color: #636363;        
+        ul{
+            margin-bottom:0;
+            li{
+                margin-left:15px;
+                a{
+                    color:#636363;
+                    text-decoration: none;
+                }
             }
         }
     }
@@ -74,6 +177,52 @@ img{
 
 .help-block{
     font-size:14px;
+}
+
+
+.inner-page-wrapper{
+    padding:40px 0;
+    h1{
+        font-size:32px;
+        font-weight:700;
+        margin-bottom:40px;
+    }
+    h4{
+        font-weight:700;
+        margin:30px 0 10px 0;
+        color:#444;
+        font-size:20px;
+    }
+    ol, ul{
+        margin:0;
+        padding:0;
+        li{
+            margin-bottom:15px;
+        }
+    }
+    ol{
+        counter-reset: item;
+        li{
+            counter-increment: item;
+            list-style: none;
+            position: relative;
+            padding-left:30px;
+            &:before{
+                margin-right: 10px;
+                content: counter(item);
+                border-radius: 100%;
+                color: white;
+                width: 1.2em;
+                text-align: center;
+                display: inline-block;
+                color:$green;
+                position: absolute;
+                left:0;
+                font-size:18px;
+                font-weight:600;
+            }
+        }        
+    }
 }
 
 .user-header{

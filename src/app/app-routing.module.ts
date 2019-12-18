@@ -9,9 +9,9 @@ import { HomeComponent } from './modules/home-dashboard/home/home.component';
 // Define the routes
 const appRoutes: Routes = [
   { path: 'auth', loadChildren: './modules/auth/auth.module#AuthModule' },
-  { path: 'dashboard', loadChildren: './modules/home-dashboard/home-dashboard.module#HomeDashboardModule'},
+  // { path: 'dashboard', loadChildren: './modules/home-dashboard/home-dashboard.module#HomeDashboardModule'},
   // { path: 'auth', loadChildren: './modules/auth/auth.module#AuthModule' },
-  // { path: '', pathMatch: 'full', redirectTo: '/auth/login' },
+  { path: '', pathMatch: 'full', redirectTo: '/auth/login' },
   { path: 'user', loadChildren: './modules/user/user.module#UserModule'},
   { path: 'pages', loadChildren: './modules/pages/pages.module#PagesModule'},
   {path: '', component: HomeComponent, data: { title: 'Down Line Club' }  }
