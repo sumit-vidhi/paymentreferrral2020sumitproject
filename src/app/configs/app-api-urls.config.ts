@@ -23,6 +23,7 @@ export const appApiUrl: CommonBase = {
         getdata:'user/getProfile',
         getdashboradData:'user/getdashboradData',
         getSponserReferralData:'user/getSponserReferralData',
-        getReferralData:'user/getReferralData'
+        getReferralData:'user/getReferralData',
+        updatePassword:'user/updatePassword'
     }
 };

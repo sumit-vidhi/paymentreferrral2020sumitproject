@@ -62,22 +62,22 @@ export class ChangePasswordComponent implements OnInit {
 
   changePassword(form: FormGroup) {
 
-    // const formModal = form.value;
-    // this.sucessmessage = "";
-    // this.errormessage = "";
-    // this.loader.startLoading();
-    // this.userService.changepassword(formModal)
-    //   .subscribe((res) => {
-    //     this.loader.stopLoading();
-    //     if (res.code === 200) {
-    //       this.errormessage = "";
-    //       this.sucessmessage = "Password changed successfully"
+    const formModal = form.value;
+    this.sucessmessage = "";
+    this.errormessage = "";
+    this.loader.startLoading();
+    this.userService.changepassword(formModal)
+      .subscribe((res) => {
+        this.loader.stopLoading();
+        if (res.status === 'success') {
+          this.errormessage = "";
+          this.sucessmessage = "Password changed successfully"
 
-    //     } else {
-    //       this.sucessmessage = "";
-    //       this.errormessage = "Old Password is wrong .";
-    //     }
-    //   });
+        } else {
+          this.sucessmessage = "";
+          this.errormessage = "Old Password is wrong .";
+        }
+      });
   }
 
 }

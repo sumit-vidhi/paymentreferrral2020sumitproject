@@ -31,6 +31,9 @@ export class LoginComponent implements OnInit {
     });
   }
   onSubmit() {
+    if(this.loginForm.invalid){
+      return;
+    }
     let formModal = this.loginForm.value;
     this.loader.startLoading();
     this.authService.login(formModal).subscribe(result => {

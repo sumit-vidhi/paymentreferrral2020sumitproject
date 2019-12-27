@@ -47,6 +47,10 @@ export class UserService {
     return this.commonHttp.get<ApiResponseModel>(appApiUrl.auth.getReferralData);
   }
 
+  changepassword(data): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.updatePassword, data);
+  }
+
   
 
 }
