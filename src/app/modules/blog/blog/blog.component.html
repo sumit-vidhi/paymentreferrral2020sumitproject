@@ -1,19 +1,19 @@
-<div class="container">
+<div class="container" *ngIf='blogData.length>0'>
 
     <div class="blog-container">
 
-      <div class="row justify-content-center">
+        <div class="row justify-content-center">
 
-          <div class="col-md-8">
-                
-              <div class="blog-header">
-                  <h1>Down Line Club Blog</h1>
-                  <h4>News, Updates & Customer Sportlights</h4>
-              </div>
+            <div class="col-md-8">
 
-              <div class="single-blog-post">
+                <div class="blog-header">
+                    <h1>Down Line Club Blog</h1>
+                    <h4>News, Updates & Customer Sportlights</h4>
+                </div>
 
-                  <!-- <div class="author-name d-flex align-items-center">
+                <div class="single-blog-post" *ngFor='let blogdata of blogData'>
+
+                    <!-- <div class="author-name d-flex align-items-center">
                       <div class="author-image">
                         <img src="/assets/images/author_img.png" alt="Dennis R. Watson">
                       </div>
@@ -23,53 +23,30 @@
                       </div>
                   </div> -->
 
-                  <div class="post-title">
-                    <h2><a href="javascript:void(0)" routerLink="/blog/blog-detail">Downline Club's Epic Guide to Affiliate Marketing</a></h2>
-                  </div>
+                    <div class="post-title">
+                        <h2><a href="javascript:void(0)" routerLink="/blog/blog-detail/{{blogdata.id}}">{{blogdata.title}}</a></h2>
+                    </div>
 
-                  <div class="post-image my-4">
-                      <a href="javascript:void(0)" routerLink="/blog/blog-detail"><img src="/assets/images/affiliate-marketing.jpg" class="w-100" alt="Affiliate Marketing"></a>
-                  </div>
+                    <div class="post-image my-4">
+                        <a href="javascript:void(0)" routerLink="/blog/blog-detail/{{blogdata.id}}"><img src="{{blogdata.image}}"
+                                class="w-100" alt="Affiliate Marketing"></a>
+                    </div>
 
-                  <div class="post-excerpt">
-                      <p>Here's an affiliate marketing secret: if you can become the connector between the audience you're building and the products and services they need to succeed, you can supplement your income...</p>
-                  </div>
+                    <div class="post-excerpt">
+                        <p>
+                            <read-more [text]="blogdata.description" [maxLength]="200"></read-more>
+                        </p>
+                    </div>
+<!-- 
+                    <a href="javascript:void(0)" routerLink="/blog/blog-detail/{{blogdata.id}}"
+                        class="btn btn-transparent btn-orange btn-radius">Read More</a> -->
 
-                  <a href="javascript:void(0)" routerLink="/blog/blog-detail" class="btn btn-transparent btn-orange btn-radius">Read More</a>
+                </div>
 
-              </div>
 
-              <div class="single-blog-post">
+            </div>
 
-                  <div class="author-name d-flex align-items-center">
-                      <div class="author-image">
-                        <img src="/assets/images/author_img.png" alt="Dennis R. Watson">
-                      </div>
-                      <div class="author-info">
-                          <a href="javascript:void(0)"><strong>Dennis R. Watson</strong></a>
-                          <span>November 18th, 2019</span>
-                      </div>
-                  </div>
-
-                  <div class="post-title">
-                    <h2><a href="javascript:void(0)" routerLink="/blog/blog-detail">Downline Club's Epic Guide to Affiliate Marketing</a></h2>
-                  </div>
-
-                  <div class="post-image my-4">
-                      <img src="/assets/images/affiliate-marketing.jpg" class="w-100" alt="Affiliate Marketing">
-                  </div>
-
-                  <div class="post-excerpt">
-                      <p>Here's an affiliate marketing secret: if you can become the connector between the audience you're building and the products and services they need to succeed, you can supplement your income...</p>
-                  </div>
-
-                  <a href="javascript:void(0)"  routerLink="/blog/blog-detail" class="btn btn-transparent btn-orange btn-radius">Read More</a>
-
-              </div>
-
-          </div>
-
-      </div>
+        </div>
 
     </div>
 

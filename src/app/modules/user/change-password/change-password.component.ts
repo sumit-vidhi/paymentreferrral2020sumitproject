@@ -49,19 +49,21 @@ export class ChangePasswordComponent implements OnInit {
     });
   }
 
-  isFieldValid(form:string, field:string){
-    switch(form){
-      case 'regForm1' : {
-        return this.regForm1.get(field).invalid && ( 
-          this.regForm1.get(field).dirty || 
-          this.regForm1.get(field).touched);	
+  isFieldValid(form: string, field: string) {
+    switch (form) {
+      case 'regForm1': {
+        return this.regForm1.get(field).invalid && (
+          this.regForm1.get(field).dirty ||
+          this.regForm1.get(field).touched);
       }
-    
+
     }
   }
 
   changePassword(form: FormGroup) {
-
+    if (form.invalid) {
+      return;
+    }
     const formModal = form.value;
     this.sucessmessage = "";
     this.errormessage = "";
@@ -71,11 +73,13 @@ export class ChangePasswordComponent implements OnInit {
         this.loader.stopLoading();
         if (res.status === 'success') {
           this.errormessage = "";
-          this.sucessmessage = "Password changed successfully"
+          this.sucessmessage = "Password changed successfully";
+          alert("Password changed successfully");
 
         } else {
           this.sucessmessage = "";
           this.errormessage = "Old Password is wrong .";
+          alert("Old Password is wrong .");
         }
       });
   }

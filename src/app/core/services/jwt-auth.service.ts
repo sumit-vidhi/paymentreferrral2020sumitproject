@@ -132,6 +132,18 @@ export class JWTAuthService {
   }
 
   /**
+  * @function getLoginUserId
+  * @description
+  * Get login user id
+  * @returns {CommonBase}
+  */
+  getPlan(): CommonBase {
+    if (window.localStorage[APP_USER]) {
+      return JSON.parse(window.localStorage[APP_USER]).type;
+    }
+  }
+
+  /**
   * @function getLoginUserEmail
   * @description
   * Get login user email
@@ -166,22 +178,22 @@ export class JWTAuthService {
   * Get login user email
   * @returns {CommonBase}
   */
- getFirstUserName(): CommonBase {
-  if (window.localStorage[APP_USER]) {
-    return JSON.parse(window.localStorage[APP_USER]).firstName;
+  getFirstUserName(): CommonBase {
+    if (window.localStorage[APP_USER]) {
+      return JSON.parse(window.localStorage[APP_USER]).firstName;
+    }
   }
-}
-/**
-  * @function getLoginUserEmail
-  * @description
-  * Get login user email
-  * @returns {CommonBase}
-  */
- getLastUserName(): CommonBase {
-  if (window.localStorage[APP_USER]) {
-    return JSON.parse(window.localStorage[APP_USER]).lastName;
+  /**
+    * @function getLoginUserEmail
+    * @description
+    * Get login user email
+    * @returns {CommonBase}
+    */
+  getLastUserName(): CommonBase {
+    if (window.localStorage[APP_USER]) {
+      return JSON.parse(window.localStorage[APP_USER]).lastName;
+    }
   }
-}
   /**
  * @function getLoginUserEmail
  * @description

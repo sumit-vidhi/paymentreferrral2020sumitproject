@@ -22,4 +22,4 @@ export const AUTH_PREFIX = 'Bearer';
 export const USER_STORAGE_KEY = 'user'; // Local storage Key name where login user detail stored
 export const ROLE_KEY = 'roles'; //  Local storage Key name where login user roles stored, if any.
 export const DM_PREFIX = 'A7B_APP_'; // Any prefix to use for local storage to make it unique
-export const APP_USER = 'A7B_APP_USER'; // Local storage Key name where login user all detail stored
+export const APP_USER = 'APP_USER'; // Local storage Key name where login user all detail stored
