@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '@modules/auth/services/auth.service';
+import { JWTAuthService } from '@core/services/jwt-auth.service';
+import { LoaderService } from '@core/services/loader-service';
 
 @Component({
   selector: 'app-blog',
@@ -7,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService,
+    private loginService: JWTAuthService, private loader: LoaderService) { }
 
   ngOnInit() {
   }

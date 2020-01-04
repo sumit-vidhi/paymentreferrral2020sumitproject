@@ -18,12 +18,15 @@ export const appApiUrl: CommonBase = {
         emailCheck: 'user/emailValidation',
         confirmToken: 'user/confirmToken',
         resetPassword: 'user/resetPassword',
-        getRefferal:'user/getRefferal',
-        editProfile:'user/updateProfile',
-        getdata:'user/getProfile',
-        getdashboradData:'user/getdashboradData',
-        getSponserReferralData:'user/getSponserReferralData',
-        getReferralData:'user/getReferralData',
-        updatePassword:'user/updatePassword'
+        getRefferal: 'user/getRefferal',
+        editProfile: 'user/updateProfile',
+        getdata: 'user/getProfile',
+        getdashboradData: 'user/getdashboradData',
+        getSponserReferralData: 'user/getSponserReferralData',
+        getReferralData: 'user/getReferralData',
+        updatePassword: 'user/updatePassword'
+    },
+    blog: {
+        getBlog: 'user/getBlog'
     }
 };
