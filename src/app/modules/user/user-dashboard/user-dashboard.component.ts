@@ -17,7 +17,8 @@ export class UserDashboardComponent implements OnInit {
   dashboardData: any;
 
   constructor(private formBuilder: FormBuilder, private userService: UserService,
-    private router: Router, private loader: LoaderService, public loginService: JWTAuthService) { }
+    private router: Router, private loader: LoaderService, public loginService: JWTAuthService) {
+     }
 
   ngOnInit() {
     this.sendMessage = false;
@@ -26,6 +27,18 @@ export class UserDashboardComponent implements OnInit {
       this.loader.stopLoading();
       if (result.status === 'success') {
         this.dashboardData = result.record;
+      }
+    })
+  }
+
+  buyMoneyPlugin() {
+    this.loader.startLoading();
+    const userId = this.loginService.getLoginUserId();
+    this.userService.buyPlugin({ userId: userId }).subscribe((result) => {
+      this.loader.stopLoading();
+      if (result.status === 'success') {
+        result.record.authToken = result.record.accessToken;
+        this.loginService.setLoginUserDetail(result.record);
       }
     })
   }

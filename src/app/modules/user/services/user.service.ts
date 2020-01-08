@@ -31,19 +31,19 @@ export class UserService {
   editProfile(data): Observable<ApiResponseModel> {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.editProfile, data);
   }
-  getProfile() : Observable<ApiResponseModel>{
+  getProfile(): Observable<ApiResponseModel> {
     return this.commonHttp.get<ApiResponseModel>(appApiUrl.auth.getdata);
   }
 
-  getdashboardData() : Observable<ApiResponseModel>{
+  getdashboardData(): Observable<ApiResponseModel> {
     return this.commonHttp.get<ApiResponseModel>(appApiUrl.auth.getdashboradData);
   }
 
-  getSponserReferralData() : Observable<ApiResponseModel>{
+  getSponserReferralData(): Observable<ApiResponseModel> {
     return this.commonHttp.get<ApiResponseModel>(appApiUrl.auth.getSponserReferralData);
   }
 
-  getReferralData() : Observable<ApiResponseModel>{
+  getReferralData(): Observable<ApiResponseModel> {
     return this.commonHttp.get<ApiResponseModel>(appApiUrl.auth.getReferralData);
   }
 
@@ -51,6 +51,10 @@ export class UserService {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.updatePassword, data);
   }
 
-  
+  buyPlugin(data): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.buyPlugin, data);
+  }
+
+
 
 }

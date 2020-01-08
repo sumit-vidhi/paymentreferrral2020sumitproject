@@ -24,7 +24,8 @@ export const appApiUrl: CommonBase = {
         getdashboradData: 'user/getdashboradData',
         getSponserReferralData: 'user/getSponserReferralData',
         getReferralData: 'user/getReferralData',
-        updatePassword: 'user/updatePassword'
+        updatePassword: 'user/updatePassword',
+        buyPlugin: 'user/buyplugin'
     },
     blog: {
         getBlog: 'user/getBlog'
