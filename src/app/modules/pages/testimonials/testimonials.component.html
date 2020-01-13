@@ -1,3 +1,122 @@
-<p>
-  testimonials works!
-</p>
+<section class="cmspage mtb-40">
+  <div class="container">
+    <div class="page-desc">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <h1>Create Ticket</h1>
+          <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+            <div class="card mt-3">
+
+              <div class="card-body">
+
+                <div class="row">
+                  <div class="col-md-6">
+
+                    <div class="form-group">
+                      <label for="first_name">Email</label>
+                      <div class="form-control"> {{email}}</div>
+
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-6">
+
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <div class="form-control"> {{firstName}} {{lastName}}</div>
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-12">
+
+                    <div class="form-group">
+                      <label for="subject">Subject</label>
+                      <input type="text" formControlName="subject" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.subject.errors }" />
+                      <div *ngIf="submitted && f.subject.errors" class="invalid-feedback">
+                        <div *ngIf="f.subject.errors.required">Subject is required</div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-12">
+
+                    <div class="form-group">
+                      <label for="description">Description</label>
+                      <textarea formControlName="description" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+                      <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                        <div *ngIf="f.description.errors.required">Description is required</div>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <button *ngIf="sendSupportButton" class="btn btn-lg btn-primary btn-submit btn-radius">Send</button>
+
+            </div>
+
+          </form>
+          <h3 class="page-title mb-4">Manage Tickets</h3>
+          <div class=" card-body">
+            <table class="table table-striped mb-0">
+              <thead>
+                <tr>
+                  <th>Subject </th>
+                  <th>Description</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody *ngIf='supportData && supportData.length>0'>
+                <tr *ngFor='let data of supportData'>
+                    <td>{{data.subject}} </td>
+                    <td><read-more [text]="data.description" [maxLength]="60"></read-more></td>
+                    <td>
+                      <span class="text-danger" *ngIf="data.status=='0'">New</span>
+                    </td>
+                    <td>
+                      <span class="text-success" *ngIf="data.status=='1'">
+                        <a href='javascript:void(0)' (click)='viewSupport(data,content,"view")'>View</a></span>
+                        <span class="text-success" *ngIf="data.status=='0'">
+                            <a href='javascript:void(0)' (click)='viewSupport(data,content,"reply")'>Reply</a></span>
+        
+                    </td>
+
+                </tr>
+              </tbody>
+            </table>
+            <!-- <pagination-controls *ngIf='referalData && referalData.length>0' (pageChange)="pageChanged($event)">
+            </pagination-controls> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{subject}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <app-support-reply [supportData]='supportData'></app-support-reply>
+    </div>
+    <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+      </div> -->
+  </ng-template>

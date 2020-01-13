@@ -3,14 +3,18 @@ import { CommonModule } from '@angular/common';
 import { BlogComponent } from './blog/blog.component';
 import { BlogRoutingModule } from './blog-routing.module';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
-import { ReadMoreComponent } from './read-more/read-more.component';
+
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
-  declarations: [BlogComponent, BlogDetailComponent,ReadMoreComponent],
+  declarations: [BlogComponent, BlogDetailComponent],
   imports: [
     CommonModule,
-    BlogRoutingModule
+    BlogRoutingModule,
+    SharedModule
   ],
-  providers: [BlogRoutingModule.providers]
+  providers: [BlogRoutingModule.providers],
+  
+  exports: [SharedModule, ]
 })
 export class BlogModule { }

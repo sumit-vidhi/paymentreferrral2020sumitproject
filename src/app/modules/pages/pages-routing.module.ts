@@ -30,7 +30,7 @@ const routes: Routes = [
     data: { title: 'Visitors/Traffic' }
   },
   {
-    path: 'testimonials', component: TestimonialsComponent,
+    path: 'support', component: TestimonialsComponent,
     data: { title: 'Testimonials' }
   },
   {

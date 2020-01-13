@@ -55,6 +55,23 @@ export class UserService {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.buyPlugin, data);
   }
 
+  getSupportReply(): Observable<ApiResponseModel> {
+    return this.commonHttp.get<ApiResponseModel>(appApiUrl.auth.getSupportReply);
+  }
+
+  saveSupportTicket(data): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.saveSupportTicket, data);
+  }
+
+  getReply(data): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.getReply, data);
+  }
+
+  saveReply(data): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.saveReply, data);
+  }
+
+
 
 
 }

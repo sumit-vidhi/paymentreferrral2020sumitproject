@@ -8,10 +8,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-@NgModule({
-  declarations: [],
+import { ReadMoreComponent } from '../../core/components/read-more/read-more.component';@NgModule({
+  declarations: [ReadMoreComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports:[ReadMoreComponent]
 })
 export class SharedModule { }

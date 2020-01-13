@@ -12,6 +12,7 @@ import { AppComponent } from '@app/app.component';
 import { CoreModule } from '@core/core.module';
 import { BasicThemeModule } from '@modules/theme/basic-theme.module';
 import { AppRoutingModule } from '@app/app-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AppRoutingModule } from '@app/app-routing.module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    BasicThemeModule
+    BasicThemeModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -25,7 +25,11 @@ export const appApiUrl: CommonBase = {
         getSponserReferralData: 'user/getSponserReferralData',
         getReferralData: 'user/getReferralData',
         updatePassword: 'user/updatePassword',
-        buyPlugin: 'user/buyplugin'
+        buyPlugin: 'user/buyplugin',
+        getSupportReply: 'user/getSupportReply',
+        saveSupportTicket:'user/saveSupportTicket',
+        getReply:'user/getReply',
+        saveReply:'user/saveReply'
     },
     blog: {
         getBlog: 'user/getBlog'

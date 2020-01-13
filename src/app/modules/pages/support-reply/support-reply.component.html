@@ -1,0 +1,45 @@
+<div *ngFor='let data of supportReply'>
+  <div class="container" *ngIf='userId==data.fromId'>
+    <p>You:</p>
+    <p>{{data.message}}</p>
+  </div>
+
+  <div class="container darker" *ngIf='userId!=data.fromId'>
+    <p>Admin:</p>
+    <p>{{data.message}}</p>
+  </div>
+</div>
+<div *ngIf="reply">
+  <form [formGroup]="replyForm" (ngSubmit)="onSubmit()">
+
+    <div class="card mt-3">
+
+      <div class="card-body">
+
+        <div class="row">
+
+
+          <div class="col-md-12">
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea formControlName="message" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.message.errors }"></textarea>
+              <div *ngIf="submitted && f.message.errors" class="invalid-feedback">
+                <div *ngIf="f.message.errors.required">Message is required</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <button class="btn btn-lg btn-primary btn-submit btn-radius">Reply</button>
+
+    </div>
+
+  </form>
+</div>
