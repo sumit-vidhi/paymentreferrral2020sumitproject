@@ -12,7 +12,7 @@ import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-boo
   styleUrls: ['./testimonials.component.scss']
 })
 export class TestimonialsComponent implements OnInit {
-  editForm: FormGroup;
+  supportForm: FormGroup;
   submitted = false;
   message: any;
   referral: any;
@@ -23,17 +23,19 @@ export class TestimonialsComponent implements OnInit {
   sendSupportButton: boolean = true;
   supportData: any = [];
   closeResult: string;
-  subject:any;
-  description:any;
-  createdAt : any;
+  subject: any;
+  description: any;
+  createdAt: any;
   modalReference: NgbModalRef;
-  reply:any;
-  createTicket : boolean = false;
+  reply: any;
+  createTicket: boolean = false;
   constructor(private formBuilder: FormBuilder, private userService: UserService,
-    private router: Router, private loader: LoaderService, public loginService: JWTAuthService,public modalService: NgbModal) { }
+    private router: Router, private loader: LoaderService, public loginService: JWTAuthService, public modalService: NgbModal) { }
 
   ngOnInit() {
-    this.editForm = this.formBuilder.group({
+    this.supportForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      firstName: ['', Validators.required],
       subject: ['', Validators.required],
       description: ['', Validators.required]
 
@@ -54,24 +56,29 @@ export class TestimonialsComponent implements OnInit {
       }
 
     })
-    this.email = this.getEmail();
-    this.userName = this.getUserName();
-    this.firstName = this.getFirstName();
-    this.lastName = this.getLastName();
+    if (this.loginService.getUserAccessToken()) {
+      this.email = this.getEmail();
+      this.userName = this.getUserName();
+      this.firstName = this.getFirstName();
+      this.lastName = this.getLastName();
+      this.supportForm.controls.email.setValue(this.email);
+      this.supportForm.controls.firstName.setValue(this.email);
+    }
+
   }
 
-  viewSupport(data, content,view) {
-    this.subject=data.subject;
-    this.description=data.description;
+  viewSupport(data, content, view) {
+    this.subject = data.subject;
+    this.description = data.description;
     this.createdAt = data.createdAt;
-    this.reply=view;
+    this.reply = view;
     this.open(content);
   }
 
   open(content) {
 
     this.modalReference = this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', windowClass: 'ticket-modal' });
-    
+
     this.modalReference.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -91,7 +98,7 @@ export class TestimonialsComponent implements OnInit {
 
 
 
-  get f() { return this.editForm.controls; }
+  get f() { return this.supportForm.controls; }
 
 
 
@@ -117,22 +124,36 @@ export class TestimonialsComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    if (this.editForm.invalid) {
+    if (this.supportForm.invalid) {
       return;
     }
 
-    const formdata = this.editForm.value;
-    formdata.userId = this.loginService.getLoginUserId();
-    formdata.email = this.email;
-    formdata.name = this.firstName + ' ' + this.lastName;
-    this.loader.startLoading();
-    this.userService.saveSupportTicket(formdata).subscribe((result) => {
-      this.submitted = false;
-      this.loader.stopLoading();
-      if (result.status === 'success') {
-        this.ngOnInit();
-      }
-    })
+    const formdata = this.supportForm.value;
+    if (this.loginService.getUserAccessToken()) {
+      formdata.userId = this.loginService.getLoginUserId();
+      formdata.email = this.email;
+      formdata.firstName = this.firstName;
+
+      this.loader.startLoading();
+      this.userService.saveSupportTicket(formdata).subscribe((result) => {
+        this.submitted = false;
+        this.loader.stopLoading();
+        if (result.status === 'success') {
+          alert("Ticket genrated");
+          this.ngOnInit();
+        }
+      })
+    } else {
+      this.loader.startLoading();
+      this.userService.saveSupport(formdata).subscribe((result) => {
+        this.submitted = false;
+        this.loader.stopLoading();
+        if (result.status === 'success') {
+          alert("Ticket genrated");
+          this.ngOnInit();
+        }
+      })
+    }
   }
 
 

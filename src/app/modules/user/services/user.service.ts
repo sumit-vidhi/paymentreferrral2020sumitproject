@@ -62,6 +62,9 @@ export class UserService {
   saveSupportTicket(data): Observable<ApiResponseModel> {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.saveSupportTicket, data);
   }
+  saveSupport(data): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.saveSupport, data);
+  }
 
   getReply(data): Observable<ApiResponseModel> {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.getReply, data);
@@ -75,6 +78,8 @@ export class UserService {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.addUrl, data);
   }
 
-
+  getBlogPage(data): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.blog.getBlogPage, data);
+  }
 
 }

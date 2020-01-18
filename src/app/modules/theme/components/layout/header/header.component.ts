@@ -4,6 +4,7 @@
 
 import { Component, OnInit, HostListener } from '@angular/core';
 import { JWTAuthService } from '@core/services/jwt-auth.service';
+import { UserService } from '@modules/user/services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +15,9 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   router: string;
   user_dropdown: boolean = false;
-  constructor(public loginService: JWTAuthService, public _router: Router) {
+  blogPage: any;
+  constructor(public loginService: JWTAuthService, public _router: Router,
+    public userservice: UserService) {
   }
 
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
@@ -22,6 +25,15 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    let plan = 'basic';
+    if (this.loginService.getUserAccessToken()) {
+      plan = this.loginService.getPlan();
+    }
+    this.userservice.getBlogPage({ plan: plan }).subscribe((result) => {
+      console.log(result.record);
+      this.blogPage = result.record;
+
+    })
 
   }
 

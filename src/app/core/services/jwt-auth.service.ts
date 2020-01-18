@@ -116,6 +116,7 @@ export class JWTAuthService {
     console.log(redirect);
     if (redirect === true) {
       this.router.navigate(["auth/login"]);
+     // window.location.reload();
     }
   }
 

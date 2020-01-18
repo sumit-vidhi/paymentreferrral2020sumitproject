@@ -28,6 +28,7 @@ export const appApiUrl: CommonBase = {
         buyPlugin: 'user/buyplugin',
         getSupportReply: 'user/getSupportReply',
         saveSupportTicket: 'user/saveSupportTicket',
+        saveSupport: 'user/saveSupport',
         getReply: 'user/getReply',
         saveReply: 'user/saveReply',
         addUrl: 'user/addUrl'
@@ -36,5 +37,6 @@ export const appApiUrl: CommonBase = {
         getBlog: 'user/getBlog',
         getUrl: 'user/getUrl',
         getBlogById: 'user/getBlogById',
+        getBlogPage: 'user/getBlogPage'
     }
 };
