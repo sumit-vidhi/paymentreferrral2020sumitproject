@@ -1,122 +1,163 @@
-<section class="cmspage mtb-40">
-  <div class="container">
-    <div class="page-desc">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <h1>Create Ticket</h1>
-          <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+<section class="cmspage" *ngIf='supportData && supportData.length>0 && createTicket == false'>
+    <div class="container">
 
-            <div class="card mt-3">
+        <div class="inner-page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Tickets <small>({{supportData.length}})</small></h1>
+                    <h6>The list of last opened or updated tickets.</h6>
+                </div>
+                <div class="col-md-6 d-flex align-items-center justify-content-end">
+                    <a href="javascript:void(0)" (click)="createTicket = true" class="btn btn-radius btn-md btn-success">Create Ticket</a>
+                </div>
+            </div>
+        </div>
 
-              <div class="card-body">
+        <div class="row">
+            <div class="col-md-4" *ngFor='let data of supportData'>
+                <div class="card ticket-card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-0">{{data.subject}}</h5>
+                        <div class="created-date mb-4">{{data.createdAt | date: 'MMMM d, y'}}</div>
+                        <div class="card-text">
 
-                <div class="row">
-                  <div class="col-md-6">
+                            <!-- <read-more [text]="data.description" [maxLength]="100"></read-more> -->
 
-                    <div class="form-group">
-                      <label for="first_name">Email</label>
-                      <div class="form-control"> {{email}}</div>
+                            <p>{{data.description | slice:0:100}}...</p>
 
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="replies">
+                                    <label class="d-block">Support:</label>
+                                    <span class="d-block">2 Replies</span>
+                                </div>
+                                <div class="status">
+                                    <span class="badge badge-success" *ngIf="data.status=='0'">New</span>
+                                    <span class="badge badge-orange text-white" *ngIf="data.status=='1'">Active</span>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-
-                  </div>
-
-                  <div class="col-md-6">
-
-                    <div class="form-group">
-                      <label for="name">Name</label>
-                      <div class="form-control"> {{firstName}} {{lastName}}</div>
+                    <div class="ticket-footer">
+                        <a href='javascript:void(0)' (click)='viewSupport(data,content,"view")'><img src="/assets/images/view-icon.svg" width="20" alt="View"> View Ticket</a>
+                        <a href='javascript:void(0)' (click)='viewSupport(data,content,"reply")'><img src="/assets/images/reply-icon.svg" width="20" alt="Reply"> Reply</a>
                     </div>
-
-                  </div>
-
-                  <div class="col-md-12">
-
-                    <div class="form-group">
-                      <label for="subject">Subject</label>
-                      <input type="text" formControlName="subject" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.subject.errors }" />
-                      <div *ngIf="submitted && f.subject.errors" class="invalid-feedback">
-                        <div *ngIf="f.subject.errors.required">Subject is required</div>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div class="col-md-12">
-
-                    <div class="form-group">
-                      <label for="description">Description</label>
-                      <textarea formControlName="description" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
-                      <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-                        <div *ngIf="f.description.errors.required">Description is required</div>
-                      </div>
-                    </div>
-
-                  </div>
-
-
-
                 </div>
 
-              </div>
-            </div>
-
-            <div class="mt-4">
-              <button *ngIf="sendSupportButton" class="btn btn-lg btn-primary btn-submit btn-radius">Send</button>
 
             </div>
-
-          </form>
-          <h3 class="page-title mb-4">Manage Tickets</h3>
-          <div class=" card-body">
-            <table class="table table-striped mb-0">
-              <thead>
-                <tr>
-                  <th>Subject </th>
-                  <th>Description</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody *ngIf='supportData && supportData.length>0'>
-                <tr *ngFor='let data of supportData'>
-                    <td>{{data.subject}} </td>
-                    <td><read-more [text]="data.description" [maxLength]="60"></read-more></td>
-                    <td>
-                      <span class="text-danger" *ngIf="data.status=='0'">New</span>
-                    </td>
-                    <td>
-                      <span class="text-success" *ngIf="data.status=='1'">
-                        <a href='javascript:void(0)' (click)='viewSupport(data,content,"view")'>View</a></span>
-                        <span class="text-success" *ngIf="data.status=='0'">
-                            <a href='javascript:void(0)' (click)='viewSupport(data,content,"reply")'>Reply</a></span>
-        
-                    </td>
-
-                </tr>
-              </tbody>
-            </table>
-            <!-- <pagination-controls *ngIf='referalData && referalData.length>0' (pageChange)="pageChanged($event)">
-            </pagination-controls> -->
-          </div>
         </div>
-      </div>
+
     </div>
-  </div>
 </section>
+
+<section class="cmspage" *ngIf='!supportData || supportData.length==0 && createTicket == false'>
+
+    <div class="container">
+        <div class="no-ticket-found text-center">
+            <img src="/assets/images/no-ticket-found.png" alt="No Ticket Found" width="150">
+            <h2>No Ticket Found!</h2>
+            <h3>There is not any ticket added, you can create a ticket by clicking the below button</h3>
+            <a href="javascript:void(0)" (click)="createTicket = true" class="btn btn-md btn-radius btn-success">Create Ticket</a>
+        </div>
+    </div>
+
+</section>
+
+<div class="container" *ngIf='createTicket == true'>
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+
+            <div class="text-center my-4" *ngIf='supportData && supportData.length>0'>
+                <a href="javascript:void(0)" (click)="createTicket = false">View All Tickets</a>
+            </div>
+
+            <div class="login-form shadow mt-4 rounded mb-5">
+                <div class="card-body px-5">
+                    <div class="card-title text-center mb-4">
+                        <h3>Create Ticket</h3>
+                        <h5>Create ticket and get instant support from our 24x7 available team</h5>
+                    </div>
+                    <div class="card-text">
+                        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label for="first_name">Email</label>
+                                        <div class="form-control"> {{email}}</div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <div class="form-control"> {{firstName}} {{lastName}}</div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-12">
+
+                                    <div class="form-group">
+                                        <label for="subject">Subject</label>
+                                        <input type="text" formControlName="subject" class="form-control" [ngClass]="{ ' is-invalid ': submitted && f.subject.errors }" />
+                                        <div *ngIf="submitted && f.subject.errors" class="invalid-feedback">
+                                            <div *ngIf="f.subject.errors.required">Subject is required</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-12">
+
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <textarea formControlName="description" class="form-control" [ngClass]="{ 'is-invalid ': submitted && f.description.errors }"></textarea>
+                                        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                                            <div *ngIf="f.description.errors.required">Description is required</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="text-center mt-3">
+
+                                <button *ngIf="sendSupportButton" class="btn btn-md btn-orange btn-radius mr-2">Create Ticket</button>
+                                <a href="javascript:void(0)" (click)="createTicket = false" class="btn btn-md btn-secondary btn-radius">Cancel</a>
+
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <ng-template #content let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">{{subject}}</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <h4 class="modal-title" id="modal-basic-title">{{subject}}
+            <span>{{createdAt | date: 'MMMM d, y '}}</span>
+        </h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click ')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <app-support-reply [supportData]='supportData'></app-support-reply>
+        <div class="ticket-content mb-4">{{description}}</div>
+        <app-support-reply [supportData]='supportData '></app-support-reply>
     </div>
     <!-- <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click ')">Save</button>
       </div> -->
-  </ng-template>
+</ng-template>
