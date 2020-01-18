@@ -1,4 +1,7 @@
-body {}
+body {
+    background: #fff;
+    font-size: 16px;
+}
 
 .btn {
     padding-left: 2rem !important;
@@ -526,6 +529,7 @@ a {
 
 // login page design
 .login-form {
+    background: $white;
     .card-body {
         padding: 3rem 8rem;
         .card-title {
@@ -639,4 +643,143 @@ a {
 
 .form-control.is-invalid {
     background-image: none !important;
+}
+
+.container-wrapper {
+    background: #f4f6f8;
+    .cmspage {
+        padding: 2rem 0;
+        .no-ticket-found {
+            padding: 3rem 0;
+            img {
+                margin-bottom: 15px;
+            }
+            h3 {
+                color: #888;
+                font-size: 20px;
+                margin: 0 0 20px 0;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+.inner-page-title {
+    margin-bottom: 30px;
+    h1 {
+        margin-bottom: 0;
+        font-size: 38px;
+        small {
+            font-size: 20px;
+            color: #888;
+        }
+    }
+    h6 {
+        color: #888;
+    }
+}
+
+.ticket-card {
+    .created-date {
+        color: #888;
+        position: relative;
+        &:after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 35px;
+            left: 0;
+            bottom: -15px;
+            background: #ccc;
+        }
+    }
+    .replies {
+        label {
+            color: #888;
+            margin: 0;
+        }
+    }
+    .status {
+        .badge {
+            padding: 8px 20px 10px 20px !important;
+            font-size: 15px;
+            font-weight: normal;
+        }
+    }
+    .ticket-footer {
+        background: $white;
+        display: flex;
+        border-top: 1px solid rgba(0, 0, 0, 0.125);
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.7rem 1.25rem 0.8rem 1.25rem;
+            width: 50%;
+            box-sizing: border-box;
+            color: #333;
+            text-align: center;
+            img {
+                margin-right: 8px;
+            }
+            &:first-child {
+                border-right: 1px solid rgba(0, 0, 0, 0.125);
+            }
+        }
+    }
+}
+
+.ticket-modal {
+    .modal-dialog {
+        min-width: 700px;
+        .modal-header {
+            .modal-title {
+                line-height: 1.2;
+                span {
+                    color: #888;
+                    font-size: 15px;
+                    display: block;
+                    font-weight: 400;
+                }
+            }
+            .close {
+                padding: 0;
+                top: 35px;
+                right: 30px;
+                position: absolute;
+            }
+        }
+        .reply-list {
+            margin-bottom: 25px;
+            .message-row {
+                display: flex;
+                padding: 15px;
+                .userAvatar {
+                    height: 35px;
+                    width: 35px;
+                    border-radius: 100%;
+                    background: #ccc;
+                    color: #777;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 18px;
+                    margin-right: 10px;
+                    img {
+                        max-width: 35px;
+                        border-radius: 100%;
+                    }
+                }
+                .msg-time {
+                    font-size: 12px;
+                    color: #888;
+                    display: inline-block;
+                    margin-left: 10px;
+                }
+                &.darker {
+                    background: #f9f9f9;
+                }
+            }
+        }
+    }
 }

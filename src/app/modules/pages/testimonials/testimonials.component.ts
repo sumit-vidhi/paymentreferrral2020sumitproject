@@ -24,8 +24,11 @@ export class TestimonialsComponent implements OnInit {
   supportData: any = [];
   closeResult: string;
   subject:any;
+  description:any;
+  createdAt : any;
   modalReference: NgbModalRef;
   reply:any;
+  createTicket : boolean = false;
   constructor(private formBuilder: FormBuilder, private userService: UserService,
     private router: Router, private loader: LoaderService, public loginService: JWTAuthService,public modalService: NgbModal) { }
 
@@ -59,13 +62,16 @@ export class TestimonialsComponent implements OnInit {
 
   viewSupport(data, content,view) {
     this.subject=data.subject;
+    this.description=data.description;
+    this.createdAt = data.createdAt;
     this.reply=view;
     this.open(content);
   }
 
   open(content) {
 
-    this.modalReference = this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+    this.modalReference = this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', windowClass: 'ticket-modal' });
+    
     this.modalReference.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
