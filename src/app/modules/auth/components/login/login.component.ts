@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         result.record.authToken = result.record.accessToken;
         this.loginService.setLoginUserDetail(result.record);
       } else if (result.status === 'notActive') {
-        alert("Your email address is inactive please check your inbox and activate account.");
+        alert("Your email address is inactive. Please check your inbox and activate account.");
       } else {
         alert("Email and password is wrong");
       }

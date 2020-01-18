@@ -49,7 +49,7 @@ const routes: Routes = [
       {
         path: 'email_varification/:id/:code',
         component: EmailVarificationComponent,
-        data: { title: 'Reset Password' }
+        data: { title: 'Verify Your Email Address' }
       },
 
       {
