@@ -26,5 +26,11 @@ export class BlogService {
   getBlog(data): Observable<ApiResponseModel> {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.blog.getBlog, data);
   }
+  getUrl(data): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.blog.getUrl, data);
+  }
+  getBlogById(data): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.blog.getBlogById, data);
+  }
 
 }

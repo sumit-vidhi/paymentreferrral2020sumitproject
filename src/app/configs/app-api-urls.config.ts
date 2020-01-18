@@ -27,11 +27,14 @@ export const appApiUrl: CommonBase = {
         updatePassword: 'user/updatePassword',
         buyPlugin: 'user/buyplugin',
         getSupportReply: 'user/getSupportReply',
-        saveSupportTicket:'user/saveSupportTicket',
-        getReply:'user/getReply',
-        saveReply:'user/saveReply'
+        saveSupportTicket: 'user/saveSupportTicket',
+        getReply: 'user/getReply',
+        saveReply: 'user/saveReply',
+        addUrl: 'user/addUrl'
     },
     blog: {
-        getBlog: 'user/getBlog'
+        getBlog: 'user/getBlog',
+        getUrl: 'user/getUrl',
+        getBlogById: 'user/getBlogById',
     }
 };

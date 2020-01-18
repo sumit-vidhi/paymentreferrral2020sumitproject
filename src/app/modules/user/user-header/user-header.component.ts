@@ -14,6 +14,9 @@ export class UserHeaderComponent implements OnInit {
 
   referalUrl: any = '';
   referalData: any;
+  name: any;
+  createdDate: any;
+  plan: any;
   constructor(private formBuilder: FormBuilder, private userService: UserService,
     private router: Router, private loader: LoaderService, public loginService: JWTAuthService) { }
 
@@ -23,6 +26,10 @@ export class UserHeaderComponent implements OnInit {
     } else {
       this.referalUrl = "Please update your profile and refer to firend."
     }
+
+    this.name = this.loginService.getFirstUserName() + ' ' + this.loginService.getLastUserName();
+    this.createdDate = this.loginService.getcreatedDate();
+    this.plan = this.loginService.getPlan();
     this.userService.getSponserReferralData().subscribe((result) => {
       if (result.status === 'success') {
         this.referalData = result.record;
@@ -31,7 +38,7 @@ export class UserHeaderComponent implements OnInit {
 
   }
 
-  copyMessage(val: string){
+  copyMessage(val: string) {
     const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';

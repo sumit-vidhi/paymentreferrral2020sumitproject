@@ -12,17 +12,38 @@ import { BlogService } from '@modules/blog/services/blog.service';
 export class BlogComponent implements OnInit {
 
   blogData: any;
+  mmeUrl: any;
+  freeUrl: any;
   constructor(private authService: AuthService, private blogService: BlogService,
     private loginService: JWTAuthService, private loader: LoaderService) { }
 
   ngOnInit() {
+    this.getUrl();
+
+  }
+  getUrl() {
+    const id = this.loginService.getSponserUserId();
+    this.blogService.getUrl({ id: id }).subscribe((result) => {
+      if (result.status == 'success') {
+        this.mmeUrl = result.record.mmeUrl;
+        this.freeUrl = result.record.freeUrl;
+        this.getBlog();
+      }
+    })
+  }
+
+  getBlog() {
     this.loader.startLoading();
     const plan = this.loginService.getPlan();
-    console.log(plan);
-    this.blogService.getBlog({plan:plan}).subscribe((result) => {
+    this.blogService.getBlog({ plan: plan }).subscribe((result) => {
       this.loader.stopLoading();
       if (result.status == 'success') {
         this.blogData = result.record;
+        this.blogData = this.blogData.map(result => {
+          result.description = result.description.replace("{{MME_URL}}", this.mmeUrl);
+          result.description = result.description.replace("{{FREE_URL}}", this.freeUrl);
+          return result;
+        })
       }
     })
   }

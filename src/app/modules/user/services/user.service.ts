@@ -71,6 +71,9 @@ export class UserService {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.saveReply, data);
   }
 
+  addUrl(data): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.addUrl, data);
+  }
 
 
 

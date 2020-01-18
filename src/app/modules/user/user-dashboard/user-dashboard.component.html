@@ -107,6 +107,61 @@
     </div>
   </div>
 
+
+  <div class="card mt-4">
+    <div class="card-header">
+      <h5 class="mb-0">Manage Url</h5>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="mmeFreeurlForm" (ngSubmit)="onSubmit()">
+
+        <div class="card">
+          <div class="card-body">
+
+            <div class="row">
+
+              <div class="col-md-6">
+
+                <div class="form-group">
+                  <label for="amount">MME Url</label>
+                  <input type="text" formControlName="mmeUrl" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.mmeUrl.errors }" />
+                  <div *ngIf="submitted && f.mmeUrl.errors" class="invalid-feedback">
+                    <div *ngIf="f.mmeUrl.errors.required">MME Url is required</div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-md-6">
+
+                <div class="form-group">
+                  <label for="description">FREE Url</label>
+                  <input type="text" formControlName="freeUrl" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.freeUrl.errors }" />
+                  <div *ngIf="submitted && f.freeUrl.errors" class="invalid-feedback">
+                    <div *ngIf="f.freeUrl.errors.required">FreeUrl is required</div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="mt-4">
+          <button class="btn btn-lg btn-primary btn-submit btn-radius">Save Url</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+
+
   <div class="card mt-4">
     <div class="card-header">
       <h5 class="mb-0">Past Invoices</h5>

@@ -12,10 +12,10 @@ const routes: Routes = [
     data: { title: 'Blog' }
   },
   {
-    path: 'blog-detail', component: BlogDetailComponent,
+    path: 'blog-detail/:id', component: BlogDetailComponent,
     data: { title: 'Downline Club\'s Epic Guide to Affiliate Marketing' }
   }
-  
+
 ];
 
 @NgModule({

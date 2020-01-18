@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   router: string;
   user_dropdown: boolean = false;
-
   constructor(public loginService: JWTAuthService, public _router: Router) {
   }
 
@@ -22,12 +21,12 @@ export class HeaderComponent implements OnInit {
     this.user_dropdown = false;
   }
 
-  ngOnInit() {    
+  ngOnInit() {
 
   }
 
-  openUserDropdown(){
-    this.user_dropdown = !this.user_dropdown;       
+  openUserDropdown() {
+    this.user_dropdown = !this.user_dropdown;
   }
 
 }
