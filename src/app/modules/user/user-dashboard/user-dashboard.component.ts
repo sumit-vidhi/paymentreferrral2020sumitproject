@@ -48,7 +48,7 @@ export class UserDashboardComponent implements OnInit {
 
   get f() { return this.mmeFreeurlForm.controls; }
 
-  onSubmit(mode) {
+  onSubmit() {
     this.submitted = true;
     if (this.mmeFreeurlForm.invalid) {
       return;
