@@ -36,12 +36,15 @@ const routes: Routes = [
   {
     path: 'terms-of-use', component: TermsOfUseComponent,
     data: { title: 'Terms of Use' }
+  }, {
+    path: 'privacy-policy', component: PrivacyPolicyComponent,
+    data: { title: 'Privacy Policy' }
   },
   {
     path: 'faq', component: FaqComponent,
     data: { title: 'Frequently Asked Questions' }
-  } 
-  
+  }
+
 ];
 
 @NgModule({
