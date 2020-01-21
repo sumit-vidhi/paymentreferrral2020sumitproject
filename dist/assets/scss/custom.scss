@@ -37,7 +37,7 @@ a {
 }
 
 .site-header {
-    padding: 0.7rem 0;
+    padding: 0;
     background: $white;
     position: relative;
     z-index: 10;
@@ -51,6 +51,7 @@ a {
         .nav-item {
             margin-left: 1rem;
             position: relative;
+            padding: 1.5rem 0;
             &.active {
                 &:after {
                     content: '';
@@ -58,7 +59,7 @@ a {
                     height: 5px;
                     left: 9px;
                     right: 7px;
-                    bottom: -21px;
+                    bottom: 0;
                     background: $orange;
                     width: 30px;
                 }
@@ -67,6 +68,54 @@ a {
                 &:focus,
                 &:active {
                     box-shadow: none;
+                }
+            }
+            ul {
+                margin: 24px 0 0 7px;
+                padding: 0;
+                position: absolute;
+                background: $white;
+                min-width: 200px;
+                display: none;
+                z-index: 100;
+                box-shadow: 0 8px 10px rgba($dark, 0.3);
+                li {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    a {
+                        font-size: 14px;
+                        padding: 15px;
+                        display: block;
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+            &:hover {
+                ul {
+                    display: block;
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        height: 5px;
+                        left: 0;
+                        right: 7px;
+                        top: -5px;
+                        background: $orange;
+                        width: 30px;
+                    }
+                    li {
+                        a.nav-link {
+                            color: $dark;
+                        }
+                        &:after {
+                            background: transparent;
+                            height: 0;
+                            width: 0;
+                        }
+                    }
                 }
             }
         }
@@ -303,8 +352,32 @@ a {
             max-width: 150px;
             max-height: 150px;
             border-radius: 100%;
-            overflow: hidden;
             border: 5px solid $white;
+            position: relative;
+            img {
+                border-radius: 100%;
+            }
+            .upload-img {
+                position: absolute;
+                height: 32px;
+                width: 32px;
+                background: #212121;
+                border-radius: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                bottom: 0;
+                right: 0;
+                cursor: pointer;
+                input {
+                    height: 32px;
+                    width: 32px;
+                    position: absolute;
+                    border-radius: 100%;
+                    opacity: 0;
+                    cursor: pointer;
+                }
+            }
         }
     }
     .badges {
@@ -406,6 +479,10 @@ a {
 }
 
 // homepage design
+.home-container {
+    background: $white;
+}
+
 .welcome-section {
     h1 {
         font-weight: 700;
