@@ -2,234 +2,230 @@
 
 <div class="container mt-4 mb-5">
 
-  <app-user-nav></app-user-nav>
+    <app-user-nav></app-user-nav>
 
-  <h5 *ngIf='dashboardData && dashboardData.totalUser>0'>{{(dashboardData.totalUser)?dashboardData.totalUser:'0'}} Users
-    are registered after your registration.</h5>
+    <h5 *ngIf='dashboardData && dashboardData.totalUser>0'>{{(dashboardData.totalUser)?dashboardData.totalUser:'0'}} Users are registered after your registration.</h5>
 
-  <div class="row dashboard-cards mt-4 mb-5">
-    <div class="col-md-3">
-      <div class="card text-white bg-primary mb-3 h-100">
-        <div class="card-body">
-          <h2 class="card-title mb-0">
-            {{(dashboardData.referral.totalReferral)?dashboardData.referral.totalReferral:'0'}}</h2>
-          <p class="card-text mb-0">Total Referrals</p>
+    <div class="row dashboard-cards mt-4 mb-5">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary mb-3 h-100">
+                <div class="card-body">
+                    <h2 class="card-title mb-0">
+                        {{(dashboardData.referral.totalReferral)?dashboardData.referral.totalReferral:'0'}}</h2>
+                    <p class="card-text mb-0">Total Referrals</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="col-md-3">
-      <div class="card text-white bg-success mb-3 h-100">
-        <div class="card-body">
-          <h2 class="card-title mb-0">{{(dashboardData.referral.passUp)?dashboardData.referral.passUp:'0'}}</h2>
-          <p class="card-text mb-0">Pass Referrals</p>
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3 h-100">
+                <div class="card-body">
+                    <h2 class="card-title mb-0">{{(dashboardData.referral.passUp)?dashboardData.referral.passUp:'0'}}</h2>
+                    <p class="card-text mb-0">Pass Referrals</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="col-md-3">
-      <div class="card text-white bg-orange mb-3 h-100">
-        <div class="card-body">
-          <h2 class="card-title mb-0">${{(dashboardData.commisssion)?dashboardData.commisssion:'0'}}</h2>
-          <p class="card-text mb-0">Your Earnings by Now (total Transactions)</p>
+        <div class="col-md-3">
+            <div class="card text-white bg-orange mb-3 h-100">
+                <div class="card-body">
+                    <h2 class="card-title mb-0">${{(dashboardData.commisssion)?dashboardData.commisssion:'0'}}</h2>
+                    <p class="card-text mb-0">Your Earnings by Now (total Transactions)</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="col-md-3">
-      <div class="card text-white bg-cyan mb-3 h-100">
-        <div class="card-body">
-          <h2 class="card-title mb-0">${{(dashboardData.commisssion)?dashboardData.commisssion:'0'}}</h2>
-          <p class="card-text mb-0">Your Current Balance</p>
+        <div class="col-md-3">
+            <div class="card text-white bg-cyan mb-3 h-100">
+                <div class="card-body">
+                    <h2 class="card-title mb-0">${{(dashboardData.commisssion)?dashboardData.commisssion:'0'}}</h2>
+                    <p class="card-text mb-0">Your Current Balance</p>
+                </div>
+            </div>
         </div>
-      </div>
+
     </div>
 
-  </div>
 
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">My Memberships</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Level</th>
+                        <th>Billing</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Basic</td>
+                        <td>$10.00</td>
+                        <th><span class="text-success">Active</span></th>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- <a href="javascript:void(0)" class="btn btn-primary btn-radius">Upgrade to VIP Marketer</a> -->
+            <a href="javascript:void(0)" *ngIf="loginService.getPlan()=='basic'" (click)='buyMoneyPlugin()' class="btn btn-success btn-radius ml-3">Buy Money Plugin ($50)</a>
+        </div>
+    </div>
 
-  <div class="card">
-    <div class="card-header">
-      <h5 class="mb-0">My Memberships</h5>
-    </div>
-    <div class="card-body">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Level</th>
-            <th>Billing</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Basic</td>
-            <td>$10.00</td>
-            <th><span class="text-success">Active</span></th>
-          </tr>
-        </tbody>
-      </table>
-      <!-- <a href="javascript:void(0)" class="btn btn-primary btn-radius">Upgrade to VIP Marketer</a> -->
-      <a href="javascript:void(0)" *ngIf="loginService.getPlan()=='basic'" (click)='buyMoneyPlugin()'
-        class="btn btn-success btn-radius ml-3">Buy Money Plugin ($50)</a>
-    </div>
-  </div>
-
-  <div class="card mt-4">
-    <div class="card-header">
-      <h5 class="mb-0">My Account</h5>
-    </div>
-    <div class="card-body">
-      <h5>{{dashboardData.userData.firstName}} {{dashboardData.userData.lastName}}</h5>
-      <div class="row mt-3">
-        <!-- <div class="col-md-6">
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5 class="mb-0">My Account</h5>
+        </div>
+        <div class="card-body">
+            <h5>{{dashboardData.userData.firstName}} {{dashboardData.userData.lastName}}</h5>
+            <div class="row mt-3">
+                <!-- <div class="col-md-6">
             <p class="mb-0"><strong>Username:</strong> ianmsoki</p>      
         </div> -->
-        <div class="col-md-6">
-          <p class="mb-0"><strong>Email:</strong> {{dashboardData.userData.email}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card mt-4" *ngIf='dashboardData.sponserData.userName!="superadmin"'>
-    <div class="card-header">
-      <h5 class="mb-0">My Sponsor</h5>
-    </div>
-    <div class="card-body">
-      <h5>{{dashboardData.sponserData.firstName}} {{dashboardData.sponserData.lastName}}</h5>
-      <div class="row my-3">
-        <div class="col-md-6">
-          <p class="mb-1"><strong>Email:</strong> {{dashboardData.sponserData.email}}</p>
-        </div>
-      </div>
-      <!-- <a href="javascript:void(0)" class="btn btn-success btn-radius" (click)="sendMessage = true">Send Message to Sponser</a> -->
-    </div>
-  </div>
-
-
-  <div class="card mt-4">
-    <div class="card-header">
-      <h5 class="mb-0">Manage Url</h5>
-    </div>
-    <div class="card-body">
-      <form [formGroup]="mmeFreeurlForm" (ngSubmit)="onSubmit()">
-
-        <div class="card">
-          <div class="card-body">
-
-            <div class="row">
-
-              <div class="col-md-6">
-
-                <div class="form-group">
-                  <label for="amount">MME Url</label>
-                  <input type="text" formControlName="mmeUrl" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f.mmeUrl.errors }" />
-                  <div *ngIf="submitted && f.mmeUrl.errors" class="invalid-feedback">
-                    <div *ngIf="f.mmeUrl.errors.required">MME Url is required</div>
-                  </div>
+                <div class="col-md-6">
+                    <p class="mb-0"><strong>Email:</strong> {{dashboardData.userData.email}}</p>
                 </div>
-
-              </div>
-
-              <div class="col-md-6">
-
-                <div class="form-group">
-                  <label for="description">FREE Url</label>
-                  <input type="text" formControlName="freeUrl" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f.freeUrl.errors }" />
-                  <div *ngIf="submitted && f.freeUrl.errors" class="invalid-feedback">
-                    <div *ngIf="f.freeUrl.errors.required">FreeUrl is required</div>
-                  </div>
-                </div>
-
-              </div>
-
             </div>
-
-          </div>
         </div>
+    </div>
 
-
-        <div class="mt-4">
-          <button class="btn btn-lg btn-primary btn-submit btn-radius">Save Url</button>
+    <div class="card mt-4" *ngIf='dashboardData.sponserData.userName!="superadmin"'>
+        <div class="card-header">
+            <h5 class="mb-0">My Sponsor</h5>
         </div>
-
-      </form>
+        <div class="card-body">
+            <h5>{{dashboardData.sponserData.firstName}} {{dashboardData.sponserData.lastName}}</h5>
+            <div class="row my-3">
+                <div class="col-md-6">
+                    <p class="mb-1"><strong>Email:</strong> {{dashboardData.sponserData.email}}</p>
+                </div>
+            </div>
+            <!-- <a href="javascript:void(0)" class="btn btn-success btn-radius" (click)="sendMessage = true">Send Message to Sponser</a> -->
+        </div>
     </div>
-  </div>
 
 
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5 class="mb-0">Manage Url</h5>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="mmeFreeurlForm" (ngSubmit)="onSubmit()">
 
-  <div class="card mt-4">
-    <div class="card-header">
-      <h5 class="mb-0">Past Invoices</h5>
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="amount">MME Url</label>
+                                    <input type="text" formControlName="mmeUrl" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mmeUrl.errors }" />
+                                    <div *ngIf="submitted && f.mmeUrl.errors" class="invalid-feedback">
+                                        <div *ngIf="f.mmeUrl.errors.required">MME Url is required</div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="description">FREE Url</label>
+                                    <input type="text" formControlName="freeUrl" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.freeUrl.errors }" />
+                                    <div *ngIf="submitted && f.freeUrl.errors" class="invalid-feedback">
+                                        <div *ngIf="f.freeUrl.errors.required">FreeUrl is required</div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="mt-4">
+                    <button class="btn btn-lg btn-primary btn-submit btn-radius">Save Url</button>
+                </div>
+
+            </form>
+        </div>
     </div>
-    <div class="card-body">
-      <table class="table table-striped mb-0">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Level</th>
-            <th>Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="javascript:void(0)">December 8, 2019</a></td>
-            <td>Basic</td>
-            <th><span class="text-success">$10.00</span></th>
-          </tr>
-          <tr>
-            <td><a href="javascript:void(0)">December 6, 2019</a></td>
-            <td>Premium</td>
-            <th><span class="text-success">$49.00</span></th>
-          </tr>
-        </tbody>
-      </table>
+
+
+
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5 class="mb-0">Past Invoices</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped mb-0">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Level</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="javascript:void(0)">December 8, 2019</a></td>
+                        <td>Basic</td>
+                        <th><span class="text-success">$10.00</span></th>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:void(0)">December 6, 2019</a></td>
+                        <td>Premium</td>
+                        <th><span class="text-success">$49.00</span></th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
 
 </div>
 
 
 <div id="send-message-popup" *ngIf="sendMessage == true">
 
-  <div class="modal fade show" style="display:block;">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Send Message to Sponser</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="sendMessage = false">
+    <div class="modal fade show" style="display:block;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Send Message to Sponser</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="sendMessage = false">
             <span aria-hidden="true">&times;</span>
           </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="toMessage">To</label>
+                        <input type="password" class="form-control" id="toMessage" value="andrewdacosta@rhyta.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subjectMessage">Subject</label>
+                        <input type="password" class="form-control" id="subjectMessage">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="yourMessage">Your Message *</label>
+                        <textarea name="yourMessage" id="yourMessage" cols="10" class="form-control"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-radius btn-success">Send Message</button>
+
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-
-          <div class="form-group">
-            <label for="toMessage">To</label>
-            <input type="password" class="form-control" id="toMessage" value="andrewdacosta@rhyta.com">
-          </div>
-
-          <div class="form-group">
-            <label for="subjectMessage">Subject</label>
-            <input type="password" class="form-control" id="subjectMessage">
-          </div>
-
-          <div class="form-group">
-            <label for="yourMessage">Your Message *</label>
-            <textarea name="yourMessage" id="yourMessage" cols="10" class="form-control"></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-radius btn-success">Send Message</button>
-
-        </div>
-      </div>
     </div>
-  </div>
-  <div class="modal-backdrop fade show">
+    <div class="modal-backdrop fade show">
 
-  </div>
+    </div>
 
 </div>
