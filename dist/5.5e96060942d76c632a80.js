@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{X6tI:function(n,o,s){"use strict";s.r(o),s.d(o,"BlogModule",function(){return c});class c{}}}]);
