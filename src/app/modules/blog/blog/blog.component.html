@@ -28,16 +28,13 @@
                     </div>
 
                     <div class="post-image my-4">
-                        <a href="javascript:void(0)" routerLink="/blog/blog-detail/{{blogdata.id}}"><img src="{{blogdata.image}}"
-                                class="w-100" alt="Affiliate Marketing"></a>
+                        <a href="javascript:void(0)" routerLink="/blog/blog-detail/{{blogdata.id}}"><img src="{{blogdata.image}}" class="w-100" alt="Affiliate Marketing"></a>
                     </div>
 
                     <div class="post-excerpt">
-                        <p>
-                            <read-more [text]="blogdata.description" [maxLength]="200"></read-more>
-                        </p>
+                        <read-more [text]="blogdata.description" [maxLength]="200"></read-more>
                     </div>
-<!-- 
+                    <!-- 
                     <a href="javascript:void(0)" routerLink="/blog/blog-detail/{{blogdata.id}}"
                         class="btn btn-transparent btn-orange btn-radius">Read More</a> -->
 
