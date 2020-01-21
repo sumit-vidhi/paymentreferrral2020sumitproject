@@ -53,8 +53,8 @@ export class EditProfileComponent implements OnInit {
         if (result.status === 'success') {
           delete result.record.id;
           delete result.record.user_id;
-          result.record.firstName=this.getFirstName();
-          result.record.lastName=this.getLastName();
+          result.record.firstName = this.getFirstName();
+          result.record.lastName = this.getLastName();
           this.editForm.setValue(result.record);
         }
       })
@@ -115,7 +115,7 @@ export class EditProfileComponent implements OnInit {
         this.loader.stopLoading();
         if (result.status === 'success') {
           result.record.authToken = result.record.accessToken;
-          this.loginService.updateLoginUserDetail(result.record);
+          this.loginService.setLoginUserDetail(result.record);
           this.setStatus();
           alert("Profile Updated");
         }

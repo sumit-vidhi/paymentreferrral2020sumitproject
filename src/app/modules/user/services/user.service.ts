@@ -81,5 +81,9 @@ export class UserService {
   getBlogPage(data): Observable<ApiResponseModel> {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.blog.getBlogPage, data);
   }
+  imageUpload(data): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.imageUpload, data);
+  }
+  imageUpload
 
 }

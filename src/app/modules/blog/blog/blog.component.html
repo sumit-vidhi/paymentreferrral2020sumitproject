@@ -1,4 +1,4 @@
-<div class="container" *ngIf='blogData.length>0'>
+<div class="container" *ngIf='blogData && blogData.length>0'>
 
     <div class="blog-container">
 
@@ -34,7 +34,7 @@
 
                     <div class="post-excerpt">
                         <p>
-                            <read-more [text]="blogdata.description" [maxLength]="200"></read-more>
+                            <read-more [text]="blogdata.description" [id]='blogdata.id' [maxLength]="200"></read-more>
                         </p>
                     </div>
 <!-- 

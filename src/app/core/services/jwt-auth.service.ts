@@ -116,7 +116,7 @@ export class JWTAuthService {
     console.log(redirect);
     if (redirect === true) {
       this.router.navigate(["auth/login"]);
-     // window.location.reload();
+      // window.location.reload();
     }
   }
 
@@ -221,7 +221,20 @@ export class JWTAuthService {
     }
   }
 
-  getcreatedDate(){
+  /**
+ * @function getLoginUserEmail
+ * @description
+ * Get login user email
+ * @returns {CommonBase}
+ */
+  getImage(): CommonBase {
+    if (window.localStorage[APP_USER]) {
+      return JSON.parse(window.localStorage[APP_USER]).image;
+    }
+  }
+
+
+  getcreatedDate() {
     if (window.localStorage[APP_USER]) {
       return JSON.parse(window.localStorage[APP_USER]).createdDate;
     }

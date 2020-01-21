@@ -31,7 +31,8 @@ export const appApiUrl: CommonBase = {
         saveSupport: 'user/saveSupport',
         getReply: 'user/getReply',
         saveReply: 'user/saveReply',
-        addUrl: 'user/addUrl'
+        addUrl: 'user/addUrl',
+        imageUpload: 'user/imageUpload'
     },
     blog: {
         getBlog: 'user/getBlog',

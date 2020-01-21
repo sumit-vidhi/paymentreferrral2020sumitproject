@@ -22,6 +22,7 @@ export class BlogComponent implements OnInit {
 
   }
   getUrl() {
+    this.loader.startLoading();
     const id = this.loginService.getSponserUserId();
     this.blogService.getUrl({ id: id }).subscribe((result) => {
       if (result.status == 'success') {
@@ -33,7 +34,7 @@ export class BlogComponent implements OnInit {
   }
 
   getBlog() {
-    this.loader.startLoading();
+
     const plan = this.loginService.getPlan();
     this.blogService.getBlog({ plan: plan }).subscribe((result) => {
       this.loader.stopLoading();
