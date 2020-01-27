@@ -19,7 +19,8 @@ export class SupportReplyComponent implements OnInit {
   userId: any;
   name: any;
   status: any;
-  reply: boolean = false;;
+  reply: boolean = false;
+  submitted = false;
   constructor(private formBuilder: FormBuilder, private userService: UserService,
     private router: Router, private loader: LoaderService, public loginService: JWTAuthService, public modalService: NgbModal) {
     this.userId = this.loginService.getLoginUserId();
@@ -51,6 +52,7 @@ export class SupportReplyComponent implements OnInit {
   get f() { return this.replyForm.controls; }
 
   onSubmit() {
+    this.submitted = true;
     if (this.replyForm.invalid) {
       return;
     }

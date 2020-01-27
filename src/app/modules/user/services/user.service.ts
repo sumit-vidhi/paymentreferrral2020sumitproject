@@ -39,6 +39,13 @@ export class UserService {
     return this.commonHttp.get<ApiResponseModel>(appApiUrl.auth.getdashboradData);
   }
 
+  getWalletData(): Observable<ApiResponseModel> {
+    return this.commonHttp.get<ApiResponseModel>(appApiUrl.auth.getWalletData);
+  }
+  getWalletCredit(): Observable<ApiResponseModel> {
+    return this.commonHttp.get<ApiResponseModel>(appApiUrl.auth.getWalletCredit);
+  }
+
   getSponserReferralData(): Observable<ApiResponseModel> {
     return this.commonHttp.get<ApiResponseModel>(appApiUrl.auth.getSponserReferralData);
   }
@@ -49,6 +56,10 @@ export class UserService {
 
   changepassword(data): Observable<ApiResponseModel> {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.updatePassword, data);
+  }
+
+  addWalletCredit(data): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.addWalletCredit, data);
   }
 
   buyPlugin(data): Observable<ApiResponseModel> {
@@ -84,6 +95,6 @@ export class UserService {
   imageUpload(data): Observable<ApiResponseModel> {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.imageUpload, data);
   }
-  imageUpload
+  
 
 }

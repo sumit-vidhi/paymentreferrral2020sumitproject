@@ -19,16 +19,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><input type="checkbox"></td>
-        <td><strong>$ 10.00</strong></td>
+      <tr *ngFor='let data of dashboardData'>
+        <td><input type="checkbox" (change)='checkWallet(data.id,data.amount)'></td>
+        <td><strong>{{data.amount | currency}}</strong></td>
         <td>Bonus</td>
-        <td>Bonus for reaching membership level: Basic	</td>
-        <td>mssandhu</td>
+        <td>{{data.description}} </td>
+        <td>{{data.userName}}</td>
       </tr>
+      <tr *ngIf="dashboardData.length==0">No records</tr>
     </tbody>
   </table>
 
-  <h5><span class="badge badge-dark p-3 mt-4">Total Credit : $0</span></h5>
-
+  <h5><span class="badge badge-dark p-3 mt-4">Total Credit : {{amount | currency}}</span></h5>
+  <button *ngIf="fromId.length>0" class="btn btn-lg btn-primary btn-submit btn-radius pull-right" style='float: right;
+  margin: -60px 0px 0px 0px;' (click)="addToWallet()">Add to wallet</button>
 </div>

@@ -25,7 +25,7 @@ export class UserHeaderComponent implements OnInit {
     if (this.loginService.getUserStatus() === "1") {
       this.referalUrl = this.getUrl();
     } else {
-      this.referalUrl = "Please update your profile and refer to firend."
+      this.referalUrl = "Please complete your profile first to see your account details."
     }
 
     this.name = this.loginService.getFirstUserName() + ' ' + this.loginService.getLastUserName();

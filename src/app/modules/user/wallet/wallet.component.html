@@ -7,26 +7,51 @@
   <h3 class="page-title mb-4">Wallet</h3>
 
   <div class="row dashboard-cards my-4">
-      <div class="col-md-4">
-        <div class="card text-white bg-orange mb-3 h-100">
-          <div class="card-body">
-            <h2 class="card-title mb-0">$0</h2>
-            <p class="card-text mb-0">Wallet available Credit</p>
-          </div>
+    <div class="col-md-4">
+      <div class="card text-white bg-orange mb-3 h-100">
+        <div class="card-body">
+          <h2 class="card-title mb-0" *ngIf="dashboardData.walletAmount && dashboardData.walletAmount.amount">
+            {{dashboardData.walletAmount.amount | currency}}
+          </h2>
+          <h2 class="card-title mb-0" *ngIf="dashboardData.walletAmount && !dashboardData.walletAmount.amount">
+            {{'0' | currency}}
+          </h2>
+          <p class="card-text mb-0">Wallet available Credit</p>
         </div>
       </div>
-  
-      <div class="col-md-4">
-        <div class="card text-white bg-cyan mb-3 h-100">
-          <div class="card-body">
-            <h2 class="card-title mb-0">$10</h2>
-            <p class="card-text mb-0">Available Deposit based on your Earnings</p>
-          </div>
-        </div>
-      </div>
-  
-  </div>  
+    </div>
 
-  <a href="javascript:void(0)" routerLink="/user/wallet-credit" class="btn btn-success btn-radius">Add New Wallet Credit</a>
+    <div class="col-md-4">
+      <div class="card text-white bg-cyan mb-3 h-100">
+        <div class="card-body">
+          <h2 class="card-title mb-0" *ngIf="dashboardData.walletDeposit && dashboardData.walletDeposit.total">
+            {{dashboardData.walletDeposit.total | currency}}
+          </h2>
+          <h2 class="card-title mb-0" *ngIf="dashboardData.walletDeposit && !dashboardData.walletDeposit.total">
+            {{'0' | currency}}
+          </h2>
+          <p class="card-text mb-0">Available Deposit based on your Earnings</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-white bg-cyan mb-3 h-100">
+        <div class="card-body">
+          <h2 class="card-title mb-0" *ngIf="dashboardData.activeAmount && dashboardData.activeAmount.total">
+            {{dashboardData.activeAmount.total | currency}}
+          </h2>
+          <h2 class="card-title mb-0" *ngIf="dashboardData.activeAmount && !dashboardData.activeAmount.total">
+            {{'0' | currency}}
+          </h2>
+          <p class="card-text mb-0">Active Comssion</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="javascript:void(0)" routerLink="/user/wallet-credit" class="btn btn-success btn-radius">Add New Wallet
+    Credit</a>
 
 </div>

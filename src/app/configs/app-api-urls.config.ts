@@ -32,7 +32,10 @@ export const appApiUrl: CommonBase = {
         getReply: 'user/getReply',
         saveReply: 'user/saveReply',
         addUrl: 'user/addUrl',
-        imageUpload: 'user/imageUpload'
+        imageUpload: 'user/imageUpload',
+        getWalletData:'user/getWalletData',
+        getWalletCredit:'user/getWalletCredit',
+        addWalletCredit:'user/addWalletCredit'
     },
     blog: {
         getBlog: 'user/getBlog',

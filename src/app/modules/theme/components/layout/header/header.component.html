@@ -47,11 +47,12 @@
                         <li class="nav-item" routerLinkActive="active" *ngIf='loginService.IsAuthUser()'>
                             <a class="nav-link" routerLink="/support">Support</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" *ngIf='blogPage.length>0'>
                             <a class="nav-link" href="javascript:void(0)">Downline</a>
                             <ul class="sub-items">
                                 <li class="nav-item" *ngFor='let data of  blogPage'>
-                                    <a class="nav-link" routerLink="/blog/blog-detail/{{data.id}}">{{data.title}}</a>
+                                    <a class="nav-link"
+                                        routerLink="/blog/blog-detail/{{data.blogSlug}}">{{data.title}}</a>
                                 </li>
                             </ul>
                         </li>
@@ -69,7 +70,8 @@
                     <div class="dropdown user-dropdown ml-3" (click)="$event.stopPropagation()"
                         *ngIf='loginService.IsAuthUser()'>
                         <a href="javascript:void(0)" class="dropdown-toggle" (click)="openUserDropdown()">
-                            <img [src]="(this.loginService.getImage())?this.loginService.getImage():image" alt="John Doe">
+                            <img [src]="(this.loginService.getImage())?this.loginService.getImage():image"
+                                alt="John Doe">
                             Hi,{{loginService.getFirstUserName()}}
                         </a>
                         <div class="dropdown-menu" (click)="user_dropdown = false" *ngIf="user_dropdown == true"

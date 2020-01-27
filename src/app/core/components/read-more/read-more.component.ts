@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 export class ReadMoreComponent implements OnChanges {
     @Input() text: string;
-    @Input() id: number;
+    @Input() id: string;
     @Input() maxLength: number = 100;
     currentText: string;
     hideToggle: boolean = true;
