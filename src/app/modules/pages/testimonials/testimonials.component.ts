@@ -62,7 +62,9 @@ export class TestimonialsComponent implements OnInit {
       this.firstName = this.getFirstName();
       this.lastName = this.getLastName();
       this.supportForm.controls.email.setValue(this.email);
-      this.supportForm.controls.firstName.setValue(this.email);
+      this.supportForm.controls.firstName.setValue(this.firstName);
+      // this.supportForm.controls.email.disable();
+      // this.supportForm.controls.firstName.disable();
     }
 
   }
