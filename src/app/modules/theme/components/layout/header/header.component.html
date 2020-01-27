@@ -52,7 +52,7 @@
                             <ul class="sub-items">
                                 <li class="nav-item" *ngFor='let data of  blogPage'>
                                     <a class="nav-link"
-                                        routerLink="/blog/blog-detail/{{data.blogSlug}}">{{data.title}}</a>
+                                        routerLink="/blog/blog-detail/{{data.blogslug}}">{{data.title}}</a>
                                 </li>
                             </ul>
                         </li>
@@ -82,7 +82,7 @@
                             <a class="dropdown-item" routerLink="/user/wallet">Wallet</a>
                             <a class="dropdown-item" routerLink="/user/edit-profile">Edit Profile</a>
                             <a class="dropdown-item" href="javascript:void(0)"
-                                (click)='loginService.deleteUserAccessToken(true)'>Logout</a>
+                                (click)='logout()'>Logout</a>
                         </div>
                     </div>
                 </div>

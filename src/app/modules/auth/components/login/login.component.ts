@@ -11,6 +11,8 @@ import {
 import { AuthService } from '@modules/auth/services/auth.service';
 import { JWTAuthService } from '@core/services/jwt-auth.service';
 import { LoaderService } from '@core/services/loader-service';
+import { UserService } from '@modules/user/services/user.service';
+import { User } from '../../../shared/models/user.model';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,7 +20,7 @@ import { LoaderService } from '@core/services/loader-service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  constructor(private fb: FormBuilder, private authService: AuthService,
+  constructor(private fb: FormBuilder, private authService: AuthService, private userservice: UserService,
     private loginService: JWTAuthService, private loader: LoaderService) { }
 
   ngOnInit() {
@@ -31,7 +33,7 @@ export class LoginComponent implements OnInit {
     });
   }
   onSubmit() {
-    if(this.loginForm.invalid){
+    if (this.loginForm.invalid) {
       return;
     }
     let formModal = this.loginForm.value;
@@ -41,6 +43,7 @@ export class LoginComponent implements OnInit {
       if (result.status === 'success') {
         result.record.authToken = result.record.accessToken;
         this.loginService.setLoginUserDetail(result.record);
+        this.blogData();
       } else if (result.status === 'notActive') {
         alert("Your email address is inactive. Please check your inbox and activate account.");
       } else {
@@ -48,5 +51,15 @@ export class LoginComponent implements OnInit {
       }
     });
 
+  }
+
+  blogData() {
+    let plan = 'everyone';
+    if (this.loginService.getUserAccessToken()) {
+      plan = this.loginService.getPlan();
+    }
+    this.userservice.getBlogPage({ plan: plan }).subscribe((result) => {
+      this.loader.addblog(result.record);
+    })
   }
 }
