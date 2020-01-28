@@ -68,6 +68,7 @@ export class TestimonialsComponent implements OnInit {
     }
 
   }
+  
 
   viewSupport(data, content, view) {
     this.subject = data.subject;
