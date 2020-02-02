@@ -62,6 +62,10 @@ export class UserService {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.addWalletCredit, data);
   }
 
+  addCash(data): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.addCash, data);
+  }
+
   buyPlugin(data): Observable<ApiResponseModel> {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.buyPlugin, data);
   }
@@ -95,6 +99,6 @@ export class UserService {
   imageUpload(data): Observable<ApiResponseModel> {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.imageUpload, data);
   }
-  
+
 
 }

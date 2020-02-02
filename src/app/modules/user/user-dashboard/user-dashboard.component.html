@@ -64,14 +64,14 @@
         <tbody>
           <tr>
             <td>{{dashboardData.userData.type}}</td>
-            <td>${{(dashboardData.userData.type=='basic')?'0':'50'}}</td>
+            <td>${{(dashboardData.userData.type=='basic')?'0':'17'}}</td>
             <th><span class="text-success">Active</span></th>
           </tr>
         </tbody>
       </table>
       <!-- <a href="javascript:void(0)" class="btn btn-primary btn-radius">Upgrade to VIP Marketer</a> -->
       <a href="javascript:void(0)" *ngIf="loginService.getPlan()=='basic'" (click)='buyMoneyPlugin()'
-        class="btn btn-success btn-radius ml-3">Buy Money Plugin ($50)</a>
+        class="btn btn-success btn-radius ml-3">Buy Money Plugin ($17)</a>
     </div>
   </div>
 
@@ -110,7 +110,7 @@
 
   <div class="card mt-4">
     <div class="card-header">
-      <h5 class="mb-0">Manage Url</h5>
+      <h5 class="mb-0">Promotion Urls</h5>
     </div>
     <div class="card-body">
       <form [formGroup]="mmeFreeurlForm" (ngSubmit)="onSubmit()">

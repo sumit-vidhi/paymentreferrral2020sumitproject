@@ -71,8 +71,15 @@ export class SignUpComponent implements OnInit {
                         if (result.status === 'success') {
                             this.referralName = result.record.firstName + ' ' + result.record.lastName;
                             this.referralId = result.record.userId;
+                            sessionStorage.setItem("refferalName", this.referralName);
+                            sessionStorage.setItem("referralId", this.referralId);
                         }
                     })
+                } else {
+                    if (sessionStorage.getItem("refferalName")) {
+                        this.referralName = sessionStorage.getItem("refferalName");
+                        this.referralId = sessionStorage.getItem("referralId");
+                    }
                 }
             })
     }

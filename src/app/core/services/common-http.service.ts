@@ -14,6 +14,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { ApiResponseModel } from '@shared/models/api-response-model';
 import { MapModel } from '@shared/decorators/model-map';
 import { CommonBase } from '@core/interfaces/common-base';
+import { JWTAuthService } from './jwt-auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,8 @@ export class CommonHttpService {
 
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private loginService: JWTAuthService
   ) { }
 
   /**
@@ -40,7 +42,11 @@ export class CommonHttpService {
       .pipe(
         map(data => {
           console.log(data, 'data');
-          return new MapModel(ApiResponseModel).map(data);
+          if (data['status'] == 'error') {
+            this.loginService.deleteUserAccessToken(true);
+          } else {
+            return new MapModel(ApiResponseModel).map(data);
+          }
         })
       );
   }
@@ -56,7 +62,7 @@ export class CommonHttpService {
    * @return {ApiResponseModel} Promise of type ApiResponseModel
    */
   post<T>(url: string, params): Observable<any> {
-   
+
     return this.http.post(url, params);
   }
 

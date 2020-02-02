@@ -61,7 +61,7 @@ export class UserDashboardComponent implements OnInit {
       if (result.status == 'success') {
         result.record.authToken = result.record.accessToken;
         this.loginService.setLoginUserDetail(result.record);
-        alert("Url added");
+        alert("Setting Saved");
       } else {
         alert(result.message);
       }

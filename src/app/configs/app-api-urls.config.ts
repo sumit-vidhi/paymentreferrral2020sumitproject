@@ -35,7 +35,8 @@ export const appApiUrl: CommonBase = {
         imageUpload: 'user/imageUpload',
         getWalletData:'user/getWalletData',
         getWalletCredit:'user/getWalletCredit',
-        addWalletCredit:'user/addWalletCredit'
+        addWalletCredit:'user/addWalletCredit',
+        addCash:'user/addCash'
     },
     blog: {
         getBlog: 'user/getBlog',

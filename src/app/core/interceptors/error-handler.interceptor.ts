@@ -42,7 +42,7 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
       this.logger.logError('Request error ' + JSON.stringify(response));
     }
 
-    // console.error(error);
+     console.error(response);
     const httpErrorCode = response['status'];
     switch (httpErrorCode) {
       case UNAUTHORIZED:

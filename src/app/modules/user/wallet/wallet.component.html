@@ -5,8 +5,12 @@
   <app-user-nav></app-user-nav>
 
   <h3 class="page-title mb-4">Wallet</h3>
-  <button class="btn btn-lg btn-primary btn-submit btn-radius pull-right" style='float: right;
-      margin: -60px 0px 0px 0px;'>Requset money to company admin</button>
+  <button *ngIf="!dashboardData.requestAmount.amount" class="btn btn-lg btn-primary btn-submit btn-radius pull-right"
+    style='float: right;
+      margin: -60px 0px 0px 0px;' (click)='requestMoney(content)'>Requset money to company admin</button>
+  <button *ngIf="dashboardData.requestAmount.amount" class="btn btn-lg btn-primary btn-submit btn-radius pull-right"
+     style='float: right;
+        margin: -60px 0px 0px 0px;'>Already Requset money to admin {{dashboardData.requestAmount.amount | currency}}</button>
   <div class="row dashboard-cards my-4">
     <div class="col-md-4">
       <div class="card text-white bg-orange mb-3 h-100">
@@ -56,3 +60,39 @@
     Credit</a>
 
 </div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Money Requset</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="addCashForm" (ngSubmit)="onSubmit(mode)">
+
+      <div class="form-group">
+        <label for="amount">Wallet Amount($)</label>
+        {{dashboardData.walletAmount.amount | currency}}
+      </div>
+      <div class="form-group">
+        <label for="amount">Amount($)</label>
+        <input type="text" formControlName="amount" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.amount.errors }" />
+        <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+          <div *ngIf="f.amount.errors.required">Amount is required</div>
+          <p *ngIf="f.amount.errors.pattern" class="text-danger">Number Only</p>
+        </div>
+      </div>
+
+      <div class="mt-2">
+        <button class="btn btn-md btn-primary btn-submit btn-radius">Send Request</button>
+      </div>
+
+    </form>
+  </div>
+  <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+      </div> -->
+</ng-template>
