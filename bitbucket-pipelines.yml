@@ -9,7 +9,7 @@ pipelines:
         script:
           - ls -al
           - npm install
-          - npm install -g @angular/cli 
+          - npm install -g @angular/cli@8.3.23
           - ng build --prod
     - step:
         name: Deploy artifacts using SCP to PROD
