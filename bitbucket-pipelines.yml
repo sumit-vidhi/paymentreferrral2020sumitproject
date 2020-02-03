@@ -8,6 +8,7 @@ pipelines:
           - node
         script:
           - ls -al
+          - npm clean-install
           - npm install
           - npm install -g @angular/cli@8.3.23
           - ng build --prod
