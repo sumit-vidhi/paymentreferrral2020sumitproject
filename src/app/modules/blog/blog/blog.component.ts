@@ -14,7 +14,7 @@ export class BlogComponent implements OnInit {
   blogData: any;
   mmeUrl: any;
   freeUrl: any;
-  constructor(private authService: AuthService, private blogService: BlogService,
+  constructor(public authService: AuthService, private blogService: BlogService,
     private loginService: JWTAuthService, private loader: LoaderService) { }
 
   ngOnInit() {

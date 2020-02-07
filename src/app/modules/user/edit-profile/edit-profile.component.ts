@@ -31,7 +31,7 @@ export class EditProfileComponent implements OnInit {
       state: ['', Validators.required],
       city: ['', Validators.required],
       postalCode: ['', Validators.required],
-      phone: ['', Validators.required],
+      phone: ['', [Validators.pattern("[+-]?([0-9]*[.])?[0-9]+")]],
       country: ['', Validators.required],
 
     });

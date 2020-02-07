@@ -30,13 +30,13 @@ export class SupportReplyComponent implements OnInit {
   ngOnInit() {
 
     this.replyForm = this.formBuilder.group({
-      supportId: [this.supportData[0].id],
-      fromId: [this.supportData[0].fromId],
+      supportId: [this.supportData.id],
+      fromId: [this.supportData.fromId],
       message: ['', Validators.required]
 
     });
-    const supportId = this.supportData[0].fromId;
-    this.status = this.supportData[0].status;
+    const supportId = this.supportData.id;
+    this.status = this.supportData.status;
     if (this.status == 0) {
       this.reply = true;
     }

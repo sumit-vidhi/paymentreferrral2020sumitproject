@@ -402,7 +402,7 @@
               <input type="text" formControlName="phone" class="form-control"
                 [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
               <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                <div *ngIf="f.phone.errors.required">Phone is required</div>
+                <p *ngIf="f.phone.errors.pattern" class="text-danger">Number Only</p>
               </div>
             </div>
 

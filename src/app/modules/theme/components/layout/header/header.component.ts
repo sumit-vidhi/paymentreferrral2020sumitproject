@@ -75,7 +75,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    let plan = 'basic';
+    let plan = '';
     this.userservice.getBlogPage({ plan: plan }).subscribe((result) => {
       this.blogPage = result.record;
       this.loginService.deleteUserAccessToken(true);

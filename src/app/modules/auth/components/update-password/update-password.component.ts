@@ -59,6 +59,7 @@ export class UpdatePasswordComponent implements OnInit {
     this.loader.startLoading();
     this.authService.reset(formModel)
       .subscribe((res) => {
+        this.resetForm.reset();
         if (res.status === 'success') {
           this.loader.stopLoading();
           this.message = 'Your password has reset successfully';

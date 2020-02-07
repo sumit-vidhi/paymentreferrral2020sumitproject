@@ -13,29 +13,17 @@
 
                             <div class="form-group">
                                 <label for="email_address">Username or Email address</label>
-                                <input type="text" class="form-control" formControlName="username" autofocus>
-                                <div *ngIf=" loginForm.get('username').invalid && 
-            loginForm.get('username').touched">
-
-                                    <span *ngIf="
-              loginForm.get('username').errors.required || 
-              loginForm.get('username').errors.email	
-              " class="help-block text-danger">
-                    Email is required
-                  </span>
+                                <input type="text" class="form-control" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" autofocus>
+                                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                    <div *ngIf="f.username.errors.required">Email is required</div>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" formControlName="password">
-                                <div *ngIf="
-            loginForm.get('password').invalid && 
-            loginForm.get('password').touched">
-                                    <span *ngIf="
-              loginForm.get('password').errors.required" class="help-block text-danger">
-                    password is required
-                  </span>
+                                <input type="password" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                    <div *ngIf="f.password.errors.required">Password is required</div>
                                 </div>
                             </div>
 
@@ -51,8 +39,9 @@
 
                     <div class="text-center mt-4">
                         <a href="javascript:void(0)" routerLink="/auth/reset-password">Forgot Password?</a>
-                        <p class="signup-text mt-2 mb-0">Don't have an account? <a href="javascript:void(0)" routerLink="/auth/signup">Sign
-                Up</a></p>
+                        <p class="signup-text mt-2 mb-0">Don't have an account? <a href="javascript:void(0)"
+                                routerLink="/auth/signup">Sign
+                                Up</a></p>
                     </div>
 
                 </div>

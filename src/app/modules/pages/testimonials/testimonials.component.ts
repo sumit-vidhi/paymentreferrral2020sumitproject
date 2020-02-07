@@ -29,6 +29,7 @@ export class TestimonialsComponent implements OnInit {
   modalReference: NgbModalRef;
   reply: any;
   createTicket: boolean = false;
+  passData:any;
   constructor(private formBuilder: FormBuilder, private userService: UserService,
     private router: Router, private loader: LoaderService, public loginService: JWTAuthService, public modalService: NgbModal) { }
 
@@ -71,6 +72,8 @@ export class TestimonialsComponent implements OnInit {
   
 
   viewSupport(data, content, view) {
+
+    this.passData=data;
     this.subject = data.subject;
     this.description = data.description;
     this.createdAt = data.createdAt;
@@ -142,7 +145,7 @@ export class TestimonialsComponent implements OnInit {
         this.submitted = false;
         this.loader.stopLoading();
         if (result.status === 'success') {
-          alert("Ticket genrated");
+          alert("Ticket has been created successfully.");
           this.ngOnInit();
         }
       })

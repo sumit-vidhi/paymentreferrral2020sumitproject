@@ -47,7 +47,7 @@ const routes: Routes = [
       },
 
       {
-        path: 'email_varification/:id/:code',
+        path: 'email_verification/:id/:code',
         component: EmailVarificationComponent,
         data: { title: 'Verify Your Email Address' }
       },

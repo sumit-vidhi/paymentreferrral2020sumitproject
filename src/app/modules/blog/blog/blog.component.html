@@ -24,16 +24,19 @@
                   </div> -->
 
                     <div class="post-title">
-                        <h2><a href="javascript:void(0)" routerLink="/blog/blog-detail/{{blogdata.blogslug}}">{{blogdata.title}}</a></h2>
+                        <h2><a href="javascript:void(0)"
+                                routerLink="/blog/blog-detail/{{blogdata.blogslug}}">{{blogdata.title}}</a></h2>
                     </div>
 
                     <div class="post-image my-4">
-                        <a href="javascript:void(0)" routerLink="/blog/blog-detail/{{blogdata.blogslug}}"><img src="{{blogdata.image}}" class="w-100" alt="Affiliate Marketing"></a>
+                        <a href="javascript:void(0)" routerLink="/blog/blog-detail/{{blogdata.blogslug}}"><img
+                                src="{{blogdata.image}}" class="w-100" alt="Affiliate Marketing"></a>
                     </div>
 
                     <div class="post-excerpt">
                         <p>
-                            <read-more [text]="blogdata.description" [id]='blogdata.blogslug' [maxLength]="200"></read-more>
+                            <read-more [text]="blogdata.description" [id]='blogdata.blogslug' [maxLength]="200">
+                            </read-more>
                         </p>
                     </div>
                     <!-- 
@@ -54,7 +57,8 @@
 <div class="get-started-section">
     <div class="text-center">
         <h2>Easy Start. More Earning. Better Business.</h2>
-        <a href="javascript:void(0)" routerLink="auth/signup" class="btn btn-lg btn-orange">
+        <a href="javascript:void(0)" routerLink="/auth/signup" class="btn btn-lg btn-orange"
+            *ngIf='!loginService.IsAuthUser()'>
             <strong>Get Started Now!</strong>
             <div>No Credit Card Required</div>
         </a>

@@ -20,6 +20,7 @@ import { User } from '../../../shared/models/user.model';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  submitted = false;
   constructor(private fb: FormBuilder, private authService: AuthService, private userservice: UserService,
     private loginService: JWTAuthService, private loader: LoaderService) { }
 
@@ -32,7 +33,11 @@ export class LoginComponent implements OnInit {
       rememberMe: ['']
     });
   }
+
+  get f() { return this.loginForm.controls; }
+
   onSubmit() {
+    this.submitted=true;
     if (this.loginForm.invalid) {
       return;
     }
