@@ -32,7 +32,8 @@
                     </svg>
 
                 </a>
-                <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+                <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav"
+                    *ngIf="_router.url != '/'" class="homepage-banner-content">
                     <ul class="navbar-nav">
                         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
                 true}">
@@ -93,23 +94,23 @@
         <!-- <div class="container">
             <div class="row">
                 <div class="col-md-9"> -->
-                    <!-- <h1>Learn how to make money online everyday</h1>
+        <!-- <h1>Learn how to make money online everyday</h1>
                     <h3>Internet Marketing and Advertising is the fastest way to success with almost anything. Internet
                         Marketing and Advertising is the fastest way to success with almost anything.</h3>
                     <a routerLink="auth/signup" href="javascript:void(0)"
                         class="btn btn-lg btn-radius btn-orange mt-4">Get
                         Started</a> -->
 
-                    <div class="bgimg">
-                       
-                        <div class="middle">
-                            <h1>COMING SOON</h1>
-                            <hr>
-                            <p>{{_days}} days {{ _hours }} minutes {{_seconds}} seconds left</p>
-                        </div>
-                       
-                    </div>
-                <!-- </div>
+        <div class="bgimg">
+
+            <div class="middle">
+                <h1>COMING SOON</h1>
+                <hr>
+                <p>{{_days}} days {{ _hours }} minutes {{_seconds}} seconds left</p>
+            </div>
+
+        </div>
+        <!-- </div>
             </div>
         </div> -->
     </div>
