@@ -28,6 +28,7 @@ export class ResetPasswordComponent implements OnInit {
     this.authService.forgotPassword(formModel)
     .subscribe((result)=>{
       this.loader.stopLoading();
+      this.forgotForm.reset();
       if(result.status === 'success'){
         this.message='Reset password instructions has been sent to your email address. Please check your email'; 
       } else if (result.status === 'notActive') {
