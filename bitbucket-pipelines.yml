@@ -1,4 +1,4 @@
-image: node:10.15.3
+image: node:10.16.3
 
 pipelines:
   default:
@@ -8,6 +8,9 @@ pipelines:
           - node
         script:
           - ls -al
+          - npm install -g @angular/cli@7.3.2
+          - npm install
+          - ng build --prod
     - step:
         name: Deploy artifacts using SCP to PROD
         deployment: production
@@ -16,5 +19,5 @@ pipelines:
             variables:
               USER: $user
               SERVER: $ip
-              REMOTE_PATH: '/var/club/front'
-              LOCAL_PATH: '*'
+              REMOTE_PATH: '/var/club/front/dist'
+              LOCAL_PATH: './dist/*'
