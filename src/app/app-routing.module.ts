@@ -13,7 +13,7 @@ const appRoutes: Routes = [
   // { path: '', pathMatch: 'full', redirectTo: '/auth/login' },
   { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule)},
   { path: '', loadChildren: () => import('./modules/pages/pages.module').then(m => m.PagesModule)},
-  { path: 'blog', loadChildren: () => import('./modules/blog/blog.module').then(m => m.BlogModule)},
+  { path: '', loadChildren: () => import('./modules/blog/blog.module').then(m => m.BlogModule)},
   // {path: '', component: HomeComponent, data: { title: 'Down Line Club' }  }
   // { path: '**', redirectTo: '/pages/404' }, //No route found
 ];

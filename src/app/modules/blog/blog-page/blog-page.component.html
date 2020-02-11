@@ -1,0 +1,63 @@
+<div class="container" *ngIf="blogData">
+
+  <div class="blog-container">
+
+    <div class="row justify-content-center">
+
+      <div class="col-md-8">
+
+        <div class="blog-header position-relative mb-4">
+          <!-- <a href="javascript:void(0)" routerLink="/blog" class="back-arrow">
+            <img src="/assets/images/left-arrow.svg" alt="Go to blog">
+          </a> -->
+          <h1>{{blogData.title}}</h1>
+        </div>
+
+        <!-- <div class="author-name d-flex align-items-center">
+                  <div class="author-image">
+                    <img src="/assets/images/author_img.png" alt="Dennis R. Watson">
+                  </div>
+                  <div class="author-info">
+                      <a href="javascript:void(0)"><strong>Dennis R. Watson</strong></a>
+                      <span>November 18th, 2019</span>
+                  </div>
+              </div> -->
+
+        <div class="post-image position-relative my-4">
+          <div class="social-share">
+            <!-- <ul>
+              <li>Share</li>
+              <li>
+                <a href="javascript:void(0)"><img src="/assets/images/facebook_icon.svg" alt="Facebook"></a>
+              </li>
+              <li>
+                <a href="javascript:void(0)"><img src="/assets/images/linkedin_icon.svg" alt="Linkedin"></a>
+              </li>
+              <li>
+                <a href="javascript:void(0)"><img src="/assets/images/twitter_icon.svg" alt="Twitter"></a>
+              </li>
+            </ul> -->
+          </div>
+          <img src="{{blogData.image}}" class="w-100" alt="Affiliate Marketing">
+        </div>
+
+        <p [innerHtml]='blogData.description'></p>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="get-started-section">
+  <div class="text-center">
+    <h2>Easy Start. More Earning. Better Business.</h2>
+    <a href="javascript:void(0)" routerLink="auth/signup" class="btn btn-lg btn-orange">
+      <strong>Get Started Now!</strong>
+      <div>No Credit Card Required</div>
+    </a>
+  </div>
+</div>

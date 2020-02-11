@@ -51,9 +51,8 @@
                         <li class="nav-item" *ngIf='blogPage && blogPage.length>0'>
                             <a class="nav-link" href="javascript:void(0)">Downline</a>
                             <ul class="sub-items">
-                                <li class="nav-item" *ngFor='let data of  blogPage'>
-                                    <a class="nav-link"
-                                        routerLink="/blog/blog-detail/{{data.blogslug}}">{{data.title}}</a>
+                                <li class="nav-item" *ngFor='let data of  blogPage' routerLinkActive="active">
+                                    <a class="nav-link" routerLink="/blog/{{data.blogslug}}">{{data.title}}</a>
                                 </li>
                             </ul>
                         </li>

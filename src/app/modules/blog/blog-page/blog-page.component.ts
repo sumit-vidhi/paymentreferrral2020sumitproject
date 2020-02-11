@@ -3,40 +3,45 @@ import { AuthService } from '@modules/auth/services/auth.service';
 import { JWTAuthService } from '@core/services/jwt-auth.service';
 import { LoaderService } from '@core/services/loader-service';
 import { BlogService } from '@modules/blog/services/blog.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-blog',
-  templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.scss']
+  selector: 'app-blog-page',
+  templateUrl: './blog-page.component.html',
+  styleUrls: ['./blog-page.component.scss']
 })
-export class BlogComponent implements OnInit {
-
+export class BlogPageComponent implements OnInit {
   blogData: any;
   mmeUrl: any;
   freeUrl: any;
-  constructor(public authService: AuthService, private blogService: BlogService,
-    public loginService: JWTAuthService, private loader: LoaderService) { }
+  constructor(private authService: AuthService, private blogService: BlogService,
+    private loginService: JWTAuthService, private loader: LoaderService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getUrl();
 
   }
   getUrl() {
-    this.loader.startLoading();
     const id = this.loginService.getSponserUserId();
     this.blogService.getUrl({ id: id }).subscribe((result) => {
       if (result.status == 'success') {
         this.mmeUrl = result.record.mmeUrl;
         this.freeUrl = result.record.freeUrl;
-        this.getBlog();
+        this.route.paramMap.subscribe(params => {
+          const id = params.get("id");
+
+          this.getBlogById(id);
+        })
+
       }
     })
   }
 
-  getBlog() {
-
+  getBlogById(id) {
+    this.loader.startLoading();
     const plan = this.loginService.getPlan();
-    this.blogService.getBlog({ plan: plan }).subscribe((result) => {
+    //console.log(id);
+    this.blogService.getBlogById({ plan: plan, id: id }).subscribe((result) => {
       this.loader.stopLoading();
       if (result.status == 'success') {
         this.blogData = result.record;
@@ -45,6 +50,8 @@ export class BlogComponent implements OnInit {
           result.description = result.description.replace("{{FREE_URL}}", this.freeUrl);
           return result;
         })
+        this.blogData = this.blogData[0];
+        console.log(this.blogData);
       }
     })
   }

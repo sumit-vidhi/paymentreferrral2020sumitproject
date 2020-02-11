@@ -4,15 +4,20 @@ import { AuthGuard } from '@core/gaurds/auth-guard.service';
 import { UserService } from '../user/services/user.service';
 import { BlogComponent } from './blog/blog.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { BlogPageComponent } from './blog-page/blog-page.component';
 
 
 const routes: Routes = [
   {
-    path: '', component: BlogComponent,
+    path: 'blog', component: BlogComponent,
     data: { title: 'Blog' }
   },
   {
-    path: 'blog-detail/:id', component: BlogDetailComponent,
+    path: 'blog/blog-detail/:id', component: BlogDetailComponent,
+    data: { title: 'Downline Club\'s Epic Guide to Affiliate Marketing' }
+  },
+  {
+    path: 'blog/:id', component: BlogPageComponent,
     data: { title: 'Downline Club\'s Epic Guide to Affiliate Marketing' }
   }
 
