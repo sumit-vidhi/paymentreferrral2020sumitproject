@@ -2,76 +2,80 @@
 
 <div class="container mt-4 mb-5">
 
-  <app-user-nav></app-user-nav>
+    <app-user-nav></app-user-nav>
 
-  <h3 class="page-title mb-4">Referrals</h3>
+    <h3 class="page-title mb-4">Referrals</h3>
 
-  <div class="row">
-    <div class="col-md-6" *ngIf='referalData.referral.length==0'>
-      <div class="card bg-light">
-        <div class="card-body">
-          <img _ngcontent-pya-c6="" alt="Referral" src="/assets/images/referral-icon.svg" width="34" class="mb-2">
-          <h5 class="mb-0">No Referrals Found</h5>
+    <div class="row">
+        <div class="col-md-6" *ngIf='referalData.referral.length==0'>
+            <div class="card bg-light">
+                <div class="card-body">
+                    <img _ngcontent-pya-c6="" alt="Referral" src="/assets/images/referral-icon.svg" width="34" class="mb-2">
+                    <h5 class="mb-0">No Referrals Found</h5>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="card mt-12" *ngIf='referalData.referral.length>0'>
-      <div class="card-header">
-        <h5 class="mb-0">Referrals</h5>
-      </div>
-      <div class="card-body">
-        <table class="table table-striped mb-0">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor='let data of referalData.referral'>
-              <td>{{data.firstName}} {{data.lastName}}</td>
-              <td>{{data.email}}</td>
-              <th><span class="text-success">{{(data.status=='1')?'Active':'Pending'}}</span></th>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="col-md-6" *ngIf='referalData.passreferral_info.length==0'>
-      <div class="card bg-light">
-        <div class="card-body">
-          <img _ngcontent-pya-c6="" alt="Referral" src="/assets/images/referral-icon.svg" width="34" class="mb-2">
-          <h5 class="mb-0">No Passed Referrals Found</h5>
+        <div class="col-md-6" *ngIf='referalData.referral.length>0'>
+
+            <div class="card mt-12">
+                <div class="card-header">
+                    <h5 class="mb-0">Referrals</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let data of referalData.referral'>
+                                <td>{{data.firstName}} {{data.lastName}}</td>
+                                <td>{{data.email}}</td>
+                                <th><span class="text-success">{{(data.status=='1')?'Active':'Pending'}}</span></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+        <div class="col-md-6" *ngIf='referalData.passreferral_info.length==0'>
+            <div class="card bg-light">
+                <div class="card-body">
+                    <img _ngcontent-pya-c6="" alt="Referral" src="/assets/images/referral-icon.svg" width="34" class="mb-2">
+                    <h5 class="mb-0">No Passed Referrals Found</h5>
+                </div>
+            </div>
+        </div>
 
-
-    <div class="card mt-12" *ngIf='referalData.passreferral_info.length>0'>
-      <div class="card-header">
-        <h5 class="mb-0">Passed Referrals</h5>
-      </div>
-      <div class="card-body">
-        <table class="table table-striped mb-0">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor='let data of referalData.passreferral_info'>
-              <td>{{data.firstName}} {{data.lastName}}</td>
-              <td>{{data.email}}</td>
-              <th><span class="text-success">{{(data.status=='1')?'Active':'Pending'}}</span></th>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <div class="col-md-6">
+            <div class="card mt-12" *ngIf='referalData.passreferral_info.length>0'>
+                <div class="card-header">
+                    <h5 class="mb-0">Passed Referrals</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let data of referalData.passreferral_info'>
+                                <td>{{data.firstName}} {{data.lastName}}</td>
+                                <td>{{data.email}}</td>
+                                <th><span class="text-success">{{(data.status=='1')?'Active':'Pending'}}</span></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
 </div>

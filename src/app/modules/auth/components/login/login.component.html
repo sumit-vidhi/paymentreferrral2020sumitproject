@@ -12,7 +12,7 @@
                         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
                             <div class="form-group">
-                                <label for="email_address">Username or Email address</label>
+                                <label for="email_address">Username or Email Address</label>
                                 <input type="text" class="form-control" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" autofocus>
                                 <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                                     <div *ngIf="f.username.errors.required">Email is required</div>
@@ -39,8 +39,7 @@
 
                     <div class="text-center mt-4">
                         <a href="javascript:void(0)" routerLink="/auth/reset-password">Forgot Password?</a>
-                        <p class="signup-text mt-2 mb-0">Don't have an account? <a href="javascript:void(0)"
-                                routerLink="/auth/signup">Sign
+                        <p class="signup-text mt-2 mb-0">Don't have an account? <a href="javascript:void(0)" routerLink="/auth/signup">Sign
                                 Up</a></p>
                     </div>
 

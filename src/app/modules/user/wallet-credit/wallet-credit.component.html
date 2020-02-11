@@ -2,35 +2,44 @@
 
 <div class="container mt-4 mb-5">
 
-  <app-user-nav></app-user-nav>
+    <app-user-nav></app-user-nav>
 
-  <h3 class="page-title mb-4">Wallet</h3>
+    <h3 class="page-title mb-4">Wallet</h3>
 
-  <h5>Referrals</h5>
+    <h5>Referrals</h5>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th><input type="checkbox"></th>
-        <th>Amount</th>
-        <th>From</th>
-        <th>Description</th>
-        <th>Username</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor='let data of dashboardData'>
-        <td><input type="checkbox" (change)='checkWallet(data.id,data.amount)'></td>
-        <td><strong>{{data.amount | currency}}</strong></td>
-        <td>Bonus</td>
-        <td>{{data.description}} </td>
-        <td>{{data.userName}}</td>
-      </tr>
-      <tr *ngIf="dashboardData.length==0">No records</tr>
-    </tbody>
-  </table>
+    <table class="table table-striped" *ngIf="dashboardData.length > 0">
+        <thead>
+            <tr>
+                <th><input type="checkbox"></th>
+                <th>Amount</th>
+                <th>From</th>
+                <th>Description</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let data of dashboardData'>
+                <td><input type="checkbox" (change)='checkWallet(data.id,data.amount)'></td>
+                <td><strong>{{data.amount | currency}}</strong></td>
+                <td>Bonus</td>
+                <td>{{data.description}} </td>
+                <td>{{data.userName}}</td>
+            </tr>
+        </tbody>
+    </table>
 
-  <h5><span class="badge badge-dark p-3 mt-4">Total Credit : {{amount | currency}}</span></h5>
-  <button *ngIf="fromId.length>0" class="btn btn-lg btn-primary btn-submit btn-radius pull-right" style='float: right;
+
+
+    <div class="text-center" *ngIf="dashboardData.length==0">
+
+        <img src="/assets/images/dollar-icon.svg" style="opacity:0.4;" width="50" alt="No User">
+
+        <h4 class="mt-3">No Referal Found</h4>
+
+    </div>
+
+    <h5><span class="badge badge-dark p-3 mt-4">Total Credit : {{amount | currency}}</span></h5>
+    <button *ngIf="fromId.length>0" class="btn btn-lg btn-primary btn-submit btn-radius pull-right" style='float: right;
   margin: -60px 0px 0px 0px;' (click)="addToWallet()">Add to wallet</button>
 </div>

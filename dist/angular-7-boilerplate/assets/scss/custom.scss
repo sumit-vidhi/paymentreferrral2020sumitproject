@@ -16,6 +16,13 @@ body {
     }
 }
 
+select {
+    cursor: pointer;
+    option {
+        cursor: pointer;
+    }
+}
+
 img {
     max-width: 100%;
 }
@@ -187,7 +194,7 @@ a {
         }
     }
     .homepage-banner-content {
-        //padding: 5rem 0;
+        padding: 5rem 0;
         h1 {
             font-size: 70px;
             color: $white;
@@ -211,6 +218,7 @@ a {
 
 .container-wrapper {
     min-height: calc(100vh - 151px);
+    padding-bottom: 1.5rem;
 }
 
 .btn-submit {
@@ -348,35 +356,60 @@ a {
     padding: 40px 0;
     margin-bottom: 30px;
     .user-info {
+        position: relative;
         .user-img {
             max-width: 150px;
             max-height: 150px;
+            min-height: 150px;
             border-radius: 100%;
             border: 5px solid $white;
             position: relative;
+            overflow: hidden;
             img {
                 border-radius: 100%;
+                min-height: 150px;
             }
-            .upload-img {
-                position: absolute;
+        }
+        .upload-img {
+            position: absolute;
+            height: 32px;
+            width: 32px;
+            background: #212121;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            bottom: 0;
+            left: 110px;
+            cursor: pointer;
+            z-index: 100;
+            input {
                 height: 32px;
                 width: 32px;
-                background: #212121;
-                border-radius: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                bottom: 0;
-                right: 0;
+                display: block;
                 cursor: pointer;
-                input {
-                    height: 32px;
-                    width: 32px;
-                    position: absolute;
-                    border-radius: 100%;
-                    opacity: 0;
-                    cursor: pointer;
+                position: relative;
+                &:active,
+                &:focus {
+                    outline: none;
                 }
+            }
+            input::-webkit-file-upload-button {
+                height: 32px;
+                width: 32px;
+                position: absolute;
+                border-radius: 100%;
+                visibility: hidden;
+            }
+            input:before {
+                content: '';
+                background: url(/assets/images/camera_icon.svg) no-repeat;
+                height: 18px;
+                width: 18px;
+                position: absolute;
+                background-size: cover;
+                top: 7px;
+                left: 7px;
             }
         }
     }
@@ -608,7 +641,7 @@ a {
 .login-form {
     background: $white;
     .card-body {
-        padding: 3rem 8rem;
+        padding: 3rem 7rem;
         .card-title {
             position: relative;
             margin-bottom: 3rem !important;
@@ -749,6 +782,8 @@ a {
         small {
             font-size: 20px;
             color: #888;
+            position: relative;
+            top: -5px;
         }
     }
     h6 {
@@ -757,6 +792,8 @@ a {
 }
 
 .ticket-card {
+    margin-bottom: 2.2rem;
+    min-height: 284px;
     .created-date {
         color: #888;
         position: relative;
@@ -787,6 +824,7 @@ a {
         background: $white;
         display: flex;
         border-top: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 0 0 5px 5px;
         a {
             display: flex;
             align-items: center;
@@ -824,6 +862,10 @@ a {
                 top: 35px;
                 right: 30px;
                 position: absolute;
+                &:active,
+                &:focus {
+                    outline: none;
+                }
             }
         }
         .reply-list {
