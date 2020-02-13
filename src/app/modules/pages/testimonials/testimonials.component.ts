@@ -146,6 +146,7 @@ export class TestimonialsComponent implements OnInit {
         this.loader.stopLoading();
         if (result.status === 'success') {
           alert("Ticket has been created successfully.");
+          this.createTicket=false;
           this.ngOnInit();
         }
       })
@@ -155,7 +156,8 @@ export class TestimonialsComponent implements OnInit {
         this.submitted = false;
         this.loader.stopLoading();
         if (result.status === 'success') {
-          alert("Ticket genrated");
+          alert("Ticket has been created successfully.");
+          this.createTicket=false;
           this.ngOnInit();
         }
       })

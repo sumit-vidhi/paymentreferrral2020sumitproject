@@ -55,7 +55,7 @@
     </div>
 </section>
 
-<section class="cmspage" *ngIf='!supportData || supportData.length==0 && createTicket == false'>
+<section class="cmspage" *ngIf='(!supportData || supportData.length==0) && createTicket == false'>
 
     <div class="container">
         <div class="no-ticket-found text-center">
