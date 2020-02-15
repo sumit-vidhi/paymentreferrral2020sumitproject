@@ -7,12 +7,13 @@ body {
     padding-left: 2rem !important;
     padding-right: 2rem !important;
     padding-bottom: 0.55rem !important;
+    cursor: pointer;
     &.btn-radius {
         border-radius: 30px;
     }
     &.btn-orange {
         background: $orange;
-        color: $white;
+        color: $white !important;
     }
 }
 
@@ -37,6 +38,7 @@ img {
 
 a {
     color: $green;
+    cursor: pointer;
     &:hover {
         color: $green;
         text-decoration: none;
