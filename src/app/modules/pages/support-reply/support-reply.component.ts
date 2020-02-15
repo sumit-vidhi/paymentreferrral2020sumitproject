@@ -28,7 +28,7 @@ export class SupportReplyComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.submitted = false;
     this.replyForm = this.formBuilder.group({
       supportId: [this.supportData.id],
       fromId: [this.supportData.fromId],
