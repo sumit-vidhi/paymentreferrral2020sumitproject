@@ -65,6 +65,7 @@ export class WalletComponent implements OnInit {
     }
     formData.walletamount = this.dashboardData.walletAmount.amount;
     formData.userId = this.loginService.getLoginUserId();
+    formData.status = 0;
     console.log(formData);
     this.loader.startLoading();
     this.userService.addCash(formData).subscribe((result) => {
