@@ -63,6 +63,10 @@ export class WalletComponent implements OnInit {
       alert("Request amount should be less then to the wallet amount.");
       return;
     }
+    if (Number(formData.amount) < 0) {
+      alert("Request amount should be greater then to the 0 amount.");
+      return;
+    }
     formData.walletamount = this.dashboardData.walletAmount.amount;
     formData.userId = this.loginService.getLoginUserId();
     formData.status = 0;

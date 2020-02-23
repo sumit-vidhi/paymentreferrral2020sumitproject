@@ -5,10 +5,10 @@
   <app-user-nav></app-user-nav>
 
   <h3 class="page-title mb-4">Wallet</h3>
-  <button *ngIf="!dashboardData.requestAmount.amount && dashboardData.walletAmount.amount>0"
+  <button *ngIf="dashboardData && !dashboardData.requestAmount.amount && dashboardData.walletAmount.amount>0"
     class="btn btn-lg btn-primary btn-submit btn-radius pull-right" style='float: right;
       margin: -60px 0px 0px 0px;' (click)='requestMoney(content)'>Request money to company admin</button>
-  <button *ngIf="dashboardData.requestAmount.amount" class="btn btn-lg btn-primary btn-submit btn-radius pull-right"
+  <button *ngIf="dashboardData && dashboardData.requestAmount && dashboardData.requestAmount.amount" class="btn btn-lg btn-primary btn-submit btn-radius pull-right"
     style='float: right;
         margin: -60px 0px 0px 0px;'>Already Requset money to admin
     {{dashboardData.requestAmount.amount | currency}}</button>
@@ -16,10 +16,10 @@
     <div class="col-md-4">
       <div class="card text-white bg-orange mb-3 h-100">
         <div class="card-body">
-          <h2 class="card-title mb-0" *ngIf="dashboardData.walletAmount && dashboardData.walletAmount.amount">
+          <h2 class="card-title mb-0" *ngIf="dashboardData && dashboardData.walletAmount && dashboardData.walletAmount.amount">
             {{dashboardData.walletAmount.amount | currency}}
           </h2>
-          <h2 class="card-title mb-0" *ngIf="dashboardData.walletAmount && !dashboardData.walletAmount.amount">
+          <h2 class="card-title mb-0" *ngIf="dashboardData && dashboardData.walletAmount && !dashboardData.walletAmount.amount">
             {{'0' | currency}}
           </h2>
           <p class="card-text mb-0">Wallet available Credit</p>
@@ -30,10 +30,10 @@
     <div class="col-md-4">
       <div class="card text-white bg-cyan mb-3 h-100">
         <div class="card-body">
-          <h2 class="card-title mb-0" *ngIf="dashboardData.walletDeposit && dashboardData.walletDeposit.total">
+          <h2 class="card-title mb-0" *ngIf="dashboardData && dashboardData.walletDeposit && dashboardData.walletDeposit.total">
             {{dashboardData.walletDeposit.total | currency}}
           </h2>
-          <h2 class="card-title mb-0" *ngIf="dashboardData.walletDeposit && !dashboardData.walletDeposit.total">
+          <h2 class="card-title mb-0" *ngIf="dashboardData && dashboardData.walletDeposit && !dashboardData.walletDeposit.total">
             {{'0' | currency}}
           </h2>
           <p class="card-text mb-0">Available Deposit based on your Earnings</p>
@@ -44,10 +44,10 @@
     <div class="col-md-4">
       <div class="card text-white bg-cyan mb-3 h-100">
         <div class="card-body">
-          <h2 class="card-title mb-0" *ngIf="dashboardData.activeAmount && dashboardData.activeAmount.total">
+          <h2 class="card-title mb-0" *ngIf="dashboardData && dashboardData.activeAmount && dashboardData.activeAmount.total">
             {{dashboardData.activeAmount.total | currency}}
           </h2>
-          <h2 class="card-title mb-0" *ngIf="dashboardData.activeAmount && !dashboardData.activeAmount.total">
+          <h2 class="card-title mb-0" *ngIf="dashboardData && dashboardData.activeAmount && !dashboardData.activeAmount.total">
             {{'0' | currency}}
           </h2>
           <p class="card-text mb-0">Active Commission</p>

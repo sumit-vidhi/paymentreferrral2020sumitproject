@@ -7,7 +7,7 @@
   <h5 *ngIf='dashboardData && dashboardData.totalUser>0'>{{(dashboardData.totalUser)?dashboardData.totalUser:'0'}} Users
     are registered after your registration.</h5>
 
-  <div class="row dashboard-cards mt-4 mb-5">
+  <div class="row dashboard-cards mt-4 mb-5" *ngIf='dashboardData && dashboardData.referral'>
     <div class="col-md-3">
       <div class="card text-white bg-primary mb-3 h-100">
         <div class="card-body">
@@ -52,7 +52,7 @@
     <div class="card-header">
       <h5 class="mb-0">My Memberships</h5>
     </div>
-    <div class="card-body">
+    <div class="card-body" *ngIf="dashboardData && dashboardData.userData">
       <table class="table table-striped">
         <thead>
           <tr>
@@ -75,7 +75,7 @@
     </div>
   </div>
 
-  <div class="card mt-4">
+  <div class="card mt-4" *ngIf="dashboardData && dashboardData.userData">
     <div class="card-header">
       <h5 class="mb-0">My Account</h5>
     </div>
@@ -92,7 +92,7 @@
     </div>
   </div>
 
-  <div class="card mt-4" *ngIf='dashboardData.sponserData.userName!="superadmin"'>
+  <div class="card mt-4" *ngIf='dashboardData && dashboardData.sponserData.userName!="superadmin"'>
     <div class="card-header">
       <h5 class="mb-0">My Sponsor</h5>
     </div>
@@ -175,7 +175,7 @@
             <th>Amount</th>
           </tr>
         </thead>
-        <tbody *ngIf='dashboardData.memberuser && dashboardData.memberuser.length>0'>
+        <tbody *ngIf='dashboardData && dashboardData.memberuser && dashboardData.memberuser.length>0'>
           <tr *ngFor='let data of dashboardData.memberuser'>
             <td>{{data.createdDate | date: 'mediumDate'}}</td>
             <td>{{data.plan}}</td>
