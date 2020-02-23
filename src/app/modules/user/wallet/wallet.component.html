@@ -5,12 +5,13 @@
   <app-user-nav></app-user-nav>
 
   <h3 class="page-title mb-4">Wallet</h3>
-  <button *ngIf="!dashboardData.requestAmount.amount" class="btn btn-lg btn-primary btn-submit btn-radius pull-right"
-    style='float: right;
-      margin: -60px 0px 0px 0px;' (click)='requestMoney(content)'>Requset money to company admin</button>
+  <button *ngIf="!dashboardData.requestAmount.amount && dashboardData.walletAmount.amount>0"
+    class="btn btn-lg btn-primary btn-submit btn-radius pull-right" style='float: right;
+      margin: -60px 0px 0px 0px;' (click)='requestMoney(content)'>Request money to company admin</button>
   <button *ngIf="dashboardData.requestAmount.amount" class="btn btn-lg btn-primary btn-submit btn-radius pull-right"
-     style='float: right;
-        margin: -60px 0px 0px 0px;'>Already Requset money to admin {{dashboardData.requestAmount.amount | currency}}</button>
+    style='float: right;
+        margin: -60px 0px 0px 0px;'>Already Requset money to admin
+    {{dashboardData.requestAmount.amount | currency}}</button>
   <div class="row dashboard-cards my-4">
     <div class="col-md-4">
       <div class="card text-white bg-orange mb-3 h-100">
@@ -49,7 +50,7 @@
           <h2 class="card-title mb-0" *ngIf="dashboardData.activeAmount && !dashboardData.activeAmount.total">
             {{'0' | currency}}
           </h2>
-          <p class="card-text mb-0">Active Comssion</p>
+          <p class="card-text mb-0">Active Commission</p>
         </div>
       </div>
     </div>
@@ -64,7 +65,7 @@
 
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Money Requset</h4>
+    <h4 class="modal-title" id="modal-basic-title">Money Request</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>

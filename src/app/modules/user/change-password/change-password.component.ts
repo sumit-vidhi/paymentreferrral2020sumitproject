@@ -70,6 +70,7 @@ export class ChangePasswordComponent implements OnInit {
     this.loader.startLoading();
     this.userService.changepassword(formModal)
       .subscribe((res) => {
+        this.regForm1.reset();
         this.loader.stopLoading();
         if (res.status === 'success') {
           this.errormessage = "";

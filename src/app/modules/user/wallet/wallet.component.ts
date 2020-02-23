@@ -40,7 +40,7 @@ export class WalletComponent implements OnInit {
   }
 
   requestMoney(content) {
-
+    this.addCashForm.reset();
     this.modalReference = this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
     this.modalReference.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;

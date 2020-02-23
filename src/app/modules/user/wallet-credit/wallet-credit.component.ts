@@ -18,7 +18,7 @@ export class WalletCreditComponent implements OnInit {
   submitted = false;
   fromId = [];
   amount: number = 0;
-
+  theCheckbox=false;
   constructor(private formBuilder: FormBuilder, private userService: UserService,
     private router: Router, private loader: LoaderService, public loginService: JWTAuthService) {
   }
@@ -60,6 +60,23 @@ export class WalletCreditComponent implements OnInit {
         alert('Something went wrong please try again later');
       }
     })
+  }
+
+  checkAllWallet(event) {
+    if (event.target.checked) {
+      this.theCheckbox=true;
+      this.fromId = this.dashboardData.map((result) => {
+        return result.id;
+      })
+      this.amount = this.dashboardData.reduce((acc, value) => {
+        return acc + value.amount;
+      }, 0)
+    } else {
+      this.theCheckbox=false;
+      this.fromId = [];
+      this.amount = 0;
+    }
+
   }
 
 }

@@ -37,6 +37,7 @@ export class SignUpComponent implements OnInit {
     submitted = false;
     referralName: any = 'NA';
     referralId: any;
+    referralEmail: any;
     constructor(private formBuilder: FormBuilder, private authService: AuthService,
         private router: Router, private loader: LoaderService,
         private route: ActivatedRoute, ) { }
@@ -71,6 +72,7 @@ export class SignUpComponent implements OnInit {
                         if (result.status === 'success') {
                             this.referralName = result.record.firstName + ' ' + result.record.lastName;
                             this.referralId = result.record.userId;
+                            this.referralEmail = result.record.email;
                             sessionStorage.setItem("refferalName", this.referralName);
                             sessionStorage.setItem("referralId", this.referralId);
                         }
@@ -128,8 +130,16 @@ export class SignUpComponent implements OnInit {
         }
         const formData = this.registerForm.value;
         formData.referralId = 1;
+        formData.referralEmail = "";
+        formData.referralName = "";
         if (this.referralId) {
             formData.referralId = this.referralId
+        }
+        if (this.referralEmail) {
+            formData.referralEmail = this.referralEmail
+        }
+        if (this.referralName) {
+            formData.referralName = this.referralName
         }
         this.loader.startLoading();
         this.authService.register(formData).subscribe((result) => {

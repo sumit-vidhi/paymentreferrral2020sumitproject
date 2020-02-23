@@ -11,7 +11,7 @@
     <table class="table table-striped" *ngIf="dashboardData.length > 0">
         <thead>
             <tr>
-                <th><input type="checkbox"></th>
+                <th><input type="checkbox" (change)='checkAllWallet($event)'></th>
                 <th>Amount</th>
                 <th>From</th>
                 <th>Description</th>
@@ -20,7 +20,7 @@
         </thead>
         <tbody>
             <tr *ngFor='let data of dashboardData'>
-                <td><input type="checkbox" (change)='checkWallet(data.id,data.amount)'></td>
+                <td><input type="checkbox" [(ngModel)]="theCheckbox" (change)='checkWallet(data.id,data.amount)'></td>
                 <td><strong>{{data.amount | currency}}</strong></td>
                 <td>Bonus</td>
                 <td>{{data.description}} </td>
