@@ -12,13 +12,15 @@ import { ReferralsComponent } from './referrals/referrals.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { WalletCreditComponent } from './wallet-credit/wallet-credit.component';
+import { CreditCardDirectivesModule } from 'angular-cc-library';
 @NgModule({
   declarations: [EditProfileComponent, UserHeaderComponent, UserNavComponent, UserDashboardComponent, ChangePasswordComponent, PaymentSettingsComponent, ReferralsComponent, PaymentsComponent, WalletComponent, WalletCreditComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CreditCardDirectivesModule
   ],
   providers: [UserRoutingModule.providers]
 })

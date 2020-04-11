@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { LoaderService } from '@core/services/loader-service';
 import { JWTAuthService } from '@core/services/jwt-auth.service';
-
+import { CreditCardValidator } from 'angular-cc-library';
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html',
@@ -17,12 +17,18 @@ export class UserDashboardComponent implements OnInit {
   dashboardData: any;
   mmeFreeurlForm: FormGroup;
   submitted = false;
-
+  formCard: FormGroup;
+  submittedForm: boolean = false;
   constructor(private formBuilder: FormBuilder, private userService: UserService,
     private router: Router, private loader: LoaderService, public loginService: JWTAuthService) {
   }
 
   ngOnInit() {
+    this.formCard = this.formBuilder.group({
+      creditCard: ['', [<any>CreditCardValidator.validateCCNumber]],
+      expirationDate: ['', [<any>CreditCardValidator.validateExpDate]],
+      cvc: ['', [<any>Validators.required, <any>Validators.minLength(3), <any>Validators.maxLength(4)]]
+    });
     this.sendMessage = false;
     this.mmeFreeurlForm = this.formBuilder.group({
       mmeUrl: ['', [Validators.required]],
@@ -44,6 +50,11 @@ export class UserDashboardComponent implements OnInit {
         }
       }
     })
+  }
+
+  onFormSubmit() {
+    this.submittedForm = true;
+    console.log(this.formCard.value);
   }
 
   get f() { return this.mmeFreeurlForm.controls; }

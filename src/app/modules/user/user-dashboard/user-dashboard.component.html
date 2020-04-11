@@ -4,6 +4,13 @@
 
   <app-user-nav></app-user-nav>
 
+  <form [formGroup]="formCard" (ngSubmit)="onFormSubmit()" novalidate>
+    <input id="cc-number" formControlName="creditCard" type="tel" autocomplete="cc-number" ccNumber>
+    <input id="cc-exp-date" formControlName="expirationDate" type="tel" autocomplete="cc-exp" ccExp>
+    <input id="cc-cvc" formControlName="cvc" type="tel" autocomplete="off" ccCvc>
+    <button class="btn btn-lg btn-primary btn-submit btn-radius">Save Url</button>
+  </form>
+
   <h5 *ngIf='dashboardData && dashboardData.totalUser>0'>{{(dashboardData.totalUser)?dashboardData.totalUser:'0'}} Users
     are registered after your registration.</h5>
 
