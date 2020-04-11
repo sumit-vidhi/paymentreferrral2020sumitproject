@@ -38,7 +38,7 @@ export class ResetPasswordComponent implements OnInit {
         } else if (result.status === 'notActive') {
           this.status = 'notActive';
           this.data = result.record;
-          this.message = "Your email address is inactive.Please check your inbox for the  activation email.Click the link in the emailso you may activate your email address.If you do not see tthe email in ypur inbox please check uyour Sapn or Junk Folder.";
+          this.message = "Your email address is inactive please check your inbox and activate account.";
         }
         else {
           this.status = '';
@@ -52,7 +52,8 @@ export class ResetPasswordComponent implements OnInit {
       .subscribe((result) => {
         this.loader.stopLoading();
         if (result.status === 'success') {
-          this.router.navigate(['auth/thankyou']);
+          this.status = '';
+          this.message = "Your email address is inactive.Please check your inbox for the  activation email.Click the link in the emailso you may activate your email address.If you do not see tthe email in ypur inbox please check uyour Sapn or Junk Folder.";
         }
         else {
           this.status = '';
