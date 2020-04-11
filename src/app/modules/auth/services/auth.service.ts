@@ -58,4 +58,7 @@ export class AuthService {
   getReferral(code): Observable<ApiResponseModel> {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.getRefferal, code);
   }  
+  resendEmail(data): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.resendEmail, data);
+  }
 }
