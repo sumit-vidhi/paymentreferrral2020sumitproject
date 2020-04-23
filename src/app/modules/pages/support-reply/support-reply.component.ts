@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { UserService } from '@modules/user/services/user.service';
 import { Router } from '@angular/router';
@@ -21,6 +21,7 @@ export class SupportReplyComponent implements OnInit {
   status: any;
   reply: boolean = false;
   submitted = false;
+  @Output() save = new EventEmitter<boolean>();
   constructor(private formBuilder: FormBuilder, private userService: UserService,
     private router: Router, private loader: LoaderService, public loginService: JWTAuthService, public modalService: NgbModal) {
     this.userId = this.loginService.getLoginUserId();
@@ -61,7 +62,7 @@ export class SupportReplyComponent implements OnInit {
     this.userService.saveReply(data).subscribe((result) => {
       if (result.status == 'success') {
         this.loader.stopLoading();
-        this.ngOnInit();
+        this.save.emit(true);
       }
     })
   }

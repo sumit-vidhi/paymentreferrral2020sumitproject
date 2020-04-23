@@ -29,7 +29,7 @@ export class TestimonialsComponent implements OnInit {
   modalReference: NgbModalRef;
   reply: any;
   createTicket: boolean = false;
-  passData:any;
+  passData: any;
   constructor(private formBuilder: FormBuilder, private userService: UserService,
     private router: Router, private loader: LoaderService, public loginService: JWTAuthService, public modalService: NgbModal) { }
 
@@ -69,11 +69,11 @@ export class TestimonialsComponent implements OnInit {
     }
 
   }
-  
+
 
   viewSupport(data, content, view) {
 
-    this.passData=data;
+    this.passData = data;
     this.subject = data.subject;
     this.description = data.description;
     this.createdAt = data.createdAt;
@@ -146,7 +146,7 @@ export class TestimonialsComponent implements OnInit {
         this.loader.stopLoading();
         if (result.status === 'success') {
           alert("Ticket has been created successfully.");
-          this.createTicket=false;
+          this.createTicket = false;
           this.ngOnInit();
         }
       })
@@ -157,11 +157,16 @@ export class TestimonialsComponent implements OnInit {
         this.loader.stopLoading();
         if (result.status === 'success') {
           alert("Ticket has been created successfully.");
-          this.createTicket=false;
+          this.createTicket = false;
           this.ngOnInit();
         }
       })
     }
+  }
+
+  save(event) {
+    this.modalReference.close();
+    this.ngOnInit();
   }
 
 

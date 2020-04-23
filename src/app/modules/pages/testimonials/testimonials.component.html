@@ -172,7 +172,7 @@
     </div>
     <div class="modal-body">
         <div class="ticket-content mb-4">{{description}}</div>
-        <app-support-reply [supportData]='passData'></app-support-reply>
+        <app-support-reply (save)='save($event)' [supportData]='passData'></app-support-reply>
     </div>
     <!-- <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click ')">Save</button>
