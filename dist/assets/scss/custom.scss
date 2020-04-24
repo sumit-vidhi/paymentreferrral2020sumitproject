@@ -795,20 +795,25 @@ a {
 
 .ticket-card {
     margin-bottom: 2.2rem;
-    min-height: 284px;
     .created-date {
         color: #888;
         position: relative;
-        &:after {
-            content: '';
-            position: absolute;
-            height: 2px;
-            width: 35px;
-            left: 0;
-            bottom: -15px;
-            background: #ccc;
-        }
+        // &:after {
+        //     content: '';
+        //     position: absolute;
+        //     height: 2px;
+        //     width: 35px;
+        //     left: 0;
+        //     bottom: -15px;
+        //     background: #ccc;
+        // }
     }
+
+    .ticket-card-title{
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
     .replies {
         label {
             color: #888;
@@ -848,7 +853,7 @@ a {
 
 .ticket-modal {
     .modal-dialog {
-        min-width: 700px;
+        min-width: 1000px;
         .modal-header {
             .modal-title {
                 line-height: 1.2;
