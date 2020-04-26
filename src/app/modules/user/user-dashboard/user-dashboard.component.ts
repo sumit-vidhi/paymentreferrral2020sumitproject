@@ -41,6 +41,7 @@ export class UserDashboardComponent implements OnInit {
         this.dashboardData = result.record;
         const mmeUrl = this.loginService.getmmeUrl();
         const freeUrl = this.loginService.getfreeUrl();
+        debugger
         if (mmeUrl && freeUrl) {
           this.mmeFreeurlForm.controls.mmeUrl.setValue(mmeUrl);
           this.mmeFreeurlForm.controls.freeUrl.setValue(freeUrl);

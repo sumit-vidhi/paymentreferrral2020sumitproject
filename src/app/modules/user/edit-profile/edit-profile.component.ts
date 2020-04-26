@@ -27,7 +27,7 @@ export class EditProfileComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       address: ['', Validators.required],
-      address2: ['', Validators.required],
+      address2: [''],
       state: ['', Validators.required],
       city: ['', Validators.required],
       postalCode: ['', Validators.required],

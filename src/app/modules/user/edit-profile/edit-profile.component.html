@@ -91,10 +91,12 @@
             <div class="form-group">
               <label for="address_2">Address 2</label>
               <input type="text" formControlName="address2" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f.address2.errors }" />
-              <div *ngIf="submitted && f.address2.errors" class="invalid-feedback">
+                 />
+              <!-- 
+                [ngClass]="{ 'is-invalid': submitted && f.address2.errors }"
+                <div *ngIf="submitted && f.address2.errors" class="invalid-feedback">
                 <div *ngIf="f.address2.errors.required">Address2 is required</div>
-              </div>
+              </div> -->
             </div>
 
           </div>
