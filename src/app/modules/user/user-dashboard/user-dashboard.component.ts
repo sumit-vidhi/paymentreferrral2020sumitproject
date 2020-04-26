@@ -39,6 +39,7 @@ export class UserDashboardComponent implements OnInit {
       this.loader.stopLoading();
       if (result.status === 'success') {
         this.dashboardData = result.record;
+        
         const mmeUrl = this.loginService.getmmeUrl();
         const freeUrl = this.loginService.getfreeUrl();
         debugger
