@@ -26,7 +26,7 @@
                             <div class="buttons">
                                 <a href='javascript:void(0)' (click)='viewSupport(data,content,"view")'><img
                                     src="/assets/images/view-icon.svg" width="20" alt="View"> View Ticket</a>
-                                    <a *ngIf="data.status=='0'" class="ml-3" href='javascript:void(0)'
+                                    <a *ngIf="data.status=='0' && isClosed=='0'" class="ml-3" href='javascript:void(0)'
                                 (click)='viewSupport(data,content,"reply")'><img src="/assets/images/reply-icon.svg"
                                     width="20" alt="Reply"> Reply</a>
                             </div>
@@ -44,8 +44,9 @@
                                     <span class="d-block">2 Replies</span>
                                 </div> -->
                                 <div class="status">
-                                    <span class="badge badge-success" *ngIf="data.status=='0'">New</span>
-                                    <span class="badge badge-orange text-white" *ngIf="data.status=='1'">Active</span>
+                                    <span class="badge badge-success" *ngIf="data.status=='0' && data.isClosed=='0'">New</span>
+                                    <span class="badge badge-orange text-white" *ngIf="data.status=='1'  && data.isClosed=='0'">Active</span>
+                                    <span class="badge badge-orange text-white" *ngIf="data.status=='0' && data.isClosed=='1'">Closed</span>
                                 </div>
                             </div>
 

@@ -38,7 +38,7 @@ export class SupportReplyComponent implements OnInit {
     });
     const supportId = this.supportData.id;
     this.status = this.supportData.status;
-    if (this.status == 0) {
+    if (this.status == 0 && this.supportData.isClosed == 0) {
       this.reply = true;
     }
     this.loader.startLoading();
