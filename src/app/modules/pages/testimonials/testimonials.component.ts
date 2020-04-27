@@ -48,12 +48,15 @@ export class TestimonialsComponent implements OnInit {
       this.loader.stopLoading();
       if (result.status == 'success') {
         this.supportData = result.record;
-        const date1 = new Date(result.record[0].createdAt);
-        const date2 = new Date();
-        var hours = Math.abs(date1.getTime() - date2.getTime()) / 36e5;
-        if (hours < 4) {
-          this.sendSupportButton = false;
+        if (result.record.length) {
+          const date1 = new Date(result.record[0].createdAt);
+          const date2 = new Date();
+          var hours = Math.abs(date1.getTime() - date2.getTime()) / 36e5;
+          if (hours < 4) {
+            this.sendSupportButton = false;
+          }
         }
+
       }
 
     })
