@@ -45,7 +45,7 @@ export class WalletCreditComponent implements OnInit {
   }
 
   addToWallet() {
-    if (this.amount < 50) {
+    if (Number(this.amount) < 50) {
       alert("Minimum amount $50 to be added in your wallet.");
       return;
     }
