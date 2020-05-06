@@ -18,7 +18,7 @@ export class WalletCreditComponent implements OnInit {
   submitted = false;
   fromId = [];
   amount: number = 0;
-  theCheckbox=false;
+  theCheckbox = false;
   constructor(private formBuilder: FormBuilder, private userService: UserService,
     private router: Router, private loader: LoaderService, public loginService: JWTAuthService) {
   }
@@ -45,6 +45,10 @@ export class WalletCreditComponent implements OnInit {
   }
 
   addToWallet() {
+    if (this.amount < 50) {
+      alert("Minimum amount $50 to be added in your wallet.");
+      return;
+    }
     const data = {
       id: this.fromId,
       amount: this.amount
@@ -64,7 +68,7 @@ export class WalletCreditComponent implements OnInit {
 
   checkAllWallet(event) {
     if (event.target.checked) {
-      this.theCheckbox=true;
+      this.theCheckbox = true;
       this.fromId = this.dashboardData.map((result) => {
         return result.id;
       })
@@ -72,7 +76,7 @@ export class WalletCreditComponent implements OnInit {
         return acc + value.amount;
       }, 0)
     } else {
-      this.theCheckbox=false;
+      this.theCheckbox = false;
       this.fromId = [];
       this.amount = 0;
     }
