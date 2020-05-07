@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { UserService } from '@modules/user/services/user.service';
 import { Router } from '@angular/router';
@@ -14,7 +14,11 @@ import * as $ from 'jquery';
   styleUrls: ['./user-dashboard.component.scss']
 })
 export class UserDashboardComponent implements OnInit {
-
+  cardNumber: string;
+  cardHolder: string;
+  expirationMonth: string;
+  expirationYear: string;
+  ccv: number;
   public sendMessage: boolean;
   dashboardData: any;
   mmeFreeurlForm: FormGroup;
@@ -27,71 +31,6 @@ export class UserDashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    $(document).ready(function(){
-     
-      var owner = $('#owner');
-      var cardNumber = $('#cardNumber');
-      var cardNumberField = $('#card-number-field');
-      var CVV = $("#cvv");
-      var mastercard = $("#mastercard");
-      var confirmButton = $('#confirm-purchase');
-      var visa = $("#visa");
-      var amex = $("#amex");
-console.log(cardNumber);
-      // Use the payform library to format and validate
-      // the payment fields.
-
-      // cardNumber.payform('formatCardNumber');
-      //CVV.payform('formatCardCVC');
-
-
-      cardNumber.keyup(function () {
-        console.log(21211323);
-        amex.removeClass('transparent');
-        visa.removeClass('transparent');
-        mastercard.removeClass('transparent');
-
-        if ($.payform.validateCardNumber(cardNumber.val()) == false) {
-          cardNumberField.addClass('has-error');
-        } else {
-          cardNumberField.removeClass('has-error');
-          cardNumberField.addClass('has-success');
-        }
-
-        if ($.payform.parseCardType(cardNumber.val()) == 'visa') {
-          mastercard.addClass('transparent');
-          amex.addClass('transparent');
-        } else if ($.payform.parseCardType(cardNumber.val()) == 'amex') {
-          mastercard.addClass('transparent');
-          visa.addClass('transparent');
-        } else if ($.payform.parseCardType(cardNumber.val()) == 'mastercard') {
-          amex.addClass('transparent');
-          visa.addClass('transparent');
-        }
-      });
-
-      $("button").click(function (e) {
-        alert(23232);
-        e.preventDefault();
-
-        var isCardValid = $.payform.validateCardNumber(cardNumber.val());
-        var isCvvValid = $.payform.validateCardCVC(CVV.val());
-
-        if (owner.val().length < 5) {
-          alert("Wrong owner name");
-        } else if (!isCardValid) {
-          alert("Wrong card number");
-        } else if (!isCvvValid) {
-          alert("Wrong CVV");
-        } else {
-          // Everything is correct. Add your form submission code here.
-          alert("Everything is correct");
-        }
-      });
-
-
-    });
-
 
     this.formCard = this.formBuilder.group({
       creditCard: ['', [<any>CreditCardValidator.validateCCNumber]],
@@ -169,6 +108,10 @@ console.log(cardNumber);
     //     this.ngOnInit();
     //   }
     // })
+  }
+
+  processPayment(card) {
+    console.log(card);
   }
 
 }
