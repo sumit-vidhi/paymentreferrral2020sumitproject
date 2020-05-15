@@ -61,7 +61,7 @@
                             <a class="nav-link" href="javascript:void(0)" routerLink="/auth/login">Login</a>
                         </li>
                         <li class="nav-item" *ngIf='!loginService.IsAuthUser()'>
-                            <a class="btn btn-radius btn-orange" href="javascript:void(0)" routerLink="/auth/signup">Sign Up</a>
+                            <a class="btn btn-radius btn-orange" href="javascript:void(0)" routerLink="/auth/reg">Sign Up</a>
                         </li>
                     </ul>
                     <div class="dropdown user-dropdown ml-3" (click)="$event.stopPropagation()" *ngIf='loginService.IsAuthUser()'>

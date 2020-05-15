@@ -77,7 +77,7 @@ export class EditProfileComponent implements OnInit {
 
     const host = window.location.host;
 
-    return _isDev ? 'http://localhost:4200/auth/signup?referralCode=' + this.getReferralCode() : protocol + "//" + host + '/auth/signup?referralCode=' + this.getReferralCode();
+    return _isDev ? 'http://localhost:4200/auth/reg?code=' + this.getReferralCode() : protocol + "//" + host + '/auth/reg?code=' + this.getReferralCode();
   }
 
   getEmail() {
