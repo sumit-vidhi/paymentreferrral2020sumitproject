@@ -38,7 +38,8 @@
     <div class="col-md-3">
       <div class="card text-white bg-orange mb-3 h-100">
         <div class="card-body">
-          <h2 class="card-title mb-0">${{(dashboardData.commisssion)?dashboardData.commisssion:'0'}}</h2>
+          <h2 class="card-title mb-0" *ngIf="dashboardData.commisssion">{{ dashboardData.commisssion | currency }}</h2>
+          <h2 class="card-title mb-0" *ngIf="!dashboardData.commisssion">{{'0' | currency}}</h2>
           <p class="card-text mb-0">Your Earnings by Now (total Transactions)</p>
         </div>
       </div>
@@ -47,7 +48,8 @@
     <div class="col-md-3">
       <div class="card text-white bg-cyan mb-3 h-100">
         <div class="card-body">
-          <h2 class="card-title mb-0">${{(dashboardData.commisssion)?dashboardData.commisssion:'0'}}</h2>
+          <h2 class="card-title mb-0" *ngIf="dashboardData.commisssion">{{ dashboardData.commisssion | currency }}</h2>
+          <h2 class="card-title mb-0" *ngIf="!dashboardData.commisssion">{{'0' | currency}}</h2>
           <p class="card-text mb-0">Your Current Balance</p>
         </div>
       </div>
