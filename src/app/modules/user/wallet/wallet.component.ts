@@ -40,6 +40,10 @@ export class WalletComponent implements OnInit {
   }
 
   requestMoney(content) {
+    if (Number(this.dashboardData.walletAmount.amount) < 50) {
+      alert("Minimum amount $50 to be added in your wallet.");
+      return;
+    }
     this.addCashForm.reset();
     this.modalReference = this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
     this.modalReference.result.then((result) => {
