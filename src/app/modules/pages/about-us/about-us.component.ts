@@ -13,7 +13,7 @@ export class AboutUsComponent implements OnInit {
 
   ngOnInit() {
     this.loader.startLoading();
-    this.pageService.getPage({ title: 'abount-us' }).subscribe((result: any) => {
+    this.pageService.getPage({ title: 'about-us' }).subscribe((result: any) => {
       this.loader.stopLoading();
       this.data = result.record[0].body;
     })
