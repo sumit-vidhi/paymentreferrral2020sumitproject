@@ -7,74 +7,18 @@
   <h3 class="page-title mb-4">Payment Settings</h3>
 
   <div class="row">
-      <div class="col-md-5">
-  
-          <div class="form-group">
-            <label for="paymentType">Payment Type</label>
-            <select [(ngModel)]='paymentTypeSelect' name="paymentType" id="paymentType" class="form-control">
-              <option value="bank-transfer">Bank Transfer</option>
-              <option value="stripe" selected>Stripe</option>
-            </select>
-          </div>
-  
-          <div id="stripe" *ngIf="paymentTypeSelect == 'stripe'">
-              <div class="form-group">
-                <label for="nameOnCard">Name on Card</label>
-                <input type="text" class="form-control" id="nameOnCard">          
-              </div>
-              <div class="form-group">
-                <label>Card Number</label>
-                <div class="row">
-                  <div class="col">                  
-                    <input type="text" class="form-control" minlength="4" maxlength="4">
-                  </div>
-                  <div class="col">                  
-                    <input type="text" class="form-control" minlength="4" maxlength="4">
-                  </div>
-                  <div class="col">                  
-                    <input type="text" class="form-control" minlength="4" maxlength="4">
-                  </div>
-                  <div class="col">                  
-                    <input type="text" class="form-control" minlength="4" maxlength="4">
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                  <label>Expiration Date</label>
-                  <div class="input-group">            
-                      <input type="text" class="form-control">
-                      <div class="input-group-append">
-                        <div class="input-group-text">
-                            <svg 
-                            xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                            width="19px" height="21px">
-                           <path fill-rule="evenodd"  fill="rgb(51, 51, 51)"
-                            d="M4.872,14.993 L9.888,14.993 L9.888,9.978 L4.872,9.978 L4.872,14.993 ZM2.903,18.978 L2.903,8.009 L16.872,8.009 L16.872,18.978 L2.903,18.978 ZM15.888,2.993 L15.888,0.978 L13.872,0.978 L13.872,2.993 L5.903,2.993 L5.903,0.978 L3.888,0.978 L3.888,2.993 L2.903,2.993 C2.341,2.993 1.864,3.197 1.474,3.603 C1.083,4.009 0.888,4.478 0.888,5.009 L0.888,18.978 C0.888,19.509 1.083,19.978 1.474,20.384 C1.864,20.790 2.341,20.993 2.903,20.993 L16.872,20.993 C17.403,20.993 17.872,20.790 18.278,20.384 C18.684,19.978 18.888,19.509 18.888,18.978 L18.888,5.009 C18.888,4.478 18.684,4.009 18.278,3.603 C17.872,3.197 17.403,2.993 16.872,2.993 L15.888,2.993 Z"/>
-                           </svg>
-                        </div>
-                      </div>
-                    </div>        
-              </div>
-              <div class="form-group">
-                <label for="accountType">Type</label>
-                <select name="accountType" id="accountType" class="form-control">
-                  <option value="individual" selected>Individual</option>
-                  <option value="corporation">Corporation</option>
-                </select>
-              </div>
-          </div>
+    <div class="col-md-5">
 
-          <div id="bank-transfer"  *ngIf="paymentTypeSelect == 'bank-transfer'">
-              <div class="form-group">
-                <label for="nameOnCard">Details</label>
-                <textarea name="" id="" rows="3" class="form-control"></textarea>
-              </div>
+      <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+        <div id="bank-transfer">
+          <div class="form-group">
+            <label for="nameOnCard">Details</label>
+            <textarea formControlName="details" rows="3" class="form-control"></textarea>
           </div>
-  
-          <a href="javascript:void(0)" class="btn btn-success btn-radius mt-3">Save Details</a>
-  
-      </div>
+        </div>
+        <button type="submit" class="btn btn-success btn-radius mt-3">Save Details</button>
+      </form>
     </div>
+  </div>
 
 </div>

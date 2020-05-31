@@ -35,6 +35,8 @@ export const appApiUrl: CommonBase = {
         imageUpload: 'user/imageUpload',
         getWalletData: 'user/getWalletData',
         getWalletCredit: 'user/getWalletCredit',
+        getPayment: 'user/getPayment',
+        savePayment:'user/savePayment',
         addWalletCredit: 'user/addWalletCredit',
         addCash: 'user/addCash',
         resendEmail: 'user/resendEmail'
@@ -43,6 +45,7 @@ export const appApiUrl: CommonBase = {
         getBlog: 'user/getBlog',
         getUrl: 'user/getUrl',
         getBlogById: 'user/getBlogById',
-        getBlogPage: 'user/getBlogPage'
+        getBlogPage: 'user/getBlogPage',
+        getVisitiorTrafficPage: 'user/getVisitiorTrafficPage',
     }
 };

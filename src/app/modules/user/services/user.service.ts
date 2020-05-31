@@ -34,6 +34,9 @@ export class UserService {
   getProfile(): Observable<ApiResponseModel> {
     return this.commonHttp.get<ApiResponseModel>(appApiUrl.auth.getdata);
   }
+  getPayment(): Observable<ApiResponseModel> {
+    return this.commonHttp.get<ApiResponseModel>(appApiUrl.auth.getPayment);
+  }
 
   getdashboardData(): Observable<ApiResponseModel> {
     return this.commonHttp.get<ApiResponseModel>(appApiUrl.auth.getdashboradData);
@@ -56,6 +59,9 @@ export class UserService {
 
   changepassword(data): Observable<ApiResponseModel> {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.updatePassword, data);
+  }
+  savePayment(data): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.savePayment, data);
   }
 
   addWalletCredit(data): Observable<ApiResponseModel> {

@@ -128,7 +128,7 @@ export class EditProfileComponent implements OnInit {
       this.userService.editProfile(formdata).subscribe((result) => {
         this.loader.stopLoading();
         if (result.status === 'success') {
-          alert("You need to login after 24 hours so that your sponser get paid.");
+         // alert("You need to login after 24 hours so that your sponser get paid.");
           result.record.authToken = result.record.accessToken;
           this.loginService.setLoginUserDetail(result.record);
         }
