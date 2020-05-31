@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LoaderService } from '@core/services/loader-service';
+import { PageService } from '@modules/pages/services/page.service';
 @Component({
   selector: 'app-about-us',
   templateUrl: './about-us.component.html',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutUsComponent implements OnInit {
 
-  constructor() { }
+  data: any;
+  constructor(private pageService: PageService, private loader: LoaderService) { }
 
   ngOnInit() {
+    this.loader.startLoading();
+    this.pageService.getPage({ title: 'abount-us' }).subscribe((result: any) => {
+      this.loader.stopLoading();
+      this.data = result.record[0].body;
+    })
   }
 
 }
