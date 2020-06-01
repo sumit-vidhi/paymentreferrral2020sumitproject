@@ -12,6 +12,7 @@ import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@shared/shared.module';
 import { SupportReplyComponent } from './support-reply/support-reply.component';
+import { NgPaymentCardModule } from 'ng-payment-card';
 @NgModule({
   declarations: [HomeComponent, DmcaPolicyComponent, PrivacyPolicyComponent, TermsOfUseComponent, FaqComponent, AboutUsComponent, VisitorsTrafficComponent, TestimonialsComponent, SupportReplyComponent],
   imports: [
@@ -19,7 +20,8 @@ import { SupportReplyComponent } from './support-reply/support-reply.component';
     PagesRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    NgPaymentCardModule
   ],
   providers: [PagesRoutingModule.providers],
   exports:[SharedModule]

@@ -13,7 +13,6 @@ import { PaymentsComponent } from './payments/payments.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { WalletCreditComponent } from './wallet-credit/wallet-credit.component';
 import { CreditCardDirectivesModule } from 'angular-cc-library';
-import { NgPaymentCardModule } from 'ng-payment-card';
 @NgModule({
   declarations: [EditProfileComponent, UserHeaderComponent, UserNavComponent, UserDashboardComponent, ChangePasswordComponent, PaymentSettingsComponent, ReferralsComponent, PaymentsComponent, WalletComponent, WalletCreditComponent],
   imports: [
@@ -21,8 +20,7 @@ import { NgPaymentCardModule } from 'ng-payment-card';
     UserRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    CreditCardDirectivesModule,
-    NgPaymentCardModule
+    CreditCardDirectivesModule
   ],
   providers: [UserRoutingModule.providers]
 })

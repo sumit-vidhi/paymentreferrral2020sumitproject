@@ -7,7 +7,7 @@
   <h3 class="page-title mb-4">Wallet</h3>
   <button *ngIf="dashboardData && !dashboardData.requestAmount.amount && dashboardData.walletAmount.amount>0"
     class="btn btn-lg btn-primary btn-submit btn-radius pull-right" style='float: right;
-      margin: -60px 0px 0px 0px;' (click)='requestMoney(content)'>Request money to company admin</button>
+      margin: -60px 0px 0px 0px;' (click)='requestMoney(content)'>Request your funds</button>
   <button *ngIf="dashboardData && dashboardData.requestAmount && dashboardData.requestAmount.amount" class="btn btn-lg btn-primary btn-submit btn-radius pull-right"
     style='float: right;
         margin: -60px 0px 0px 0px;'>Already Requset money to admin

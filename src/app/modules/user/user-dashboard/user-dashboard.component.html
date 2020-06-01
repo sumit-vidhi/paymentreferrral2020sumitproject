@@ -40,7 +40,7 @@
         <div class="card-body">
           <h2 class="card-title mb-0" *ngIf="dashboardData.commisssion">{{ dashboardData.commisssion | currency }}</h2>
           <h2 class="card-title mb-0" *ngIf="!dashboardData.commisssion">{{'0' | currency}}</h2>
-          <p class="card-text mb-0">Your Earnings by Now (total Transactions)</p>
+          <p class="card-text mb-0">Total earnings to-date (total Transactions)</p>
         </div>
       </div>
     </div>
@@ -74,14 +74,13 @@
         <tbody>
           <tr>
             <td>{{dashboardData.userData.type}}</td>
-            <td>${{(dashboardData.userData.type=='basic')?'0':'17'}}</td>
+            <td>${{(dashboardData.userData.type=='free')?'0':'19.97'}}</td>
             <th><span class="text-success">Active</span></th>
           </tr>
         </tbody>
       </table>
       <!-- <a href="javascript:void(0)" class="btn btn-primary btn-radius">Upgrade to VIP Marketer</a> -->
-      <a href="javascript:void(0)" *ngIf="loginService.getPlan()=='basic'" (click)='buyMoneyPlugin(content)'
-        class="btn btn-success btn-radius ml-3">Buy Money Plugin ($17)</a>
+     
     </div>
   </div>
 
@@ -241,24 +240,3 @@
 </div>
 
 
-<ng-template #content let-modal>
-
-  <div class="modal fade show" style="display:block;">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-
-          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click ')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <ng-payment-card (formSaved)="processPayment(cc)"></ng-payment-card>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click ')">Save</button>
-    </div> -->
-</ng-template>
