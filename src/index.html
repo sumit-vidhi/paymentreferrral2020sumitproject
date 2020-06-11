@@ -8,11 +8,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/assets/jquery.payform.min.js" charset="utf-8"></script>
     <script src="/assets/script.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
 </head>
 
 <body>
@@ -21,5 +23,35 @@
         Loading...
     </app-root>
 </body>
+<script>
+    window.cookieconsent.initialise({
+        container: document.getElementById("cookieconsent"),
+        palette: {
+            popup: { background: "#1aa3ff" },
+            button: { background: "#e0e0e0" },
+        },
+        revokable: true,
+        onStatusChange: function (status) {
+            console.log(this.hasConsented() ?
+                'enable cookies' : 'disable cookies');
+        },
+        "position": "bottom-left",
+        "theme": "classic",
+        "domain": "http://staging.guaranteedownlineclub.com/",
+        "secure": true,
+        "content": {
+            "header": 'Cookies used on the website!',
+            "message": 'This website uses cookies to improve your experience.',
+            "dismiss": 'Got it!',
+            "allow": 'Allow cookies',
+            "deny": 'Decline',
+            "link": 'Learn more',
+            "href": 'https://www.cookiesandyou.com',
+            "close": '&#x274c;',
+            "policy": 'Cookie Policy',
+            "target": '_blank',
+        }
+    });
+</script>
 
 </html>

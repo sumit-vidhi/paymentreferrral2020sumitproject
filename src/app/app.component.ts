@@ -12,6 +12,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { JWTAuthService } from './core/services/jwt-auth.service';
 
+
 interface User {
   userId: number;
   id: number;
@@ -48,6 +49,10 @@ export class AppComponent implements OnInit {
       }
       window.scrollTo(0, 0)
     });
-
+    this.authService.getSetting().subscribe((data: any) => {
+      if (data) {
+        window.localStorage.setItem("emailDomain", data.record.emailRestrict);
+      }
+    })
   }
 }

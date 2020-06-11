@@ -4,6 +4,8 @@ import { AuthService } from '@modules/auth/services/auth.service';
 import { map } from 'rxjs/operators';
 import { LoaderService } from '@core/services/loader-service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { IpServiceService } from './ip-service.service';
+
 // custom validator to check that two fields match
 function MustMatch(controlName: string, matchingControlName: string) {
     return (formGroup: FormGroup) => {
@@ -38,9 +40,10 @@ export class SignUpComponent implements OnInit {
     referralName: any = 'NA';
     referralId: any;
     referralEmail: any;
+    ipAddress: any;
     constructor(private formBuilder: FormBuilder, private authService: AuthService,
         private router: Router, private loader: LoaderService,
-        private route: ActivatedRoute, ) { }
+        private route: ActivatedRoute, private ip: IpServiceService) { }
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
@@ -57,6 +60,13 @@ export class SignUpComponent implements OnInit {
         });
 
         this.checkReferralCode();
+        this.getIP();
+    }
+
+    getIP() {
+        this.ip.getIPAddress().subscribe((res: any) => {
+            this.ipAddress = res.ip;
+        });
     }
 
     checkReferralCode() {
@@ -128,6 +138,15 @@ export class SignUpComponent implements OnInit {
         if (this.registerForm.invalid) {
             return;
         }
+        const emailDomain = window.localStorage.getItem("emailDomain");
+        if (emailDomain) {
+            const keyEmail = this.registerForm.value.email.split("@");
+            const index = emailDomain.indexOf("@" + keyEmail[1]);
+            if (index == -1) {
+                alert("That only" + emailDomain + " related emails are allowed for now.");
+                return;
+            }
+        }
         const formData = this.registerForm.value;
         formData.referralId = 1;
         formData.referralEmail = "";
@@ -141,6 +160,7 @@ export class SignUpComponent implements OnInit {
         if (this.referralName) {
             formData.referralName = this.referralName
         }
+        formData.ipAddress = this.ipAddress;
         this.loader.startLoading();
         this.authService.register(formData).subscribe((result) => {
             this.loader.stopLoading();

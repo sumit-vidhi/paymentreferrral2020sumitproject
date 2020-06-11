@@ -61,4 +61,7 @@ export class AuthService {
   resendEmail(data): Observable<ApiResponseModel> {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.resendEmail, data);
   }
+  getSetting(): Observable<ApiResponseModel> {
+    return this.commonHttp.get<ApiResponseModel>(appApiUrl.auth.getSetting);
+  }
 }

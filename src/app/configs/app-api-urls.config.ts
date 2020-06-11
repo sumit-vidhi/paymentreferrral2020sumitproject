@@ -36,10 +36,11 @@ export const appApiUrl: CommonBase = {
         getWalletData: 'user/getWalletData',
         getWalletCredit: 'user/getWalletCredit',
         getPayment: 'user/getPayment',
-        savePayment:'user/savePayment',
+        savePayment: 'user/savePayment',
         addWalletCredit: 'user/addWalletCredit',
         addCash: 'user/addCash',
-        resendEmail: 'user/resendEmail'
+        resendEmail: 'user/resendEmail',
+        getSetting: 'user/getSetting'
     },
     blog: {
         getBlog: 'user/getBlog',
