@@ -1,13 +1,16 @@
 <div class="home-container">
-    <a href="javascript:void(0)" *ngIf="loginService.getPlan()=='Free'" (click)='buyMoneyPlugin(content)'
-        class="btn btn-success btn-radius ml-3">Buy the money plugin ($19.97)</a>
+    
     <div class="container">
 
         <div class="welcome-section p-5">
 
             <h1 class="text-center">Visitiors Traffic</h1>
 
-            <p class="text-center" [innerHtml]="data"></p>
+            <div class="pages-data" [innerHtml]="data"></div>
+
+            <div *ngIf="loginService.getPlan()=='Free'" class="mt-5 text-center">
+                <a href="javascript:void(0)" (click)='buyMoneyPlugin(content)' class="btn btn-lg btn-success btn-radius ml-3">Buy the money plugin ($19.97)</a>
+            </div>
 
         </div>
 
@@ -16,11 +19,11 @@
 </div>
 <ng-template #content let-modal>
 
-    <div class="modal fade show" style="display:block;">
+    <div class="modal fade show payment-modal" style="display:block;">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-
+                    Buy the money plugin ($19.97)
                     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click ')">
                         <span aria-hidden="true">&times;</span>
                     </button>
