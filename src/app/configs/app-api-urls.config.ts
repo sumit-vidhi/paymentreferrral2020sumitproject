@@ -40,7 +40,8 @@ export const appApiUrl: CommonBase = {
         addWalletCredit: 'user/addWalletCredit',
         addCash: 'user/addCash',
         resendEmail: 'user/resendEmail',
-        getSetting: 'user/getSetting'
+        getSetting: 'user/getSetting',
+        payment:'user/payment'
     },
     blog: {
         getBlog: 'user/getBlog',

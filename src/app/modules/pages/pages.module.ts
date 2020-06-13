@@ -12,9 +12,11 @@ import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@shared/shared.module';
 import { SupportReplyComponent } from './support-reply/support-reply.component';
+import { PaymentCardNumberPipe } from './visitors-traffic/pipe/payment-card-number/payment-card-number.pipe';
+import { ValidThruPipe } from './visitors-traffic/pipe/valid-thru/valid-thru.pipe';
 import { NgPaymentCardModule } from 'ng-payment-card';
 @NgModule({
-  declarations: [HomeComponent, DmcaPolicyComponent, PrivacyPolicyComponent, TermsOfUseComponent, FaqComponent, AboutUsComponent, VisitorsTrafficComponent, TestimonialsComponent, SupportReplyComponent],
+  declarations: [ValidThruPipe,PaymentCardNumberPipe,HomeComponent, DmcaPolicyComponent, PrivacyPolicyComponent, TermsOfUseComponent, FaqComponent, AboutUsComponent, VisitorsTrafficComponent, TestimonialsComponent, SupportReplyComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
