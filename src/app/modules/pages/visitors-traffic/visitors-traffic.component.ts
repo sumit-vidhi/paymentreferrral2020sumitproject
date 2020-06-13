@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoaderService } from '@core/services/loader-service';
 import { PageService } from '@modules/pages/services/page.service';
+import { UserService } from '@modules/user/services/user.service';
 import { JWTAuthService } from '@core/services/jwt-auth.service';
 import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
@@ -12,7 +13,7 @@ import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-boo
 export class VisitorsTrafficComponent implements OnInit {
   data: any;
   modalReference: NgbModalRef;
-  constructor(private pageService: PageService, public modalService: NgbModal, private loader: LoaderService, public loginService: JWTAuthService) { }
+  constructor(private pageService: PageService, private userService: UserService, public modalService: NgbModal, private loader: LoaderService, public loginService: JWTAuthService) { }
 
   ngOnInit() {
     this.loader.startLoading();
@@ -30,18 +31,22 @@ export class VisitorsTrafficComponent implements OnInit {
 
 
   buyMoneyPlugin(content) {
-    this.open(content);
+    // this.open(content);
 
-    // this.loader.startLoading();
-    // const userId = this.loginService.getLoginUserId();
-    // this.userService.buyPlugin({ userId: userId }).subscribe((result) => {
-    //   this.loader.stopLoading();
-    //   if (result.status === 'success') {
-    //     result.record.authToken = result.record.accessToken;
-    //     this.loginService.setLoginUserDetail(result.record);
-    //     this.ngOnInit();
-    //   }
-    // })
+    this.loader.startLoading();
+    const userId = this.loginService.getLoginUserId();
+    this.userService.buyPlugin({ userId: userId }).subscribe((result) => {
+      this.loader.stopLoading();
+      if (result.status === 'success') {
+        result.record.authToken = result.record.accessToken;
+        this.loginService.setLoginUserDetail(result.record);
+        this.ngOnInit();
+      }
+    })
+  }
+
+  processPayment(event) {
+    console.log(event);
   }
 
 }
