@@ -41,8 +41,8 @@ export class BlogComponent implements OnInit {
       if (result.status == 'success') {
         this.blogData = result.record;
         this.blogData = this.blogData.map(result => {
-          result.description = result.description.replace("{{MME_URL}}", this.mmeUrl);
-          result.description = result.description.replace("{{FREE_URL}}", this.freeUrl);
+          result.description = result.description.replace("{{MME_URL}}", '<a class="btn btn-lg btn-orange" target="_blank" href="'+this.mmeUrl+'" />'+ 'Join Make Money Even Now</a>');
+          result.description = result.description.replace("{{FREE_URL}}", '<a class="btn btn-lg btn-orange" target="_blank" href="'+this.freeUrl+'" />'+ 'Get Your Free Lead System</a>');
           return result;
         })
       }

@@ -43,6 +43,9 @@
                         <li class="nav-item" routerLinkActive="active">
                             <a class="nav-link" routerLink="/visitors-traffic">Visitors/Traffic</a>
                         </li>
+                        <li class="nav-item" routerLinkActive="active">
+                            <a class="nav-link" routerLink="/blog/money-plugin">Money Plugin</a>
+                        </li>
                         <li class="nav-item" routerLinkActive="active" *ngIf='loginService.IsAuthUser()'>
                             <a class="nav-link" routerLink="/support">Support</a>
                         </li>
@@ -54,7 +57,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item" routerLinkActive="active">
+                        <li class="nav-item" >
                             <a class="nav-link" routerLink="/blog">Blog</a>
                         </li>
                         <li class="nav-item" routerLinkActive="active" *ngIf='!loginService.IsAuthUser()'>
