@@ -19,6 +19,7 @@ export class WalletCreditComponent implements OnInit {
   fromId = [];
   amount: number = 0;
   theCheckbox = false;
+  selectedAll = false;
   constructor(private formBuilder: FormBuilder, private userService: UserService,
     private router: Router, private loader: LoaderService, public loginService: JWTAuthService) {
   }
@@ -45,6 +46,7 @@ export class WalletCreditComponent implements OnInit {
   }
 
   addToWallet() {
+    console.log(this.amount);
     if (Number(this.amount) < 50) {
       alert("Minimum amount $50 to be added in your wallet.");
       return;
@@ -53,29 +55,32 @@ export class WalletCreditComponent implements OnInit {
       id: this.fromId,
       amount: this.amount
     }
-    this.userService.addWalletCredit(data).subscribe((result) => {
-      this.loader.stopLoading();
-      if (result.status === 'success') {
-        alert("Wallet Updated");
-        this.amount = 0;
-        this.fromId = [];
-        this.ngOnInit();
-      } else {
-        alert('Something went wrong please try again later');
-      }
-    })
+
+    // this.userService.addWalletCredit(data).subscribe((result) => {
+    //   this.loader.stopLoading();
+    //   if (result.status === 'success') {
+    //     alert("Wallet Updated");
+    //     this.amount = 0;
+    //     this.fromId = [];
+    //     this.ngOnInit();
+    //   } else {
+    //     alert('Something went wrong please try again later');
+    //   }
+    // })
   }
 
   checkAllWallet(event) {
     if (event.target.checked) {
+      this.selectedAll = true;
       this.theCheckbox = true;
       this.fromId = this.dashboardData.map((result) => {
         return result.id;
       })
       this.amount = this.dashboardData.reduce((acc, value) => {
-        return acc + value.amount;
+        return Number(acc) + Number(value.amount);
       }, 0)
     } else {
+      this.selectedAll = false;
       this.theCheckbox = false;
       this.fromId = [];
       this.amount = 0;

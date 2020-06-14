@@ -19,8 +19,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor='let data of dashboardData'>
-                <td><input type="checkbox" [(ngModel)]="theCheckbox" (change)='checkWallet(data.id,data.amount)'></td>
+            <tr *ngFor='let data of dashboardData let i=index;'>
+                <td><input [checked]="selectedAll" type="checkbox" [(ngModel)]="theCheckbox[i]" [name]="i"
+                        (change)='checkWallet(data.id,data.amount)'></td>
                 <td><strong>{{data.amount | currency}}</strong></td>
                 <td>Bonus</td>
                 <td>{{data.description}} </td>
