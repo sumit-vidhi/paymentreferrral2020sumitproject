@@ -56,17 +56,17 @@ export class WalletCreditComponent implements OnInit {
       amount: this.amount
     }
 
-    // this.userService.addWalletCredit(data).subscribe((result) => {
-    //   this.loader.stopLoading();
-    //   if (result.status === 'success') {
-    //     alert("Wallet Updated");
-    //     this.amount = 0;
-    //     this.fromId = [];
-    //     this.ngOnInit();
-    //   } else {
-    //     alert('Something went wrong please try again later');
-    //   }
-    // })
+    this.userService.addWalletCredit(data).subscribe((result) => {
+      this.loader.stopLoading();
+      if (result.status === 'success') {
+        alert("Wallet Updated");
+        this.amount = 0;
+        this.fromId = [];
+        this.ngOnInit();
+      } else {
+        alert('Something went wrong please try again later');
+      }
+    })
   }
 
   checkAllWallet(event) {

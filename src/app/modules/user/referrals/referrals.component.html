@@ -61,14 +61,14 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Email</th>
+                                <!-- <th>Email</th> -->
                                 <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor='let data of referalData.passreferral_info'>
                                 <td>{{data.firstName}} {{data.lastName}}</td>
-                                <td>{{data.email}}</td>
+                                <!-- <td>{{data.email}}</td> -->
                                 <th><span class="text-success">{{(data.status=='1')?'Active':'Pending'}}</span></th>
                             </tr>
                         </tbody>
