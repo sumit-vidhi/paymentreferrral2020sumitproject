@@ -8,6 +8,8 @@ pipelines:
           - node
         script:
           - ls -al
+  branches:
+   master:
     - step:
         name: Deploy artifacts using SCP to PROD
         deployment: production
@@ -16,5 +18,19 @@ pipelines:
             variables:
               USER: $user
               SERVER: $ip
-              REMOTE_PATH: '/var/club/front/dist'
+              REMOTE_PATH: '/var/club/prod/front/dist'
               LOCAL_PATH: './dist/*'
+
+  branches:
+   staging:
+    - step:
+        name: Deploy artifacts using SCP to PROD
+        deployment: production
+        script:
+          - pipe: atlassian/scp-deploy:0.3.3
+            variables:
+              USER: $user
+              SERVER: $ip
+              REMOTE_PATH: '/var/club/staging/front/dist'
+              LOCAL_PATH: './dist/*'
+
