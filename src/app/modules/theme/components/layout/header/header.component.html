@@ -41,17 +41,24 @@
                         <li class="nav-item" routerLinkActive="active">
                             <a class="nav-link" routerLink="/about-us">About Us</a>
                         </li>
+
                         <li class="nav-item" routerLinkActive="active">
-                            <a class="nav-link" routerLink="/visitors-traffic">Visitors/Traffic</a>
+                            <a class="nav-link" routerLink="/blog/visitors-traffic">Visitors/Traffic</a>
                         </li>
                         <li class="nav-item" routerLinkActive="active">
-                            <a class="nav-link" routerLink="/blog/money-plugin">Money Plugin</a>
+                            <a class="nav-link" routerLink="/money-plugin">Money Plugin</a>
                         </li>
                         <li class="nav-item" routerLinkActive="active" *ngIf='loginService.IsAuthUser()'>
                             <a class="nav-link" routerLink="/support">Support</a>
                         </li>
+                        <ng-container *ngIf='blogMainPage && blogMainPage.length>0'>
+                            <li class="nav-item" *ngFor='let data of  blogMainPage' routerLinkActive="active">
+                                <a class="nav-link" routerLink="/blog/{{data.blogslug}}">{{data.title}}</a>
+                            </li>
+                        </ng-container>
+
                         <li class="nav-item" *ngIf='blogPage && blogPage.length>0'>
-                            <a class="nav-link" href="javascript:void(0)">Downline</a>
+                            <a class="nav-link" href="javascript:void(0)">More Money</a>
                             <ul class="sub-items">
                                 <li class="nav-item" *ngFor='let data of  blogPage' routerLinkActive="active">
                                     <a class="nav-link" routerLink="/blog/{{data.blogslug}}">{{data.title}}</a>
@@ -65,8 +72,7 @@
                             <a class="nav-link" href="javascript:void(0)" routerLink="/auth/login">Login</a>
                         </li>
                         <li class="nav-item" *ngIf='!loginService.IsAuthUser() && urlCode'>
-                            <a class="btn btn-radius btn-orange" href="javascript:void(0)"
-                               (click)="goSignup()">Sign
+                            <a class="btn btn-radius btn-orange" href="javascript:void(0)" (click)="goSignup()">Sign
                                 Up</a>
                         </li>
                         <li class="nav-item" *ngIf='!loginService.IsAuthUser() && !urlCode'>

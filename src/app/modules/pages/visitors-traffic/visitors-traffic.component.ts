@@ -166,7 +166,7 @@ export class VisitorsTrafficComponent implements OnInit {
 
 
     this.loader.startLoading();
-    this.pageService.getPage({ title: 'visitors-traffic' }).subscribe((result: any) => {
+    this.pageService.getPage({ title: 'money-plugin' }).subscribe((result: any) => {
       this.loader.stopLoading();
       this.data = result.record[0].body;
     })

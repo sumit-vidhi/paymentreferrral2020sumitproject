@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit {
   code: any = "";
   image: any = '/assets/images/defaultProfile.jpg';
   urlCode: any = '';
+  blogMainPage: any = [];
   constructor(public loginService: JWTAuthService, private route: ActivatedRoute, private loader: LoaderService, public _router: Router,
     public userservice: UserService) {
   }
@@ -66,7 +67,12 @@ export class HeaderComponent implements OnInit {
       plan = this.loginService.getPlan();
     }
     this.userservice.getBlogPage({ plan: plan }).subscribe((result) => {
-      this.blogPage = result.record;
+      this.blogPage = result.record.filter((data) => {
+        return data.is_featured == "1";
+      });
+      this.blogMainPage = result.record.filter((data) => {
+        return data.is_featured == "0";
+      });
     })
     this.loader.blogData.subscribe((value) => {
       this.blogPage = value;
