@@ -96,7 +96,7 @@ export class UserHeaderComponent implements OnInit {
 
     const host = window.location.host;
 
-    return _isDev ? 'http://localhost:4200/auth/reg?code=' + this.getReferralCode() : protocol + "//" + host + '/auth/reg?code=' + this.getReferralCode();
+    return _isDev ? 'http://localhost:4200/home?code=' + this.getReferralCode() : protocol + "//" + host + '/home?code=' + this.getReferralCode();
   }
 
   private getReferralCode() {

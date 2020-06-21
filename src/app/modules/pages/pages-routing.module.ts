@@ -18,6 +18,10 @@ const routes: Routes = [
     data: { title: 'Home' }
   },
   {
+    path: 'home', component: HomeComponent,
+    data: { title: 'Home' }
+  },
+  {
     path: 'dmca-policy', component: DmcaPolicyComponent,
     data: { title: 'Digital Millennium Copyright Act Policy' }
   },
