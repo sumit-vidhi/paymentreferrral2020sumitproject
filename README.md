@@ -1,6 +1,6 @@
 # Angular 7 Boilerplate
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1. The purpose of this project is to demonstrate the Angular 7 best practices for directory structure and organization of code.
+This pproject was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1. The purpose of this project is to demonstrate the Angular 7 best practices for directory structure and organization of code.
 
 1. Overview
 
