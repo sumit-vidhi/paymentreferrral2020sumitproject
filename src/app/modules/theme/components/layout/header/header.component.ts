@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
   code: any = "";
   image: any = '/assets/images/defaultProfile.jpg';
   urlCode: any = '';
-  blogMainPage: any = [];
+  blogMainPage: any = []; 
   constructor(public loginService: JWTAuthService, private route: ActivatedRoute, private loader: LoaderService, public _router: Router,
     public userservice: UserService) {
   }

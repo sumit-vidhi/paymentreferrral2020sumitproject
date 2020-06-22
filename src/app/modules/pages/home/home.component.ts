@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Observable, interval } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { JWTAuthService } from '@core/services/jwt-auth.service';
+import { LoaderService } from '@core/services/loader-service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -18,7 +22,9 @@ export class HomeComponent implements OnInit {
 
   private _seconds: number;
   commingSoon = false;
-  constructor() {
+  code: any = "";
+  urlCode: any = '';
+  constructor(public loginService: JWTAuthService, private route: ActivatedRoute, private loader: LoaderService, public _router: Router) {
 
   }
 
@@ -37,6 +43,9 @@ export class HomeComponent implements OnInit {
         this.commingSoon = true;
       }
     });
+    this.urlCode = "";
+    this.code = "";
+    this.checkReferralCode();
   }
 
   getDays(t) {
@@ -53,6 +62,24 @@ export class HomeComponent implements OnInit {
 
   getSeconds(t) {
     return Math.floor((t / 1000) % 60);
+  }
+
+  checkReferralCode() {
+    this.route.queryParams
+      .subscribe(params => {
+        console.log(params);
+        var size = Object.keys(params).length;
+        console.log(size)
+        if (size === 1) {
+          this.code = params;
+          console.log(this.code);
+          this.urlCode = "?code=" + this.code.code;
+        }
+
+      })
+  }
+  goSignup() {
+    this._router.navigate(['/auth/reg'], { queryParams: { code: this.code.code } })
   }
 
 }

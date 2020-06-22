@@ -110,7 +110,11 @@
                     <h3>Making money online can be extremely hard when you try to go it alone. You need help from people
                         who know what to do and you need to be in an environment where Everyone Is Guaranteed To Make
                         Money.</h3>
-                    <a routerLink="auth/reg" href="javascript:void(0)" class="btn btn-lg btn-radius btn-orange mt-4">Get
+                    <a *ngIf='!loginService.IsAuthUser() && !urlCode' routerLink="auth/reg" href="javascript:void(0)"
+                        class="btn btn-lg btn-radius btn-orange mt-4">Get
+                        Started</a>
+                    <a *ngIf='!loginService.IsAuthUser() && urlCode' (click)="goSignup()" href=" javascript:void(0)"
+                        class="btn btn-lg btn-radius btn-orange mt-4">Get
                         Started</a>
 
                     <!-- <div class="bgimg">

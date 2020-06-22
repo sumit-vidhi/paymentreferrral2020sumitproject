@@ -46,9 +46,12 @@
                         online from your very first day, then this is the club for you. Join the GDLC with us NOW and
                         start making money TODAY!</p>
 
-                    <a href="javascript:void(0)" routerLink="auth/reg" class="btn btn-lg btn-radius btn-orange">Join
+                    <a href="javascript:void(0)" *ngIf='!loginService.IsAuthUser() && !urlCode' routerLink="auth/reg"
+                        class="btn btn-lg btn-radius btn-orange">Join
                         Free Now</a>
-
+                    <a href="javascript:void(0)" *ngIf='!loginService.IsAuthUser() && urlCode' (click)="goSignup()"
+                        class="btn btn-lg btn-radius btn-orange">Join
+                        Free Now</a>
                 </div>
 
             </div>
@@ -194,10 +197,17 @@
     <div class="get-started-section">
         <div class="text-center">
             <h2>Easy Start. More Earning. Better Business.</h2>
-            <a href="javascript:void(0)" routerLink="auth/reg" class="btn btn-lg btn-orange">
+            <a href="javascript:void(0)" *ngIf='!loginService.IsAuthUser() && !urlCode' routerLink="auth/reg"
+                class="btn btn-lg btn-orange">
                 <strong>Get Started Now!</strong>
                 <div>No Credit Card Required</div>
             </a>
+            <a href="javascript:void(0)" *ngIf='!loginService.IsAuthUser() && urlCode' (click)="goSignup()"
+                class="btn btn-lg btn-orange">
+                <strong>Get Started Now!</strong>
+                <div>No Credit Card Required</div>
+            </a>
+
         </div>
     </div>
 
