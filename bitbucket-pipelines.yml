@@ -7,13 +7,6 @@ pipelines:
         caches:
           - node
         script:
-          - ls -al
-  branches:
-   master:
-    - step:
-        name: Deploy artifacts using SCP to PROD
-        deployment: production
-        script:
           - pipe: atlassian/scp-deploy:0.3.3
             variables:
               USER: $user
