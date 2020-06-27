@@ -48,15 +48,23 @@ export class UserDashboardComponent implements OnInit {
       if (result.status === 'success') {
         this.dashboardData = result.record;
 
-        const mmeUrl = this.loginService.getmmeUrl();
-        const freeUrl = this.loginService.getfreeUrl();
-        if (mmeUrl && freeUrl) {
-          this.mmeFreeurlForm.controls.mmeUrl.setValue(mmeUrl);
-          this.mmeFreeurlForm.controls.freeUrl.setValue(freeUrl);
-        } else {
-          this.mmeFreeurlForm.controls.mmeUrl.setValue(result.record.urlData['mmeUrl']);
-          this.mmeFreeurlForm.controls.freeUrl.setValue(result.record.urlData['freeUrl']);
-        }
+        // const mmeUrl = this.loginService.getmmeUrl();
+        // const freeUrl = this.loginService.getfreeUrl();
+        // if (mmeUrl && freeUrl) {
+        //   this.mmeFreeurlForm.controls.mmeUrl.setValue(mmeUrl);
+        //   this.mmeFreeurlForm.controls.freeUrl.setValue(freeUrl);
+        // } else {
+        //   this.mmeFreeurlForm.controls.mmeUrl.setValue(result.record.urlData['mmeUrl']);
+        //   this.mmeFreeurlForm.controls.freeUrl.setValue(result.record.urlData['freeUrl']);
+        // }
+      }
+    })
+    const id = this.loginService.getSponserUserId();
+    this.userService.getUrl({ id: id }).subscribe((result) => {
+      if (result.status == 'success') {
+        this.mmeFreeurlForm.controls.mmeUrl.setValue(result.record['mmeUrl']);
+        this.mmeFreeurlForm.controls.freeUrl.setValue(result.record['freeUrl']);
+
       }
     })
   }
