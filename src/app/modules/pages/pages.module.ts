@@ -14,9 +14,10 @@ import { SharedModule } from '@shared/shared.module';
 import { SupportReplyComponent } from './support-reply/support-reply.component';
 import { PaymentCardNumberPipe } from './visitors-traffic/pipe/payment-card-number/payment-card-number.pipe';
 import { ValidThruPipe } from './visitors-traffic/pipe/valid-thru/valid-thru.pipe';
+import { SafeHtmlPipe } from './visitors-traffic/visitors-traffic.component';
 import { NgPaymentCardModule } from 'ng-payment-card';
 @NgModule({
-  declarations: [ValidThruPipe,PaymentCardNumberPipe,HomeComponent, DmcaPolicyComponent, PrivacyPolicyComponent, TermsOfUseComponent, FaqComponent, AboutUsComponent, VisitorsTrafficComponent, TestimonialsComponent, SupportReplyComponent],
+  declarations: [ValidThruPipe, SafeHtmlPipe, PaymentCardNumberPipe, HomeComponent, DmcaPolicyComponent, PrivacyPolicyComponent, TermsOfUseComponent, FaqComponent, AboutUsComponent, VisitorsTrafficComponent, TestimonialsComponent, SupportReplyComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -26,6 +27,6 @@ import { NgPaymentCardModule } from 'ng-payment-card';
     NgPaymentCardModule
   ],
   providers: [PagesRoutingModule.providers],
-  exports:[SharedModule]
+  exports: [SharedModule]
 })
 export class PagesModule { }

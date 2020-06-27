@@ -6,22 +6,8 @@
 
       <h1 class="text-center">Money Plugin</h1>
 
-      <div class="pages-data" [innerHtml]="data"></div>
-      <div class="container-fluid p-0">
-
-        <div class="row no-gutters">
-
-          <div class="col-md-12">
-
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/o-C73B6W94U" frameborder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-          </div>
-
-
-        </div>
-
-      </div>
+      <div class="pages-data" [innerHtml]="data | safeHtml"></div>
+    
       <div *ngIf="loginService.getPlan()=='Free'" class="mt-5 text-center">
         <a href="javascript:void(0)" (click)='buyMoneyPlugin(content)'
           class="btn btn-lg btn-success btn-radius ml-3">Buy the money plugin ($19.97)</a>
