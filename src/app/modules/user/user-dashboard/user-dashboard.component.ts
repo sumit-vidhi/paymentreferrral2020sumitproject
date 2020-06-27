@@ -59,7 +59,7 @@ export class UserDashboardComponent implements OnInit {
         // }
       }
     })
-    const id = this.loginService.getSponserUserId();
+    const id = this.loginService.getSponserId();
     this.userService.getUrl({ id: id }).subscribe((result) => {
       if (result.status == 'success') {
         this.mmeFreeurlForm.controls.mmeUrl.setValue(result.record['mmeUrl']);

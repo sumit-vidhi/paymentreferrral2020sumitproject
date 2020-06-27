@@ -22,7 +22,7 @@ export class BlogPageComponent implements OnInit {
 
   }
   getUrl() {
-    const id = this.loginService.getSponserUserId();
+    const id = this.loginService.getSponserId();
     this.blogService.getUrl({ id: id }).subscribe((result) => {
       if (result.status == 'success') {
         this.mmeUrl = result.record.mmeUrl;
