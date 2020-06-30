@@ -65,9 +65,9 @@
 
     <div class="container">
         <div class="no-ticket-found text-center">
-            <img src="/assets/images/no-ticket-found.png" alt="No Ticket Found" width="150">
-            <h2>No Ticket Found!</h2>
-            <h3>There is no any active tickets in your account.</h3>
+            <img src="/assets/images/no-ticket-found.png" alt="No Tickets Found" width="150">
+            <h2>No Tickets Found!</h2>
+            <h3>There are not any active tickets in your account.</h3>
             <a href="javascript:void(0)" (click)="createTicket = true" class="btn btn-md btn-radius btn-success">Create
                 Ticket</a>
         </div>
@@ -86,8 +86,8 @@
             <div class="login-form shadow mt-4 rounded mb-5">
                 <div class="card-body px-5">
                     <div class="card-title text-center mb-4">
-                        <h3>Create Ticket</h3>
-                        <h5>Create Ticket and get instant support from our 24x7 available team</h5>
+                        <h3>Create a Ticket</h3>
+                        <h5>Got a question not answered in our <a routerLink="/blog/faqs">FAQ's</a>? Create a Ticket and get fast support from our support team.</h5>
                     </div>
                     <div class="card-text">
                         <form [formGroup]="supportForm" (ngSubmit)="onSubmit()">
