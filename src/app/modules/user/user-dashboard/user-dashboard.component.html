@@ -21,7 +21,7 @@
         <div class="card-body">
           <h2 class="card-title mb-0">
             {{(dashboardData.referral.totalReferral)?dashboardData.referral.totalReferral:'0'}}</h2>
-          <p class="card-text mb-0">Total Your Kept Referral</p>
+          <p class="card-text mb-0">Your Referrals</p>
         </div>
       </div>
     </div>
@@ -119,7 +119,7 @@
 
   <div class="card mt-4">
     <div class="card-header">
-      <h5 class="mb-0">Promotion Urls</h5>
+      <h5 class="mb-0">Promotion Urls - Do not add or change any URLs below until you have Read This Page. <a routerLink="/blog/promotional-urls">Click Here Now</a>.</h5>
     </div>
     <div class="card-body">
       <form [formGroup]="mmeFreeurlForm" (ngSubmit)="onSubmit()">
