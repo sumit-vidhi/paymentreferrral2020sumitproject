@@ -143,6 +143,17 @@ export class JWTAuthService {
       return JSON.parse(window.localStorage[APP_USER]).parentId;
     }
   }
+  /**
+* @function getLoginUserId
+* @description
+* Get login user id
+* @returns {CommonBase}
+*/
+  getSponserId(): CommonBase {
+    if (window.localStorage[APP_USER]) {
+      return JSON.parse(window.localStorage[APP_USER]).sponser;
+    }
+  }
 
   /**
   * @function getLoginUserId

@@ -6,6 +6,9 @@ import { map } from 'rxjs/operators';
 import { LoaderService } from '@core/services/loader-service';
 import { JWTAuthService } from '@core/services/jwt-auth.service';
 import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { DomSanitizer } from '@angular/platform-browser'
+
+
 @Component({
   selector: 'app-testimonials',
   templateUrl: './testimonials.component.html',

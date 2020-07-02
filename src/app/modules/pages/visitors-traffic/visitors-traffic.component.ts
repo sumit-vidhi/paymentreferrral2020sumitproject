@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { LoaderService } from '@core/services/loader-service';
 import { PageService } from '@modules/pages/services/page.service';
 import { UserService } from '@modules/user/services/user.service';
@@ -10,6 +10,15 @@ import { ICardDetails } from './domain/i-card-details';
 import { CardDetails } from './domain/card-details';
 import { PaymentCardService } from './service/payment-card.service';
 import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser'
+
+@Pipe({ name: 'safeHtml' })
+export class SafeHtmlPipe implements PipeTransform {
+  constructor(private sanitized: DomSanitizer) { }
+  transform(value) {
+    return this.sanitized.bypassSecurityTrustHtml(value);
+  }
+}
 @Component({
   selector: 'app-visitors-traffic',
   templateUrl: './visitors-traffic.component.html',
@@ -166,7 +175,7 @@ export class VisitorsTrafficComponent implements OnInit {
 
 
     this.loader.startLoading();
-    this.pageService.getPage({ title: 'visitors-traffic' }).subscribe((result: any) => {
+    this.pageService.getPage({ title: 'money-plugin' }).subscribe((result: any) => {
       this.loader.stopLoading();
       this.data = result.record[0].body;
     })

@@ -31,7 +31,9 @@ export class UserService {
   editProfile(data): Observable<ApiResponseModel> {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.editProfile, data);
   }
-
+  getUrl(data): Observable<ApiResponseModel> {
+    return this.commonHttp.post<ApiResponseModel>(appApiUrl.blog.getUrl, data);
+  }
   payment(data): Observable<ApiResponseModel> {
     return this.commonHttp.post<ApiResponseModel>(appApiUrl.auth.payment, data);
   }

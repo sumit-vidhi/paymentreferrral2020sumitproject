@@ -1,10 +1,11 @@
-<div [ngClass]="{'homepage-top-banner': _router.url == '/'}">
+<div [ngClass]="{'homepage-top-banner': _router.url == '/' ||  _router.url == '/home?code='+code.code}">
 
     <header class="site-header">
         <nav class="navbar navbar-expand-lg p-0">
             <div class="container">
                 <a class="navbar-brand" routerLink="/" href="javascript:void(0)">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="214.1" height="49.45" viewBox="0 0 214.1 49.45">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="214.1"
+                        height="49.45" viewBox="0 0 214.1 49.45">
                         <defs>
                             <clipPath id="clip-path">
                                 <rect width="37" height="48.567" fill="none" />
@@ -40,38 +41,53 @@
                         <li class="nav-item" routerLinkActive="active">
                             <a class="nav-link" routerLink="/about-us">About Us</a>
                         </li>
+
                         <li class="nav-item" routerLinkActive="active">
-                            <a class="nav-link" routerLink="/visitors-traffic">Visitors/Traffic</a>
+                            <a class="nav-link" routerLink="/blog/visitors-traffic">Visitors/Traffic</a>
                         </li>
-                        <li class="nav-item" routerLinkActive="active">
-                            <a class="nav-link" routerLink="/blog/money-plugin">Money Plugin</a>
+                        <li class="nav-item" routerLinkActive="active" *ngIf='loginService.IsAuthUser()'>
+                            <a class="nav-link" routerLink="/money-plugin">Money Plugin</a>
                         </li>
                         <li class="nav-item" routerLinkActive="active" *ngIf='loginService.IsAuthUser()'>
                             <a class="nav-link" routerLink="/support">Support</a>
                         </li>
+                        <ng-container *ngIf='blogMainPage && blogMainPage.length>0'>
+                            <li class="nav-item" *ngFor='let data of  blogMainPage' routerLinkActive="active">
+                                <a class="nav-link" routerLink="/blog/{{data.blogslug}}">{{data.title}}</a>
+                            </li>
+                        </ng-container>
+
                         <li class="nav-item" *ngIf='blogPage && blogPage.length>0'>
-                            <a class="nav-link" href="javascript:void(0)">Downline</a>
+                            <a class="nav-link" href="javascript:void(0)">More Money</a>
                             <ul class="sub-items">
                                 <li class="nav-item" *ngFor='let data of  blogPage' routerLinkActive="active">
                                     <a class="nav-link" routerLink="/blog/{{data.blogslug}}">{{data.title}}</a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item" >
+                        <li class="nav-item">
                             <a class="nav-link" routerLink="/blog">Blog</a>
                         </li>
                         <li class="nav-item" routerLinkActive="active" *ngIf='!loginService.IsAuthUser()'>
                             <a class="nav-link" href="javascript:void(0)" routerLink="/auth/login">Login</a>
                         </li>
-                        <li class="nav-item" *ngIf='!loginService.IsAuthUser()'>
-                            <a class="btn btn-radius btn-orange" href="javascript:void(0)" routerLink="/auth/reg">Sign Up</a>
+                        <li class="nav-item" *ngIf='!loginService.IsAuthUser() && urlCode'>
+                            <a class="btn btn-radius btn-orange" href="javascript:void(0)" (click)="goSignup()">Sign
+                                Up</a>
+                        </li>
+                        <li class="nav-item" *ngIf='!loginService.IsAuthUser() && !urlCode'>
+                            <a class="btn btn-radius btn-orange" href="javascript:void(0)" routerLink="/auth/reg">Sign
+                                Up</a>
                         </li>
                     </ul>
-                    <div class="dropdown user-dropdown ml-3" (click)="$event.stopPropagation()" *ngIf='loginService.IsAuthUser()'>
+                    <div class="dropdown user-dropdown ml-3" (click)="$event.stopPropagation()"
+                        *ngIf='loginService.IsAuthUser()'>
                         <a href="javascript:void(0)" class="dropdown-toggle" (click)="openUserDropdown()">
-                            <img [src]="(this.loginService.getImage())?this.loginService.getImage():image" alt="John Doe"> Hi,{{loginService.getFirstUserName()}}
+                            <img [src]="(this.loginService.getImage())?this.loginService.getImage():image"
+                                alt="John Doe"> Hi,{{loginService.getFirstUserName()}}
                         </a>
-                        <div class="dropdown-menu" (click)="user_dropdown = false" *ngIf="user_dropdown == true" aria-labelledby="dropdownMenuButton" style="display:block;">
+                        <div class="dropdown-menu" (click)="user_dropdown = false" *ngIf="user_dropdown == true"
+                            aria-labelledby="dropdownMenuButton" style="display:block;">
                             <a class="dropdown-item" routerLink="/user">My dashboard</a>
                             <a class="dropdown-item" routerLink="/user/referrals">Referrals</a>
                             <a class="dropdown-item" routerLink="/user/payments">Payments</a>
@@ -85,14 +101,20 @@
         </nav>
     </header>
 
-    <div *ngIf="_router.url == '/'" class="homepage-banner-content">
+    <div *ngIf="_router.url == '/' || _router.url == '/home?code='+code.code" class="homepage-banner-content">
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
                     <h1>Guarantee Downline Club</h1>
                     <h1>The Only Club That Pays You To Join For Free</h1>
-                    <h3>Making money online can be extremely hard when you try to go it alone. You need help from people who know what to do and you need to be in an environment where Everyone Is Guaranteed To Make Money.</h3>
-                    <a routerLink="auth/reg" href="javascript:void(0)" class="btn btn-lg btn-radius btn-orange mt-4">Get
+                    <h3>Making money online can be extremely hard when you try to go it alone. You need help from people
+                        who know what to do and you need to be in an environment where Everyone Is Guaranteed To Make
+                        Money.</h3>
+                    <a *ngIf='!loginService.IsAuthUser() && !urlCode' routerLink="auth/reg" href="javascript:void(0)"
+                        class="btn btn-lg btn-radius btn-orange mt-4">Get
+                        Started</a>
+                    <a *ngIf='!loginService.IsAuthUser() && urlCode' (click)="goSignup()" href=" javascript:void(0)"
+                        class="btn btn-lg btn-radius btn-orange mt-4">Get
                         Started</a>
 
                     <!-- <div class="bgimg">

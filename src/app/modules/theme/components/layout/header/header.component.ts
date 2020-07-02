@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { LoaderService } from '@core/services/loader-service';
 import { Observable, interval } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -30,8 +31,11 @@ export class HeaderComponent implements OnInit {
 
   public _seconds: number;
   commingSoon = false;
+  code: any = "";
   image: any = '/assets/images/defaultProfile.jpg';
-  constructor(public loginService: JWTAuthService, private loader: LoaderService, public _router: Router,
+  urlCode: any = '';
+  blogMainPage: any = []; 
+  constructor(public loginService: JWTAuthService, private route: ActivatedRoute, private loader: LoaderService, public _router: Router,
     public userservice: UserService) {
   }
 
@@ -63,12 +67,40 @@ export class HeaderComponent implements OnInit {
       plan = this.loginService.getPlan();
     }
     this.userservice.getBlogPage({ plan: plan }).subscribe((result) => {
-      this.blogPage = result.record;
+      this.blogPage = result.record.filter((data) => {
+        return data.is_featured == "1";
+      });
+      this.blogMainPage = result.record.filter((data) => {
+        return data.is_featured == "0";
+      });
     })
     this.loader.blogData.subscribe((value) => {
       this.blogPage = value;
     });
+    this.urlCode = "";
+    this.code = "";
+    this.checkReferralCode();
   }
+
+  checkReferralCode() {
+    this.route.queryParams
+      .subscribe(params => {
+        console.log(params);
+        var size = Object.keys(params).length;
+        console.log(size)
+        if (size === 1) {
+          this.code = params;
+          console.log(this.code);
+          this.urlCode = "?code=" + this.code.code;
+        }
+
+      })
+  }
+
+  goSignup() {
+    this._router.navigate(['/auth/reg'], { queryParams: { code: this.code.code } })
+  }
+
 
   openUserDropdown() {
     this.user_dropdown = !this.user_dropdown;
