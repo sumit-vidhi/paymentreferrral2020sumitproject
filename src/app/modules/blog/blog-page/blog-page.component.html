@@ -41,7 +41,7 @@
           <img src="{{blogData.image}}" class="w-100" alt="Affiliate Marketing">
         </div>
 
-        <p [innerHtml]='blogData.description'></p>
+        <p [innerHtml]='blogData.description | safeHtmlPipe'></p>
 
 
       </div>

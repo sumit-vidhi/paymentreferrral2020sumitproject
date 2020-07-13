@@ -5,9 +5,10 @@ import { BlogRoutingModule } from './blog-routing.module';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { SharedModule } from '@shared/shared.module';
 import { BlogPageComponent } from './blog-page/blog-page.component';
+import { SafeHtmlPipeBlogHTML } from './services/safeHTML.pipe';
 
 @NgModule({
-  declarations: [BlogComponent, BlogDetailComponent, BlogPageComponent],
+  declarations: [BlogComponent, BlogDetailComponent, BlogPageComponent, SafeHtmlPipeBlogHTML],
   imports: [
     CommonModule,
     BlogRoutingModule,
@@ -18,3 +19,5 @@ import { BlogPageComponent } from './blog-page/blog-page.component';
   exports: [SharedModule, ]
 })
 export class BlogModule { }
+
+
