@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { UserService } from '@modules/user/services/user.service';
+import { AuthService } from '@modules/auth/services/auth.service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { LoaderService } from '@core/services/loader-service';
@@ -19,12 +20,13 @@ export class EditProfileComponent implements OnInit {
   userName: any;
   firstName: any;
   lastName: any;
-  constructor(private formBuilder: FormBuilder, private userService: UserService,
+  constructor(private formBuilder: FormBuilder, private authservice: AuthService, private userService: UserService,
     private router: Router, private loader: LoaderService, public loginService: JWTAuthService) { }
 
   ngOnInit() {
     this.editForm = this.formBuilder.group({
       firstName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email], this.isEmailUnique.bind(this)],
       lastName: ['', Validators.required],
       address: ['', Validators.required],
       address2: [''],
@@ -41,7 +43,22 @@ export class EditProfileComponent implements OnInit {
     this.lastName = this.getLastName();
     this.editForm.controls.firstName.setValue(this.firstName);
     this.editForm.controls.lastName.setValue(this.lastName);
+    this.editForm.controls.email.setValue(this.email);
     this.setStatus();
+  }
+  isEmailUnique(control: FormControl) {
+    const q = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.authservice.checkEmailToken({ email: control.value, id: this.loginService.getLoginUserId() }).subscribe((res) => {
+          if (res.status == 'error') {
+            resolve({ 'isEmailUnique': true });
+          } else {
+            resolve(null);
+          }
+        })
+      }, 1000);
+    });
+    return q;
   }
 
   setStatus() {
@@ -55,6 +72,7 @@ export class EditProfileComponent implements OnInit {
           delete result.record.user_id;
           result.record.firstName = this.getFirstName();
           result.record.lastName = this.getLastName();
+          result.record.email = this.getEmail();
           this.editForm.setValue(result.record);
         }
       })
@@ -100,12 +118,22 @@ export class EditProfileComponent implements OnInit {
   }
 
 
+
+
   onSubmit() {
     this.submitted = true;
     if (this.editForm.invalid) {
       return;
     }
-
+    const emailDomain = window.localStorage.getItem("emailDomain");
+    if (emailDomain) {
+      const keyEmail = this.editForm.value.email.split("@");
+      const index = emailDomain.indexOf("@" + keyEmail[1]);
+      if (index == -1) {
+        alert("That only" + emailDomain + " related emails are allowed for now.");
+        return;
+      }
+    }
     if (this.loginService.getUserStatus() === '1') {
       const formdata = this.editForm.value;
       formdata.updateStatus = this.loginService.getUserStatus();
@@ -128,7 +156,7 @@ export class EditProfileComponent implements OnInit {
       this.userService.editProfile(formdata).subscribe((result) => {
         this.loader.stopLoading();
         if (result.status === 'success') {
-         // alert("You need to login after 24 hours so that your sponser get paid.");
+          // alert("You need to login after 24 hours so that your sponser get paid.");
           result.record.authToken = result.record.accessToken;
           this.loginService.setLoginUserDetail(result.record);
         }

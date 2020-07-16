@@ -17,14 +17,14 @@
     </a> -->
 
   <h2 class="page-title mt-3">Edit Profile</h2>
-  
+
   <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
 
     <div class="card mt-3">
       <div class="card-header">
         <h5>Billing Address</h5>
       </div>
-    
+
       <div class="card-body">
 
         <div class="row">
@@ -32,7 +32,15 @@
 
             <div class="form-group">
               <label for="first_name">Email</label>
-              <div  class="form-control">  {{email}}</div>
+              <input type="text" formControlName="email" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">email is required</div>
+                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+              </div>
+              <div *ngIf="f.email.errors && f.email.errors.isEmailUnique" style="color:red;">
+                *Email already exist to another account.
+              </div>
 
             </div>
 
@@ -41,7 +49,7 @@
 
             <div class="form-group">
               <label for="first_name">Username</label>
-              <div  class="form-control">  {{userName}}</div>
+              <div class="form-control"> {{userName}}</div>
 
             </div>
 
@@ -90,8 +98,7 @@
 
             <div class="form-group">
               <label for="address_2">Address 2</label>
-              <input type="text" formControlName="address2" class="form-control"
-                 />
+              <input type="text" formControlName="address2" class="form-control" />
               <!-- 
                 [ngClass]="{ 'is-invalid': submitted && f.address2.errors }"
                 <div *ngIf="submitted && f.address2.errors" class="invalid-feedback">
@@ -416,8 +423,10 @@
     </div>
 
     <div class="mt-4">
-      <button class="btn btn-lg btn-primary btn-submit btn-radius" *ngIf='loginService.getUserStatus()=="0"'>Complete Account Verification</button>
-      <button class="btn btn-lg btn-primary btn-submit btn-radius" *ngIf='loginService.getUserStatus()=="1"'>Update Profile</button>
+      <button class="btn btn-lg btn-primary btn-submit btn-radius" *ngIf='loginService.getUserStatus()=="0"'>Complete
+        Account Verification</button>
+      <button class="btn btn-lg btn-primary btn-submit btn-radius" *ngIf='loginService.getUserStatus()=="1"'>Update
+        Profile</button>
     </div>
 
   </form>
