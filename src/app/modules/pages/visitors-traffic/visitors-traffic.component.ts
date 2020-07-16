@@ -239,6 +239,7 @@ export class VisitorsTrafficComponent implements OnInit {
     const cardDetails = this.ccForm.value;
     cardDetails.name = this.loginService.getFirstUserName();
     cardDetails.email = this.loginService.getLoginUserEmail();
+    cardDetails.lastname = this.loginService.getLastUserName();
     cardDetails.userId = this.loginService.getLoginUserId();
     cardDetails.amount = 19.97;
     this.userService.payment(cardDetails).subscribe((data) => {
